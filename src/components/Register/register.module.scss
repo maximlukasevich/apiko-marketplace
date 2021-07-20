@@ -1,0 +1,35 @@
+.heading {
+  font-family: Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  color: #282828;
+
+  margin-bottom: 30px;
+}
+
+.button { 
+  margin-top: 30px;
+}
+
+.loginDiv {
+  margin-top: 20px !important;
+  padding: 30px;
+  text-align: center;
+
+  p {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #2A2A2A;
+
+    span {
+      text-transform: uppercase;
+      color: #349A89;
+    }
+
+  }
+}
