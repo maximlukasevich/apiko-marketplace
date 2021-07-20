@@ -33,7 +33,7 @@ export const login = (email: string, password: string) => {
   }
 }
 
-export const register = (email: string, fullName: string, password: string) => {
+export const register = (fullName: string, email: string, password: string) => {
   return async (dispatch: Dispatch<IAction>) => {
     try {
       dispatch({
@@ -62,5 +62,35 @@ export const register = (email: string, fullName: string, password: string) => {
         payload: error.response.data.error
       });
     }
+  }
+}
+
+export const auth = () => {
+  return async (dispatch: Dispatch<IAction>) => {
+    try {
+      dispatch({
+        type: UserActionTypes.FETCH_USER
+      });
+      const res = await axios.get('/account/user', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      dispatch({
+        type: UserActionTypes.FETCH_USER_SUCCESS,
+        payload: res.data
+      });
+    } catch (error) {
+      localStorage.removeItem('token');
+    }
+  }
+}
+
+export const logout = () => {
+  return async (dispatch: Dispatch<IAction>) => {
+    dispatch({
+      type: UserActionTypes.LOGOUT,
+    });
   }
 }

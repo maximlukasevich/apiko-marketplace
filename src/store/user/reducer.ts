@@ -4,7 +4,7 @@ const initialState: IInitialState = {
   isAuth: false,
   isLoading: false,
   error: null,
-  user: []
+  user: null
 }
 
 export const userReducer = (state = initialState, action: IAction): IInitialState => {
@@ -15,7 +15,7 @@ export const userReducer = (state = initialState, action: IAction): IInitialStat
         isAuth: false,
         isLoading: true,
         error: null,
-        user: []
+        user: null
       }
     case UserActionTypes.FETCH_USER_SUCCESS: 
       return {
@@ -31,8 +31,18 @@ export const userReducer = (state = initialState, action: IAction): IInitialStat
         isAuth: false,
         isLoading: false,
         error: action.payload,
-        user: []
+        user: null
       }
+    case UserActionTypes.LOGOUT:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        isAuth: false,
+        isLoading: false,
+        error: null,
+        user: null
+      }
+
     default: 
       return state;
   }

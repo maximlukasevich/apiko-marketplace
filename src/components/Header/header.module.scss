@@ -1,0 +1,138 @@
+.header {
+  background: linear-gradient(180deg, #090810 0%, #171236 100%);
+
+  .nav {
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 1145px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navLinks {
+
+      display: flex;
+      align-items: center;
+      width: auto;
+
+      .inbox {
+        position: relative;
+        margin-right: 18px;
+
+        .inboxIcon {
+          max-width: none;
+          height: 20px;
+          width: 20px;
+        }
+
+        .inboxCircle {
+          position: absolute;
+          top: -4px;
+          right: -4px;
+          height: 10px;
+          width: 10px;
+          background-color: #EB3535;
+          border-radius: 100%;
+        }
+      }
+
+      .button {
+        text-transform: uppercase;
+        font-size: 14px;
+        padding: 10px 50px;
+      }
+
+      .login {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0 40px 0 38px;
+      }
+
+      .headerMenu {
+        margin: 0 36px 0 38px;
+      }
+    }
+
+    .mobileMenuIcon {
+      display: none;
+    }
+  }
+}
+
+.light {
+  background: #FFFFFF !important;
+}
+
+@media screen and (max-width: 1160px) {
+  .header {
+    .nav {
+      max-width: 855px;
+    }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .header {
+    .nav {
+      padding: 20px 15px;
+      .navLinks {
+        display: none
+      }
+
+      .mobileMenuIcon {
+        display: flex;
+      }
+    }
+  }
+}
+
+
+.mobileHeader {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .closeButton {
+    position: inherit !important;
+    font-size: inherit !important;
+  }
+  .mobileIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  
+    img {
+      height: 30px;
+    }
+    img:not(:last-child) {
+      margin-right: 20px;
+    }
+    img:not(:first-child) {
+      margin-right: 20px;
+    }
+  }
+}
+  
+.mobileMenu {
+  .mobileButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .button {
+      max-width: none;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .headerMenu {
+      margin-left: 20px;
+    }
+  }
+}

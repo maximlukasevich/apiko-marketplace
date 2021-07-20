@@ -1,26 +1,38 @@
-import React from 'react';
 import './App.css';
+import 'typeface-roboto';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useTypedSelector } from './hooks/useTypedSelector';
-import { Login } from './components/Login/Login';
-import { Register } from './components/Register/Register';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { HomePage } from './pages/HomePage';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { routes } from './utils/routes';
+import { auth } from './store/user/actions';
 
 const App: React.FC = () => {
 
   const { isAuth } = useTypedSelector(state => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!isAuth) {
+      dispatch(auth());
+    }
+  }, [isAuth, dispatch]);
 
   return (
     <>
     <Switch>
 
-      <Route exact path={routes.HOME} render={() => <h1>Home</h1>  } />
+      <Route exact path={routes.HOME} component={HomePage} />
 
       { isAuth ? <> 
-        {/* nothing at this time  */}
+        
+        <Redirect from={routes.LOGIN} to={routes.HOME} />
+        <Redirect from={routes.REGISTER} to={routes.HOME} />
       </> : <>
-        <Route path={routes.LOGIN} component={Login} />
-        <Route path={routes.REGISTER} component={Register} />
+        <Route path={routes.LOGIN} component={LoginPage} />
+        <Route path={routes.REGISTER} component={RegisterPage} />
       </> }
     </Switch>  
     </>

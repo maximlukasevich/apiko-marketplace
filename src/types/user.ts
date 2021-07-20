@@ -1,31 +1,20 @@
-export type IAction = IFetchUserAction | IFetchUserSuccessAction | IFetchUserErrorAction;
+export type IAction = IFetchUserAction | 
+                      IFetchUserSuccessAction | 
+                      IFetchUserErrorAction | 
+                      IUserLogout;
 
 export interface IInitialState {
   isAuth: boolean,
   isLoading: boolean,
   error: string | null,
-  user: Array<IUser>
+  user: IUser | null
 }
 
 export enum UserActionTypes {
   FETCH_USER = 'FETCH_USER',
   FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
   FETCH_USER_ERROR = 'FETCH_USER_ERROR',
-}
-
-
-interface IFetchUserAction {
-  type: UserActionTypes.FETCH_USER,
-}
-
-interface IFetchUserSuccessAction {
-  type: UserActionTypes.FETCH_USER_SUCCESS,
-  payload: Array<IUser>
-}
-
-interface IFetchUserErrorAction {
-  type: UserActionTypes.FETCH_USER_ERROR,
-  payload: string
+  LOGOUT = 'LOGOUT',
 }
 
 interface IUser {
@@ -37,4 +26,22 @@ interface IUser {
   phone: string,
   createdAt: number,
   updatedAt: number,
+}
+
+interface IUserLogout {
+  type: UserActionTypes.LOGOUT
+}
+
+interface IFetchUserAction {
+  type: UserActionTypes.FETCH_USER,
+}
+
+interface IFetchUserSuccessAction {
+  type: UserActionTypes.FETCH_USER_SUCCESS,
+  payload: IUser
+}
+
+interface IFetchUserErrorAction {
+  type: UserActionTypes.FETCH_USER_ERROR,
+  payload: string
 }
