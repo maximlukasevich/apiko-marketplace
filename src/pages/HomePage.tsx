@@ -7,6 +7,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <Header email={user?.email} fullName={user?.fullName} avatar={user?.avatar} isAuth={isAuth} />
+      home page 
     </>
   );
 }

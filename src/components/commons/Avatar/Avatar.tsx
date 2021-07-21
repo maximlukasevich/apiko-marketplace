@@ -4,7 +4,7 @@ import { Avatar as ChakraAvatar } from '@chakra-ui/react';
 
 interface IAvatar {
   name: string,
-  avatar?: string,
+  avatar?: any,
   size: string,
   className?: string,
 }

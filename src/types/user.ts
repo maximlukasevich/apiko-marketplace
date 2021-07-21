@@ -1,6 +1,15 @@
-export type IAction = IFetchUserAction | 
+export enum UserActionTypes {
+  FETCH_USER = 'FETCH_USER',
+  FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
+  FETCH_USER_ERROR = 'FETCH_USER_ERROR',
+  USER_UPDATE = 'USER_UPDATE',
+  LOGOUT = 'LOGOUT',
+}
+
+export type TAction = IFetchUserAction | 
                       IFetchUserSuccessAction | 
                       IFetchUserErrorAction | 
+                      IUserUpdate |
                       IUserLogout;
 
 export interface IInitialState {
@@ -8,13 +17,6 @@ export interface IInitialState {
   isLoading: boolean,
   error: string | null,
   user: IUser | null
-}
-
-export enum UserActionTypes {
-  FETCH_USER = 'FETCH_USER',
-  FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
-  FETCH_USER_ERROR = 'FETCH_USER_ERROR',
-  LOGOUT = 'LOGOUT',
 }
 
 interface IUser {
@@ -28,6 +30,9 @@ interface IUser {
   updatedAt: number,
 }
 
+interface IUserUpdate {
+  type: UserActionTypes.USER_UPDATE
+}
 interface IUserLogout {
   type: UserActionTypes.LOGOUT
 }

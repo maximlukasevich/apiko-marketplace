@@ -4,43 +4,16 @@ import { InputField } from '../commons/Input/Input';
 import { AuthWrapper } from '../commons/AuthWrapper/AuthWrapper';
 import { Button } from '../commons/Button/Button';
 import { Center } from '@chakra-ui/react';
-import { FormikValues, FormikErrors, FormikProps, useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../utils/routes';
-
-interface IFormikValues {
-  email: string,
-  password: string,
-}
+import { FormikProps } from 'formik';
+import { IFormikValues } from './types';
 
 interface ILoginComponent {
-  onSubmit: (values: FormikValues) => void;
+  formik: FormikProps<IFormikValues>;
 }
 
-export const LoginComponent: React.FC<ILoginComponent>= ({ onSubmit }) => {
-
-  const validate = (values: IFormikValues) => {
-    const errors: FormikErrors<IFormikValues> = {};
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-    if (!values.password) {
-      errors.password = 'Required';
-    }
-    return errors;
-  }
-
-  const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validate: validate,
-    onSubmit: onSubmit
-  });
-
+export const LoginComponent: React.FC<ILoginComponent>= ({ formik }) => {
   return (
     <>
     <AuthWrapper>

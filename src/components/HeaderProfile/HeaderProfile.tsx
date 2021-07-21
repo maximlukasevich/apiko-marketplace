@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../store/user/actions';
 import styles from './header-profile.module.css';
 import { Avatar } from '../commons/Avatar/Avatar';
+import { NavLink } from 'react-router-dom';
+import { routes } from '../../utils/routes';
 import {
   Menu,
   MenuButton,
@@ -38,9 +40,10 @@ export const HeaderProfile: React.FC<IHeaderProfile> = ({ fullName, email, avata
             <span className={styles.profile}>Profile</span>
           </div>
         </div>
-        
         <p className={styles.link}>
-          Edit profile 
+          <NavLink to={routes.PROFILE_EDIT}>
+            Edit profile 
+          </NavLink>
         </p>
         <hr className={styles.hr} />
         <p className={styles.link} onClick={onClick} >

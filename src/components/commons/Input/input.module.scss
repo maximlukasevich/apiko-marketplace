@@ -1,63 +1,63 @@
-.label {
-  font-family: Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #303030;
-
-  .span {
-    color: #ff0000;
-  }
-
-  .inputGroup {
-    border: 1px solid #DEDEE0;
-    border-radius: 5px;
-    background: #F9FAFB;
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.inputWrapper {
+  margin-top: 10px;
+  .label {
+    font-family: Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #303030;
+    padding: 0;
   
-    .icon {
-      border: none;
-      background-color: #11111100;
+    .span {
+      color: #ff0000;
     }
   
-    .icon:first-child {
-      padding: 0 0 0 15px;
-    }
-    .icon:last-child {
-      padding: 0 15px 0 0;
-    }
-  
-    .input {
-      color: #000;
-      background-color: #11111100;
-      border: none;
-      border-radius: 0;
-      width: 100%;
-      height: auto;
-      font-size: 16px;
-      padding: 20px 15px;
-    }
-  
-    .input:placeholder {
-      font-family: Helvetica, sans-serif;
-      font-style: normal;
-      font-weight: 300;
-      letter-spacing: 0.4px;
-      color: #66666677;
-    }
+    .inputGroup {
+      border: 1px solid #DEDEE0;
+      border-radius: 5px;
+      background: #F9FAFB;
+      max-height: 60px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     
-    .input:focus {
-      outline: none;
-      box-shadow: none;
+      .icon {
+        border: none;
+        background-color: #11111100;
+      }
+    
+      .icon:first-child {
+        padding: 0 0 0 15px;
+      }
+      .icon:last-child {
+        padding: 0 15px 0 0;
+      }
+    
+      .input {
+        color: #000;
+        background-color: #11111100;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        padding: 20px 15px;
+      }
+    
+      .input:placeholder {
+        font-family: Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+        color: #66666677;
+      }
+      
+      .input:focus {
+        outline: none;
+        box-shadow: none;
+      }
     }
   }
-  
-  
-  
 }

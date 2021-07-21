@@ -4,58 +4,16 @@ import { AuthWrapper } from '../commons/AuthWrapper/AuthWrapper';
 import { Center } from '@chakra-ui/react';
 import { InputField } from '../commons/Input/Input';
 import { Button } from '../commons/Button/Button';
-import { useFormik, FormikProps, FormikErrors, FormikValues } from 'formik';
+import { FormikProps } from 'formik';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../utils/routes';
-
-interface IFormikValues {
-  email: string,
-  fullName: string,
-  password: string,
-  passwordAgain: string,
-}
+import { IFormikValues } from './types';
 
 interface IRegisterComponent {
-  onSubmit: (values: FormikValues) => void;
+  formik: FormikProps<IFormikValues>;
 }
 
-export const RegisterComponent: React.FC<IRegisterComponent> = ({ onSubmit }) => {
-
-  const validate = (values: IFormikValues) => {
-    const errors: FormikErrors<IFormikValues> = {};
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-    if (!values.fullName) {
-      errors.fullName = 'Required';
-    } else if (!/^[А-ЯA-Z][а-яa-z]+\s[А-ЯA-Z][а-яa-z]+$/i.test(values.fullName)) {
-      errors.fullName = 'First and last name entered incorrectly';
-    }
-    if (!values.password) {
-      errors.password = 'Required';
-    } else if (values.password.length < 6) {
-      errors.password = 'At least 6 characters';
-    }
-    if (!values.passwordAgain) {
-      errors.passwordAgain = 'Required';
-    } else if (values.passwordAgain !== values.password) {
-      errors.passwordAgain = 'Passwords do not match';
-    }
-    return errors;
-  }
-
-  const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
-    initialValues: {
-      email: '',
-      fullName: '',
-      password: '',
-      passwordAgain: ''
-    },
-    validate: validate,
-    onSubmit: onSubmit
-  });
+export const RegisterComponent: React.FC<IRegisterComponent> = ({ formik }) => {
 
   return (
     <>

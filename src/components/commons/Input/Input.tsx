@@ -19,26 +19,28 @@ export const InputField: React.FC<IInput> = ({ label, icon, errors, ...props }) 
   }
 
   return (
-    <label className={styles.label}>
-      {label} 
-      <span className={styles.span}>
-        {props.required ? '*' : ''}
-        {errors}
-      </span>
-      <InputGroup className={styles.inputGroup}>
-        {icon 
-        ? <InputLeftAddon className={styles.icon} children={<img src={passwordIcon} alt='icon' />} />
-        : ''
-        }
-        <input className={styles.input} {...props} type={inputType} />
-        {props.type === 'password' 
-        ? <InputRightAddon 
-          className={styles.icon} 
-          children={<img src={passwordIcon} alt='Password Icon' />}
-          onClick={showPasswordHandler}  /> 
-        : ''
-        }
-      </InputGroup>
-    </label>
+    <div className={styles.inputWrapper}>
+      <label className={styles.label}>
+        {label} 
+        <span className={styles.span}>
+          {props.required ? '*' : ''}
+          {' '}{errors}
+        </span>
+        <InputGroup className={styles.inputGroup}>
+          {icon 
+          ? <InputLeftAddon className={styles.icon} children={<img src={passwordIcon} alt='icon' />} />
+          : ''
+          }
+          <input className={styles.input} {...props} type={inputType} />
+          {props.type === 'password' 
+          ? <InputRightAddon 
+            className={styles.icon} 
+            children={<img src={passwordIcon} alt='Password Icon' />}
+            onClick={showPasswordHandler}  /> 
+          : ''
+          }
+        </InputGroup>
+      </label>
+    </div>
   );
 }

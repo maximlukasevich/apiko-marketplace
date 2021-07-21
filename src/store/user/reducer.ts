@@ -1,4 +1,4 @@
-import { IInitialState, IAction, UserActionTypes } from '../../types/user';
+import { IInitialState, TAction, UserActionTypes } from '../../types/user';
 
 const initialState: IInitialState = {
   isAuth: false,
@@ -7,7 +7,7 @@ const initialState: IInitialState = {
   user: null
 }
 
-export const userReducer = (state = initialState, action: IAction): IInitialState => {
+export const userReducer = (state = initialState, action: TAction): IInitialState => {
   switch (action.type) {
     case UserActionTypes.FETCH_USER:
       return { 
@@ -15,9 +15,9 @@ export const userReducer = (state = initialState, action: IAction): IInitialStat
         isAuth: false,
         isLoading: true,
         error: null,
-        user: null
+        user: state.user
       }
-    case UserActionTypes.FETCH_USER_SUCCESS: 
+    case UserActionTypes.FETCH_USER_SUCCESS:
       return {
         ...state,
         isAuth: true,

@@ -65,11 +65,12 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #349A89;
+    transition: 0.3s;
   }
 
   .link:hover {
     cursor: pointer;
-    font-weight: bold;
+    color: #14423b;
   }
 
   .link:last-child {

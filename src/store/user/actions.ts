@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { UserActionTypes, IAction } from '../../types/user';
+import { UserActionTypes, TAction } from '../../types/user';
+import { sendNotificationError, sendNotificationSuccess } from '../notifications/actions';
 import { Dispatch } from 'redux';
 
 export const login = (email: string, password: string) => {
-  return async (dispatch: Dispatch<IAction>) => {
+  return async (dispatch: Dispatch<TAction & any>) => {
     try {
       dispatch({
         type: UserActionTypes.FETCH_USER
@@ -25,6 +26,7 @@ export const login = (email: string, password: string) => {
         }
       });
     } catch (error) {
+      dispatch(sendNotificationError(error.response.data.error));
       dispatch({
         type: UserActionTypes.FETCH_USER_ERROR, 
         payload: error.response.data.error
@@ -34,7 +36,7 @@ export const login = (email: string, password: string) => {
 }
 
 export const register = (fullName: string, email: string, password: string) => {
-  return async (dispatch: Dispatch<IAction>) => {
+  return async (dispatch: Dispatch<TAction & any>) => {
     try {
       dispatch({
         type: UserActionTypes.FETCH_USER
@@ -57,6 +59,7 @@ export const register = (fullName: string, email: string, password: string) => {
         }
       });
     } catch (error) {
+      dispatch(sendNotificationError(error.response.data.error));
       dispatch({
         type: UserActionTypes.FETCH_USER_ERROR, 
         payload: error.response.data.error
@@ -66,7 +69,7 @@ export const register = (fullName: string, email: string, password: string) => {
 }
 
 export const auth = () => {
-  return async (dispatch: Dispatch<IAction>) => {
+  return async (dispatch: Dispatch<TAction & any>) => {
     try {
       dispatch({
         type: UserActionTypes.FETCH_USER
@@ -88,9 +91,44 @@ export const auth = () => {
 }
 
 export const logout = () => {
-  return async (dispatch: Dispatch<IAction>) => {
+  return async (dispatch: Dispatch<TAction>) => {
     dispatch({
       type: UserActionTypes.LOGOUT,
     });
+  }
+}
+
+export const userUpdate = (
+  fullName: string, 
+  avatar: string | null, 
+  phone: string | null, 
+  location: string | null,
+  )=> {
+  return async (dispatch: Dispatch<TAction & any>) => {
+    try {
+      const res = await axios.put('/account/user', {
+        fullName,
+        avatar,
+        phone,
+        location,
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      dispatch(sendNotificationSuccess('Profile updated'));
+      dispatch({
+        type: UserActionTypes.FETCH_USER_SUCCESS,
+        payload: res.data
+      });
+    } catch (error) {
+      dispatch(sendNotificationSuccess('An error occurred while updating the data'));
+      console.log(error.response);
+      dispatch({
+        type: UserActionTypes.FETCH_USER_ERROR,
+        payload: error.response.data.error
+      });
+    }
   }
 }
