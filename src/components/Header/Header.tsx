@@ -9,6 +9,8 @@ import { Button } from '../commons/Button/Button';
 import { routes } from '../../utils/routes';
 import { NavLink } from 'react-router-dom';
 import { HeaderProfile } from '../HeaderProfile/HeaderProfile';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import {
   Drawer,
   DrawerBody,
@@ -17,22 +19,16 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-} from "@chakra-ui/react"
-import { HamburgerIcon } from '@chakra-ui/icons';
+} from '@chakra-ui/react';
 
 interface IHeader {
   light?: boolean,
-  isAuth?: boolean,
-  fullName?: string,
-  email?: string,
-  avatar?: string,
 }
 
-export const Header: React.FC<IHeader> = ({ 
-  light, fullName, email, avatar, isAuth, children 
-}) => {
+export const Header: React.FC<IHeader> = ({ light, children }) => {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { user, isAuth } = useTypedSelector(state => state.user);
 
   return (
     <header className={`
@@ -61,7 +57,7 @@ export const Header: React.FC<IHeader> = ({
           
           {isAuth ?
           <div className={styles.headerMenu}> 
-            <HeaderProfile fullName={fullName} email={email || ''} avatar={avatar} />
+            <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
           </div> :
           <NavLink to={routes.LOGIN} className={styles.login} style={!light ? {color: '#fff'} : {color: '#2B2B2B'}}>
             Login
@@ -102,7 +98,7 @@ export const Header: React.FC<IHeader> = ({
                 </Button>
                 {isAuth && 
                 <div className={styles.headerMenu}> 
-                  <HeaderProfile fullName={fullName} email={email || ''} avatar={avatar} />
+                  <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
                 </div> } 
               </div>
             </div>
@@ -117,5 +113,4 @@ export const Header: React.FC<IHeader> = ({
 
 Header.defaultProps = {
   light: false,
-  isAuth: false
 }

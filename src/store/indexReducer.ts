@@ -4,10 +4,12 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import { userReducer } from './user/reducer';
 import { notificationsReducer } from './notifications/reducer';
+import { productsReducer } from './products/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
+  products: productsReducer,
 });
 
 const persistConfig = {

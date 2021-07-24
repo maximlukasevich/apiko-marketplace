@@ -1,13 +1,14 @@
 import React from 'react';
 import { Header } from '../components/Header/Header';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { Wrapper } from '../components/commons/Wrapper/Wrapper';
+import Products from '../components/Products/Products';
 
 export const HomePage: React.FC = () => {
-  const { user, isAuth } = useTypedSelector(state => state.user);
-  return (
-    <>
-      <Header email={user?.email} fullName={user?.fullName} avatar={user?.avatar} isAuth={isAuth} />
-      home page 
-    </>
-  );
+  
+  return ( <>
+    <Header />
+    <Wrapper>
+      <Products />
+    </Wrapper>     
+  </> );
 }
