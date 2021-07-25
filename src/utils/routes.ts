@@ -3,5 +3,6 @@ export const routes = {
   REGISTER: '/register',
   PROFILE: '/profile',
   PROFILE_EDIT: '/profile/edit',
+  SAVED: '/saved',
   HOME: '/'
 }
