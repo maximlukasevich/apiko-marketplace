@@ -5,15 +5,16 @@ import { connect, useDispatch } from 'react-redux';
 import { ISavedProductsProps } from './types';
 import { fetchSaved } from '../../store/saved/actions';
 
-const SavedProducts: React.FC<ISavedProductsProps> = ({ isLoading, saved }) => {
+const SavedProducts: React.FC<ISavedProductsProps> = ({ isAuth, isLoading, saved }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchSaved());
-  }, [dispatch])
-  return <SavedProductsComponent isLoading={isLoading} saved={saved} />
+  }, [dispatch, isAuth])
+  return <SavedProductsComponent isLoading={isLoading} saved={saved} isAuth={isAuth} />
 }
 
 const mapStateToProps = (state: RootState) => ({
+  isAuth: state.user.isAuth,
   isLoading: state.saved.isLoading,
   saved: state.saved.saved
 });

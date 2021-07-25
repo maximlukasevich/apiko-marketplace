@@ -16,8 +16,9 @@ export interface IInitialState {
   products: Array<IProduct>;
 }
 
-interface IProduct {
+export interface IProduct {
   id: string;
+  photos: Array<string>;
   ownerId: string;
   title: string;
   description: string | null;

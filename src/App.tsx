@@ -28,7 +28,6 @@ const App: React.FC = () => {
   useEffect(() => {
     if (notification?.notification) {
       toast({
-        title: notification.type,
         description: notification.notification,
         status: notification.type,
         position: 'top-right',

@@ -12,6 +12,7 @@ export const productsReducer = (state = initialState, action: TAction) => {
       return {
         ...state,
         isLoading: true,
+        fetchAll: false,
         products: state.products,
       }
     case ProductsActionTypes.FETCH_PRODUCTS_SUCCESS:
