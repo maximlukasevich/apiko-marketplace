@@ -10,6 +10,7 @@ export const ProductsComponent: React.FC<IProductsProps> = ({ isLoading, fetchAl
     <ProductsWrapper>
       {products.map((item, key) => 
         <ProductCard 
+          id={item.id}
           images={item.photos}
           title={item.title}
           location={item.location}

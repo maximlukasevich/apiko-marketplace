@@ -7,13 +7,13 @@ import savedIcon from '../../assets/icons/product-saved.svg';
 export const ProductCardComponent: React.FC<IProductsCartComponentProps> = ({ 
   image, title, location, 
   createdDate, price, saved,
-  onError
+  onError, onSavedIconClick
 }) => {
   return ( <>
     <div className={styles.productCart}>
       <div className={styles.imageBlock}>
         <img className={styles.productImage} src={image} onError={onError} alt="Product" />
-        <div className={styles.circle}>
+        <div className={styles.circle} onClick={onSavedIconClick}>
           <img className={styles.savedIcon} src={saved ? savedIcon : unsavedIcon} alt="Like" />
         </div>
       </div>
