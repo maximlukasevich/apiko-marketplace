@@ -1,6 +1,5 @@
 import './App.css';
 import 'typeface-roboto';
-import 'typeface-rubik';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from './hooks/useTypedSelector';
@@ -8,7 +7,6 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { EditPropfilePage } from './pages/EditPropfilePage';
 import { HomePage } from './pages/HomePage';
-import { SavedProductsPage } from './pages/SavedProductsPage'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { routes } from './utils/routes';
@@ -42,7 +40,6 @@ const App: React.FC = () => {
     <Switch>
 
       <Route exact path={routes.HOME} component={HomePage} />
-      <Route path={routes.SAVED} component={SavedProductsPage} />
 
       { isAuth ? <> 
         <Switch>
