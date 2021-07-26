@@ -4,6 +4,7 @@ import logoBlack from '../../assets/icons/apiko-black.svg';
 import logoWhite from '../../assets/icons/apiko-white.svg';
 import heartOutlineBlack from '../../assets/icons/heart-outline-black.svg';
 import heartOutlineWhite from '../../assets/icons/heart-outline-white.svg';
+import heart from '../../assets/icons/heart.svg';
 import inbox from '../../assets/icons/inbox.svg';
 import { Button } from '../commons/Button/Button';
 import { routes } from '../../utils/routes';
@@ -20,6 +21,7 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 
 interface IHeader {
   light?: boolean,
@@ -29,6 +31,16 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user, isAuth } = useTypedSelector(state => state.user);
+  const location = useLocation();
+  let heartIcon = heartOutlineWhite;
+  let heartMobile = heartOutlineWhite;
+  if (light) {
+    heartIcon = heartOutlineBlack;
+  } else if (location.pathname === routes.SAVED) {
+    heartIcon = heart;
+    heartMobile = heart;
+  }
+  
 
   return (
     <header className={`
@@ -63,7 +75,10 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
             Login
           </NavLink>
           }
-          <img className={styles.heart} src={!light ? heartOutlineWhite : heartOutlineBlack} alt='Heart' />
+          <NavLink to={routes.SAVED}>
+            <img className={styles.heart} src={heartIcon} alt='Heart' /> 
+          </NavLink>
+          
         </div>
       </nav>
 
@@ -80,7 +95,9 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
                   <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
                 </div>
                 </> : '' }
-                <img src={heartOutlineWhite} alt='Heart' />
+                <NavLink to={routes.SAVED} className={styles.mobileSavedLink}>
+                  <img className={styles.heart} src={heartMobile} alt='Heart' /> 
+                </NavLink>
                 {!isAuth && 
                   <NavLink to={routes.LOGIN} className={styles.login} style={{color: '#fff'}}>
                     Login

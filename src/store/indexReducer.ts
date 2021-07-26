@@ -5,17 +5,19 @@ import thunk from 'redux-thunk';
 import { userReducer } from './user/reducer';
 import { notificationsReducer } from './notifications/reducer';
 import { productsReducer } from './products/reducer';
+import { savedReducer } from './saved/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
   products: productsReducer,
+  saved: savedReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: ['user', 'saved']
 }
 
 export type RootState = ReturnType<typeof rootReducer>
