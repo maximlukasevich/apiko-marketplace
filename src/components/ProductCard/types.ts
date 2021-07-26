@@ -1,5 +1,4 @@
 export interface IProductsCardProps {
-  id: string;
   images: any;
   title: string;
   location: string;
@@ -15,6 +14,5 @@ export interface IProductsCartComponentProps {
   createdDate: string;
   price: number;
   saved: boolean;
-  onSavedIconClick: () => void;
   onError: (event: React.SyntheticEvent<HTMLImageElement>) => void;
 }

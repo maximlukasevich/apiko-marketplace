@@ -7,11 +7,6 @@ export const fetchProducts = (screen: number) => {
   const offset = screen * limit;
   return async (dispatch: Dispatch<TAction & any>) => {
     try {
-      if (screen === 0) {
-        dispatch({
-          type: ProductsActionTypes.CLEAN_PRODUCTS
-        });
-      }
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS
       });
@@ -24,6 +19,11 @@ export const fetchProducts = (screen: number) => {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       });
+      if (screen === 0) {
+        dispatch({
+          type: ProductsActionTypes.CLEAN_PRODUCTS
+        });
+      }
       if (res.data.length < limit) {
         dispatch({
           type: ProductsActionTypes.FETCH_ALL_TRUE
