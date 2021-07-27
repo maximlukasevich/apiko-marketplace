@@ -6,18 +6,24 @@ import { userReducer } from './user/reducer';
 import { notificationsReducer } from './notifications/reducer';
 import { productsReducer } from './products/reducer';
 import { savedReducer } from './saved/reducer';
+import { searchReducer } from './search/reducer';
+import { searchSuggestionsReducer } from './search-suggestions/reducer';
+import { searchRecentsReducer } from './search-recents/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
   products: productsReducer,
   saved: savedReducer,
+  search: searchReducer,
+  searchSuggestions: searchSuggestionsReducer,
+  searchRecents: searchRecentsReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'saved']
+  whitelist: ['user', 'searchRecents']
 }
 
 export type RootState = ReturnType<typeof rootReducer>

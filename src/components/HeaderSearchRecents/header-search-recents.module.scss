@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+
+  .title {
+    color: #CECECE;
+  }
+
+  .action {
+    color: #349A89;
+    transition: 0.3s;
+  }
+  .action:hover {
+    cursor: pointer;
+    color: #19534a;
+  }
+}
+
+.recent {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+
+  .recentResult {
+    text-transform: lowercase;
+    margin-left: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    color: #000000;
+  }
+}
+
+.recent:hover {
+  cursor: pointer;
+}

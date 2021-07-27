@@ -1,14 +1,19 @@
 import React from 'react';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import Products from '../components/Products/Products';
 import { Header } from '../components/Header/Header';
 import { Wrapper } from '../components/commons/Wrapper/Wrapper';
-import Products from '../components/Products/Products';
+import HeaderSearch from '../components/HeaderSearch/HeaderSearch';
+import SearchResults from '../components/SearchResults/SearchResults';
 
 export const HomePage: React.FC = () => {
-  
+  const { search } = useTypedSelector(state => state.search);
   return ( <>
-    <Header />
+    <Header>
+      <HeaderSearch />
+    </Header>
     <Wrapper>
-      <Products />
+      {search ? <SearchResults /> : <Products />}
     </Wrapper>     
   </> );
 }

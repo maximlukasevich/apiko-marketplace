@@ -6,7 +6,7 @@ const initialState: IInitialState = {
   products: []
 }
 
-export const productsReducer = (state = initialState, action: TAction) => {
+export const productsReducer = (state = initialState, action: TAction): IInitialState => {
   switch (action.type) {
     case ProductsActionTypes.FETCH_PRODUCTS:
       return {

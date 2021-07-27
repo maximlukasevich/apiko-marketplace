@@ -5,7 +5,7 @@ const initialState: IInitialState = {
   saved: [],
 }
 
-export const savedReducer = (state = initialState, action: TAction) => {
+export const savedReducer = (state = initialState, action: TAction): IInitialState => {
   switch (action.type) {
     case SavedActionTypes.FETCH_SAVED: 
       return {

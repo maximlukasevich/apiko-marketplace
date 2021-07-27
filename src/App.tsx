@@ -15,7 +15,6 @@ import { routes } from './utils/routes';
 import { auth } from './store/user/actions';
 
 const App: React.FC = () => {
-
   const { isAuth } = useTypedSelector(state => state.user);
   const notification = useTypedSelector(state => state.notifications);
   const toast = useToast();

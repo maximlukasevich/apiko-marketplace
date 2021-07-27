@@ -82,6 +82,9 @@
 
 @media screen and (max-width: 870px) {
   .header {
+    .children {
+      display: none;   
+    }
     .nav {
       padding: 20px 15px;
       .navLinks {
@@ -94,7 +97,6 @@
     }
   }
 }
-
 
 .mobileHeader {
   padding: 20px 15px;

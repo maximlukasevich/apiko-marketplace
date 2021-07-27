@@ -28,7 +28,6 @@ interface IHeader {
 }
 
 export const Header: React.FC<IHeader> = ({ light, children }) => {
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user, isAuth } = useTypedSelector(state => state.user);
   const location = useLocation();
@@ -40,7 +39,6 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
     heartIcon = heart;
     heartMobile = heart;
   }
-  
 
   return (
     <header className={`
@@ -75,10 +73,10 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
             Login
           </NavLink>
           }
+
           <NavLink to={routes.SAVED}>
             <img className={styles.heart} src={heartIcon} alt='Heart' /> 
           </NavLink>
-          
         </div>
       </nav>
 
@@ -118,12 +116,14 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
                   <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
                 </div> } 
               </div>
+              {children}
             </div>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-      
-     {children}
+      <div className={styles.children}>
+        {children}
+      </div>
     </header>
   );
 }

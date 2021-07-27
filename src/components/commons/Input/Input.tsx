@@ -9,9 +9,14 @@ interface IInput extends
     label?: string,
     icon?: string,
     errors?: string | false,
+    className?: string,
+    wrapperClassName?: string,
 }
 
-export const InputField: React.FC<IInput> = ({ label, icon, errors, ...props }) => {
+export const InputField: React.FC<IInput> = ({ 
+  label, icon, errors, 
+  className, wrapperClassName, ...props 
+}) => {
   
   const [inputType, setInputType] = useState<string|undefined>(props.type);
   const showPasswordHandler = (): void  => {
@@ -26,12 +31,12 @@ export const InputField: React.FC<IInput> = ({ label, icon, errors, ...props }) 
           {props.required ? '*' : ''}
           {' '}{errors}
         </span>
-        <InputGroup className={styles.inputGroup}>
+        <InputGroup className={[styles.inputGroup, wrapperClassName].join(' ')}>
           {icon 
-          ? <InputLeftAddon className={styles.icon} children={<img src={passwordIcon} alt='icon' />} />
+          ? <InputLeftAddon className={styles.icon} children={<img src={icon} alt='icon' />} />
           : ''
           }
-          <input className={styles.input} {...props} type={inputType} />
+          <input className={[styles.input, className].join(' ')} {...props} type={inputType} />
           {props.type === 'password' 
           ? <InputRightAddon 
             className={styles.icon} 

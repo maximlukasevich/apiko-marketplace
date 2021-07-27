@@ -1,0 +1,31 @@
+.suggestion {
+  display: flex;
+  justify-content: flex-start;
+
+  .image {
+    height: 50px;
+    width: 50px;
+  }
+
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+    font-family: Roboto, sans-serif;
+    color: #000000;
+    font-size: 15px;
+    .price {
+      font-weight: bold;
+    }
+  }
+}
+
+.suggestion:not(:first-child) {
+  margin-top: 10px;
+}
+
+.suggestion:hover {
+  cursor: pointer;
+  background-color: #eeeded50;
+}

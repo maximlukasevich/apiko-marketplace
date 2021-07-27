@@ -1,0 +1,28 @@
+.spinner {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.searchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  font-family: Rubik, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  
+  .searchTitle {
+  font-size: 26px;
+  color: #000000;
+  }
+  .searchAction {
+    font-size: 18px;
+    color: #349A89;
+    transition: 0.3s;
+  }
+  .searchAction:hover {
+    cursor: pointer;
+    color: #19534a;
+  }
+}

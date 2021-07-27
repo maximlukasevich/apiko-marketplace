@@ -6,7 +6,12 @@ import { usePageBottom } from '../../hooks/usePageBottom';
 import { RootState } from '../../store/indexReducer';
 import { IProductsProps } from './types';
 
-const Products: React.FC<IProductsProps> = ({ isLoading, fetchAll, products, isAuth }) => {
+const Products: React.FC<IProductsProps> = ({ 
+  isLoading, 
+  fetchAll, 
+  products, 
+  isAuth,
+}) => {
   const [screen, setScreen] = useState<number>(0);
   const isBottom = usePageBottom();
   const dispatch = useDispatch();
@@ -20,7 +25,7 @@ const Products: React.FC<IProductsProps> = ({ isLoading, fetchAll, products, isA
   }, [dispatch, screen]);
   useEffect(() => {
     setScreen(0);
-  }, [isAuth])
+  }, [isAuth]);
 
   return <ProductsComponent isLoading={isLoading} fetchAll={fetchAll} products={products} />;
 }
