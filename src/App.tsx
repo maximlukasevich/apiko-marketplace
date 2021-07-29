@@ -14,6 +14,7 @@ import { useToast } from '@chakra-ui/react';
 import { routes } from './utils/routes';
 import { auth } from './store/user/actions';
 import { ProductPage } from './pages/ProductPage';
+import { ProductUploadPage } from './pages/ProductUploadPage';
 
 const App: React.FC = () => {
   const { isAuth } = useTypedSelector(state => state.user);
@@ -47,6 +48,7 @@ const App: React.FC = () => {
 
       { isAuth ? <> 
         <Switch>
+          <Route exact path={routes.PRODUCT_UPLOAD} component={ProductUploadPage} />
           <Route path={routes.PROFILE_EDIT} component={EditPropfilePage} />
 
           <Redirect from={routes.LOGIN} to={routes.HOME} />
@@ -57,6 +59,7 @@ const App: React.FC = () => {
           <Route path={routes.LOGIN} component={LoginPage} />
           <Route path={routes.REGISTER} component={RegisterPage} />
         
+          <Redirect from={routes.PRODUCT_UPLOAD} to={routes.REGISTER} />
           <Redirect from={routes.PROFILE_EDIT} to={routes.REGISTER} />
         </Switch>
       </> }

@@ -14,8 +14,12 @@ interface IInput extends
 }
 
 export const InputField: React.FC<IInput> = ({ 
-  label, icon, errors, 
-  className, wrapperClassName, ...props 
+  label, 
+  icon, 
+  errors, 
+  className, 
+  wrapperClassName, 
+  ...props 
 }) => {
   
   const [inputType, setInputType] = useState<string|undefined>(props.type);

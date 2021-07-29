@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, connect} from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ProductDetailComponent } from './ProductDetailComponent';
@@ -11,17 +11,34 @@ import { RootState } from '../../store/indexReducer';
 import defaultImage from '../../assets/defaultImage.png';
 import moment from 'moment';
 
+
 const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
   const { isAuth } = useTypedSelector(state => state.user);
   const [productSaved, setProductSaved] = useState(product.saved);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
   const { id } = useParams<IParamTypes>();
   const dispatch = useDispatch();
-  let image = defaultImage;
-  if (product && product?.photos?.length > 0) {
-    image = product.photos[0];
+  let images: Array<string> = [];
+  if (typeof product?.photos === 'object') {
+    if (product.photos.length === 0) {
+      images.push(defaultImage);
+    } else {
+      images = product.photos;
+    }
   } else if (typeof product?.photos === 'string') {
-    image = product.photos;
+    images.push(product.photos);
   }
+
+  const openImageViewer = useCallback((index) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
 
   const createdDate = moment(product.createdAt).fromNow()
   + ' - ' + moment(product.createdAt).format('DD.MM.YYYY, hh:mm')
@@ -56,8 +73,12 @@ const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
     isLoading={isLoading}
     saved={productSaved}
     createdAt={createdDate}
-    image={image}
+    images={images}
     onError={onError}
+    isViewerOpen={isViewerOpen}
+    currentImage={currentImage}
+    openImageViewer={openImageViewer}
+    closeImageViewer={closeImageViewer}
     onSaveButtonClick={onSaveButtonClick} />;
 }
 

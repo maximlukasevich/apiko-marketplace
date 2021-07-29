@@ -1,0 +1,96 @@
+.container {
+  background: #FFFFFF;
+  box-shadow: 0 2px 42px #0000001c;
+  border-radius: 7px;
+  max-width: 1145px;
+  margin: 35px auto 0 auto;
+  padding: 35px 0 32px 0;
+
+  div {
+    .title {
+      margin-bottom: 25px;
+      text-align: center;
+      font-family: Helvetica, sans-serif;
+      font-size: 22px;
+      line-height: 25px;
+      color: #282828;
+    }
+    form > * {
+      margin-top: 25px;
+    }
+
+    form {
+      .photosBlock {
+        .label {
+          font-family: Helvetica, sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.3px;
+          text-transform: uppercase;
+          color: #303030;
+        }
+        .photosUpload {
+          display: flex;
+          overflow-x: scroll;
+          background: #F9FAFB;
+          border: 1px solid #DEDEE0;
+          box-sizing: border-box;
+          border-radius: 5px;
+          height: 125px;
+
+          .uploadedPhotoBlock {
+            position: relative;
+
+            .uploadedPhoto {
+              width: 92px;
+              height: 92px;
+            }
+            .deleteIcon {
+              position: absolute;
+              color: #ff0000;
+              top: -6px;
+              right: -6px;
+            }
+          }
+
+          .uploadBlock{
+            background: #E4E4E4;
+            border-radius: 4px;
+            width: 92px;
+            height: 92px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .uploadBlock:hover {
+            background: #d4d4d4;
+          }
+
+          .uploadInput {
+            display: none;
+          }
+        }
+
+        .photosUpload > *:first-child {
+          margin: 15px 0px 15px 15px;
+        }
+
+        .photosUpload > *:not(:first-child) {
+          margin: 15px 0 15px 15px ;
+        }
+      }
+
+      .button {
+        margin: 32px auto 0 auto;
+        display: flex;
+        justify-content: center;
+        max-width: 377px;
+      }
+    }
+
+  }
+}

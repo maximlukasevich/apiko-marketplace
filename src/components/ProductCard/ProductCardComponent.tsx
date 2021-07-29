@@ -33,8 +33,8 @@ export const ProductCardComponent: React.FC<IProductsCartComponentProps> = ({
         </NavLink>
         <div className={styles.bottomInfo}>
           <div className={styles.locationDate}>
-            <p className={styles.location}>{location}</p>
-            <p className={styles.date}>{createdDate}</p>
+            <p className={styles.location}>{location}&nbsp;</p>
+            <p className={styles.date}>- {createdDate}</p>
           </div>
           <p className={styles.price}>${price}</p>
         </div>

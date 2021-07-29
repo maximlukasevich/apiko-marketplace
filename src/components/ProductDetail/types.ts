@@ -13,8 +13,12 @@ export interface IProductComponentProps {
   product: IOneProduct;
   isLoading: boolean;
   saved: boolean;
-  image: string;
+  images: Array<string>;
   createdAt: string;
+  isViewerOpen: boolean;
+  currentImage: any;
+  openImageViewer: (index: any) => void;
+  closeImageViewer: () => void;
   onError: (event: React.SyntheticEvent<HTMLImageElement>) => void;
   onSaveButtonClick: () => void;
 }

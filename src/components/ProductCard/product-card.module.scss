@@ -15,7 +15,7 @@
     height: 150px;
 
     .productImage {
-      object-fit: fit;
+      object-fit: cover;
       border-radius: 4px 4px 0 0;
       padding: 3px 3.5px 0 3.5px;
       height: 100%;
@@ -90,9 +90,7 @@
         white-space: nowrap;
       }
 
-      .date:before {
-        content: ' - ';
-      }
+
     }
   }
 }

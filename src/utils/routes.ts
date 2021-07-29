@@ -5,5 +5,6 @@ export const routes = {
   PROFILE_EDIT: '/profile/edit',
   SAVED: '/saved',
   HOME: '/',
-  PRODUCT: '/products/:id'
+  PRODUCT: '/products/:id',
+  PRODUCT_UPLOAD: '/upload',
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ProductsActionTypes, TAction } from '../../types/products';
+import { sendNotificationError, sendNotificationSuccess } from '../notifications/actions';
 
 export const fetchProducts = (screen: number) => {
   const limit = 20; 
@@ -21,7 +22,7 @@ export const fetchProducts = (screen: number) => {
           limit: limit,
         },
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       if (res.data.length < limit) {
@@ -45,7 +46,7 @@ export const fetchOneProduct = (id: string) => {
       dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT });
       const res = await axios.get(`/products/${id}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       dispatch({ 
@@ -54,6 +55,36 @@ export const fetchOneProduct = (id: string) => {
       });
     } catch (error) {
       dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT_ERROR });
+    }
+  }
+}
+
+export const uploadProduct = (
+  title: string,
+  description: string,
+  photos: Array<string>, 
+  location: string,
+  price: number,
+) => {
+  return async (dispatch: Dispatch<TAction & any>) => {
+    try {
+      const res = await axios.post('/products', {
+        title,
+        description,
+        photos,
+        location,
+        price: Number(price),
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      console.log(res);
+      dispatch(sendNotificationSuccess('Product loaded'));
+    } catch (error) {
+      dispatch(sendNotificationError('Failed to load product'));
+      console.log(error.response);
     }
   }
 }

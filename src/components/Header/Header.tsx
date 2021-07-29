@@ -55,16 +55,20 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
         </div>
 
         <div className={styles.navLinks}>
-          {isAuth ?
+          {/* {location.pathname === routes.PRODUCT_UPLOAD ? ' '} */}
+          {isAuth && location.pathname !== routes.PRODUCT_UPLOAD ?
           <div className={styles.inbox}>
             <div className={styles.inboxCircle}> </div>
             <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
           </div>
           : ''}
-          <Button className={styles.button}>
-            Sell
-          </Button>
-          
+          {location.pathname !== routes.PRODUCT_UPLOAD ? 
+          <NavLink to={routes.PRODUCT_UPLOAD}>
+            <Button className={styles.button}>
+              Sell
+            </Button>
+          </NavLink>
+          : '' }
           {isAuth ?
           <div className={styles.headerMenu}> 
             <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
@@ -108,9 +112,11 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
           <DrawerBody pl='15' pr='15'>
             <div className={styles.mobileMenu}>
               <div className={styles.mobileButton}> 
+              <NavLink to={routes.PRODUCT_UPLOAD}>
                 <Button className={styles.button}>
                   Sell
                 </Button>
+              </NavLink>
                 {isAuth && 
                 <div className={styles.headerMenu}> 
                   <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />

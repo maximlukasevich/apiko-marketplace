@@ -7,16 +7,22 @@ import { IProductComponentProps } from './types';
 import { Wrapper } from '../commons/Wrapper/Wrapper'
 import { Button } from '../commons/Button/Button';
 import { Spinner } from '@chakra-ui/spinner';
+import ImageViewer from 'react-simple-image-viewer';
 
 export const ProductDetailComponent: React.FC<IProductComponentProps> = ({ 
   isLoading,
   product, 
   saved,
-  image,
+  images,
   createdAt,
+  isViewerOpen,
+  openImageViewer,
+  closeImageViewer,
+  currentImage,
   onError,
   onSaveButtonClick
 }) => {
+  console.log(images)
   return (
     <Wrapper>
       {!isLoading ?
@@ -26,9 +32,17 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
               <div className={styles.imageBlock}>
                 <img 
                   className={styles.productImage} 
-                  src={image} 
+                  src={images[0]} 
                   onError={onError}
+                  onClick={ () => openImageViewer(0) }
                   alt='Product' />
+                {isViewerOpen && (
+                <ImageViewer 
+                  src={images} 
+                  currentIndex={ currentImage }
+                  onClose={ closeImageViewer } />
+                )}
+                
                 <div className={styles.price}>${product?.price}</div>
               </div>
               
