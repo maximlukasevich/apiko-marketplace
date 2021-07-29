@@ -2,7 +2,7 @@ import {
   IInitialState, 
   TAction, 
   SearchSuggestionsActionTypes
-} from '../../types/search-suggestions';
+} from '../../types/searchSuggestions';
 
 const initialState: IInitialState = {
   isLoading: false,

@@ -1,4 +1,4 @@
-import { SearchRecentsActionTypes, TAction, IInitialState } from '../../types/search-recents';
+import { SearchRecentsActionTypes, TAction, IInitialState } from '../../types/searchRecents';
 
 const initialState: IInitialState = {
   recents: [],

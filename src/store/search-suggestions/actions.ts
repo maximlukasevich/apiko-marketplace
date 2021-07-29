@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TAction, SearchSuggestionsActionTypes } from '../../types/search-suggestions';
+import { TAction, SearchSuggestionsActionTypes } from '../../types/searchSuggestions';
 import { Dispatch } from 'redux';
 
 export const fetchSuggest = (keywords: string) => {

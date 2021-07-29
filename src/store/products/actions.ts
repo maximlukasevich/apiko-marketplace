@@ -36,7 +36,25 @@ export const fetchProducts = (screen: number) => {
     } catch (error) {
       console.log(error.response);
     }
-    
+  }
+}
+
+export const fetchOneProduct = (id: string) => {
+  return async (dispatch: Dispatch<TAction>) => {
+    try {
+      dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT });
+      const res = await axios.get(`/products/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      dispatch({ 
+        type: ProductsActionTypes.FETCH_ONE_PRODUCT_SUCCESS, 
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT_ERROR });
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import { SearchRecentsActionTypes, TAction } from '../../types/search-recents';
+import { SearchRecentsActionTypes, TAction } from '../../types/searchRecents';
 import { Dispatch } from 'react';
 
 export const addRecent = (recent: string) => {

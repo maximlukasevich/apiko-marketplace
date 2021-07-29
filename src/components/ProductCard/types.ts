@@ -9,6 +9,7 @@ export interface IProductsCardProps {
 }
 
 export interface IProductsCartComponentProps {
+  id: string;
   image: string;
   title: string;
   location: string;

@@ -13,6 +13,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { routes } from './utils/routes';
 import { auth } from './store/user/actions';
+import { ProductPage } from './pages/ProductPage';
 
 const App: React.FC = () => {
   const { isAuth } = useTypedSelector(state => state.user);
@@ -42,6 +43,7 @@ const App: React.FC = () => {
 
       <Route exact path={routes.HOME} component={HomePage} />
       <Route path={routes.SAVED} component={SavedProductsPage} />
+      <Route path={routes.PRODUCT} component={ProductPage} />
 
       { isAuth ? <> 
         <Switch>

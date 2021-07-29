@@ -1,5 +1,5 @@
 import { FormikProps } from 'formik';
-import { ISuggestion } from '../../types/search-suggestions';
+import { ISuggestion } from '../../types/searchSuggestions';
 import { ISearchParams } from '../../types/search';
 
 export interface IFormikValues {

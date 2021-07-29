@@ -8,6 +8,7 @@ import defaultImage from '../../assets/defaultImage.png';
 import { routes } from '../../utils/routes';
 import { unsaveProduct, saveProduct } from '../../store/saved/actions';
 import { sendNotificationError } from '../../store/notifications/actions';
+import moment from 'moment';
 
 export const ProductCard: React.FC<IProductsCardProps> = ({ 
   id, images, title, 
@@ -16,10 +17,10 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
 }) => {
   const { isAuth } = useTypedSelector(state => state.user);
   const [productSaved, setProductSaved] = useState(saved);
-  const date = new Date(createdDate);
-  const _createdDate = date.toLocaleDateString();
   const webLocation = useLocation();
   const dispatch = useDispatch();
+
+  const createdAt = moment(createdDate).fromNow();
 
   const onSavedIconClick = () => {
     if (isAuth) {
@@ -52,13 +53,14 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   }
   
   return <ProductCardComponent 
+    id={id}
     image={image}
     title={title} 
     location={location} 
     price={price} 
     saved={productSaved} 
     onSavedIconClick={onSavedIconClick}
-    createdDate={_createdDate}
+    createdDate={createdAt}
     onError={onError} />
 }
 
