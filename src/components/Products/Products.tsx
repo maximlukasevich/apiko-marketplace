@@ -34,7 +34,7 @@ const mapStateToProps = (state: RootState) => ({
   isLoading: state.products.isLoading,
   fetchAll: state.products.fetchAll,
   products: state.products.products,
-  isAuth: state.user.isAuth,
+  isAuth: state.currentUser.isAuth,
 });
 
 export default connect(mapStateToProps)(Products);

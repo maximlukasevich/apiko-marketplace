@@ -15,7 +15,7 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   location, createdDate, price, 
   saved
 }) => {
-  const { isAuth } = useTypedSelector(state => state.user);
+  const { isAuth } = useTypedSelector(state => state.currentUser);
   const [productSaved, setProductSaved] = useState(saved);
   const webLocation = useLocation();
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   const createdAt = moment(createdDate).fromNow();
 
   const onSavedIconClick = () => {
+    console.log('click')
     if (isAuth) {
       if (webLocation?.pathname === routes.SAVED) {
         if (saved) {

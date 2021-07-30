@@ -12,20 +12,21 @@ import { SavedProductsPage } from './pages/SavedProductsPage'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { routes } from './utils/routes';
-import { auth } from './store/user/actions';
+import { auth } from './store/current-user/actions';
 import { ProductPage } from './pages/ProductPage';
 import { ProductUploadPage } from './pages/ProductUploadPage';
+import { UserPage } from './pages/UserPage';
 
 const App: React.FC = () => {
-  const { isAuth } = useTypedSelector(state => state.user);
+  const { isAuth } = useTypedSelector(state => state.currentUser);
   const notification = useTypedSelector(state => state.notifications);
   const toast = useToast();
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (!isAuth) {
-      dispatch(auth());
-    }
-  }, [isAuth, dispatch]);
+    dispatch(auth());
+  }, [dispatch]);
+  
   useEffect(() => {
     if (notification?.notification) {
       toast({
@@ -45,6 +46,7 @@ const App: React.FC = () => {
       <Route exact path={routes.HOME} component={HomePage} />
       <Route path={routes.SAVED} component={SavedProductsPage} />
       <Route path={routes.PRODUCT} component={ProductPage} />
+      <Route path={routes.USER_PAGE} component={UserPage} />
 
       { isAuth ? <> 
         <Switch>

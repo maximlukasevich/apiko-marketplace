@@ -1,7 +1,7 @@
 import React from 'react';
 import { RegisterComponent } from './RegisterComponent';
 import { useDispatch } from 'react-redux';
-import { register } from '../../store/user/actions';
+import { register } from '../../store/current-user/actions';
 import { useFormik, FormikProps, FormikErrors, FormikValues } from 'formik';
 import { IFormikValues } from './types';
 

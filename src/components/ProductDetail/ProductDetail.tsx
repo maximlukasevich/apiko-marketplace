@@ -13,22 +13,27 @@ import moment from 'moment';
 
 
 const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
-  const { isAuth } = useTypedSelector(state => state.user);
+  const { isAuth } = useTypedSelector(state => state.currentUser);
   const [productSaved, setProductSaved] = useState(product.saved);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const { id } = useParams<IParamTypes>();
   const dispatch = useDispatch();
   let images: Array<string> = [];
-  if (typeof product?.photos === 'object') {
-    if (product.photos.length === 0) {
-      images.push(defaultImage);
-    } else {
-      images = product.photos;
+  if (product.photos) {
+    if (typeof product?.photos === 'object') {
+      if (product?.photos?.length === 0) {
+        images.push(defaultImage);
+      } else {
+        images = product.photos;
+      }
+    } else if (typeof product?.photos === 'string') {
+      images.push(product.photos);
     }
-  } else if (typeof product?.photos === 'string') {
-    images.push(product.photos);
+  } else {
+    images.push(defaultImage);
   }
+  
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);

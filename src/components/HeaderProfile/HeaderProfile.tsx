@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store/user/actions';
+import { logout } from '../../store/current-user/actions';
 import styles from './header-profile.module.css';
 import { Avatar } from '../commons/Avatar/Avatar';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../utils/routes';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   Menu,
   MenuButton,
@@ -19,6 +20,7 @@ interface IHeaderProfile {
 
 export const HeaderProfile: React.FC<IHeaderProfile> = ({ fullName, email, avatar }) => {
   
+  const user = useTypedSelector(state => state.currentUser.currentUser);
   const dispatch = useDispatch();
   const onClick = (): void => {
     dispatch(logout());
@@ -37,7 +39,9 @@ export const HeaderProfile: React.FC<IHeaderProfile> = ({ fullName, email, avata
               <h2 className={styles.menuFullName}>{fullName}</h2>
               <p className={styles.menuEmail}>{email}</p>
             </div>
-            <span className={styles.profile}>Profile</span>
+            <NavLink to={routes.USER_PAGE.replace(':id', user ? user.id : '')}>
+              <span className={styles.profile}>Profile</span>
+            </NavLink>
           </div>
         </div>
         <p className={styles.link}>

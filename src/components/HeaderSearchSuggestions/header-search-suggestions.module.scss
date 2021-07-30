@@ -8,6 +8,9 @@
   }
 
   .textContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

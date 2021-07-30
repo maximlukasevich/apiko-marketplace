@@ -21,6 +21,10 @@
         padding: 3px 3.5px 0 3.5px;
         max-height: 275px;
         width: 100%;
+        // border-radius: 4px 4px 0 0;
+      }
+      .productImage {
+        cursor: pointer;
       }
       .price {
         position: absolute;

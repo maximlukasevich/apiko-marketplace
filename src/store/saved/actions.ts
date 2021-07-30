@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { SavedActionTypes, TAction } from '../../types/saved';
-import { sendNotificationSuccess } from '../notifications/actions';
+import { sendNotificationSuccess, sendNotificationError } from '../notifications/actions';
 
 export const fetchSaved = () => {
   return async (dispatch: Dispatch<TAction & any>) => {
@@ -11,7 +11,7 @@ export const fetchSaved = () => {
       });
       const res = await axios.get('/products/saved', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       dispatch({
@@ -31,7 +31,7 @@ export const saveProduct = (id: string) => {
     try { 
       await axios.post(`/products/${id}/save`, {}, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       dispatch(sendNotificationSuccess('Product saved'));
@@ -40,6 +40,7 @@ export const saveProduct = (id: string) => {
       });
     } catch (error) {
       console.log(error);
+      dispatch(sendNotificationError(error.response.data.error));
       dispatch({
         type: SavedActionTypes.FETCH_SAVED_ERROR
       });
@@ -52,7 +53,7 @@ export const unsaveProduct = (id: string) => {
     try {
       await axios.post(`/products/${id}/unsave`, {}, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       dispatch(sendNotificationSuccess('Product removed from saved'));

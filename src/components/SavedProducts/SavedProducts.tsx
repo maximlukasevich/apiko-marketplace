@@ -14,7 +14,7 @@ const SavedProducts: React.FC<ISavedProductsProps> = ({ isAuth, isLoading, saved
 }
 
 const mapStateToProps = (state: RootState) => ({
-  isAuth: state.user.isAuth,
+  isAuth: state.currentUser.isAuth,
   isLoading: state.saved.isLoading,
   saved: state.saved.saved
 });

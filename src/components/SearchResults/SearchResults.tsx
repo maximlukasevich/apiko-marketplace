@@ -61,7 +61,7 @@ const mapStateToProps = (state: RootState) => ({
   fetchAll: state.search.fetchAll,
   searchResults: state.search.searchResult,
   searchParams: state.search.searchParams,
-  isAuth: state.user.isAuth,
+  isAuth: state.currentUser.isAuth,
 });
 
 export default connect(mapStateToProps)(Products);

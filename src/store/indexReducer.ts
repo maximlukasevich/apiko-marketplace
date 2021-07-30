@@ -2,28 +2,30 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import { userReducer } from './user/reducer';
+import { currentUserReducer } from './current-user/reducer';
 import { notificationsReducer } from './notifications/reducer';
 import { productsReducer } from './products/reducer';
 import { savedReducer } from './saved/reducer';
 import { searchReducer } from './search/reducer';
 import { searchSuggestionsReducer } from './search-suggestions/reducer';
 import { searchRecentsReducer } from './search-recents/reducer';
+import { userReducer } from './user/reducer';
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  currentUser: currentUserReducer,
   notifications: notificationsReducer,
   products: productsReducer,
   saved: savedReducer,
   search: searchReducer,
   searchSuggestions: searchSuggestionsReducer,
   searchRecents: searchRecentsReducer,
+  user: userReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'searchRecents']
+  whitelist: ['currentUser', 'searchRecents']
 }
 
 export type RootState = ReturnType<typeof rootReducer>

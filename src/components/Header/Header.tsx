@@ -29,7 +29,7 @@ interface IHeader {
 
 export const Header: React.FC<IHeader> = ({ light, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user, isAuth } = useTypedSelector(state => state.user);
+  const { currentUser, isAuth } = useTypedSelector(state => state.currentUser);
   const location = useLocation();
   let heartIcon = heartOutlineWhite;
   let heartMobile = heartOutlineWhite;
@@ -66,14 +66,20 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
           <NavLink to={routes.PRODUCT_UPLOAD}>
             <Button className={styles.button}>
               Sell
-            </Button>
+            </Button> 
           </NavLink>
           : '' }
           {isAuth ?
           <div className={styles.headerMenu}> 
-            <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
+            <HeaderProfile 
+              fullName={currentUser.fullName} 
+              email={currentUser.email} 
+              avatar={currentUser.avatar || undefined} />
           </div> :
-          <NavLink to={routes.LOGIN} className={styles.login} style={!light ? {color: '#fff'} : {color: '#2B2B2B'}}>
+          <NavLink 
+            to={routes.LOGIN} 
+            className={styles.login} 
+            style={!light ? {color: '#fff'} : {color: '#2B2B2B'}}>
             Login
           </NavLink>
           }
@@ -112,14 +118,17 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
           <DrawerBody pl='15' pr='15'>
             <div className={styles.mobileMenu}>
               <div className={styles.mobileButton}> 
-              <NavLink to={routes.PRODUCT_UPLOAD}>
+              <NavLink to={routes.PRODUCT_UPLOAD} className={styles.mobileNavLink}>
                 <Button className={styles.button}>
                   Sell
                 </Button>
               </NavLink>
                 {isAuth && 
                 <div className={styles.headerMenu}> 
-                  <HeaderProfile fullName={user?.fullName} email={user?.email} avatar={user?.avatar} />
+                  <HeaderProfile 
+                    fullName={currentUser.fullName} 
+                    email={currentUser.email} 
+                    avatar={currentUser.avatar || undefined} />
                 </div> } 
               </div>
               {children}

@@ -7,4 +7,5 @@ export const routes = {
   HOME: '/',
   PRODUCT: '/products/:id',
   PRODUCT_UPLOAD: '/upload',
+  USER_PAGE: '/users/:id',
 }

@@ -8,6 +8,8 @@ import { Wrapper } from '../commons/Wrapper/Wrapper'
 import { Button } from '../commons/Button/Button';
 import { Spinner } from '@chakra-ui/spinner';
 import ImageViewer from 'react-simple-image-viewer';
+import { routes } from '../../utils/routes';
+import { NavLink } from 'react-router-dom';
 
 export const ProductDetailComponent: React.FC<IProductComponentProps> = ({ 
   isLoading,
@@ -22,7 +24,6 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
   onError,
   onSaveButtonClick
 }) => {
-  console.log(images)
   return (
     <Wrapper>
       {!isLoading ?
@@ -63,15 +64,18 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
             <div className={styles.other}>
               <div className={styles.owner}>
                 <span className={styles.header}> </span>
-                <div className={styles.ownerInfo}>
-                  <Avatar 
-                    className={styles.avatar} 
-                    avatar={product?.owner.avatar} 
-                    name={product?.owner?.fullName || ''} 
-                    size='xl' />
-                  <h2 className={styles.fullName}>{product?.owner.fullName}</h2>
-                  <p className={styles.location}>{product?.owner.location}</p>
-                </div>
+                <NavLink to={routes.USER_PAGE.replace(':id', product.owner.id)}>
+                  <div className={styles.ownerInfo}>
+                    <Avatar 
+                      className={styles.avatar} 
+                      avatar={product?.owner.avatar} 
+                      name={product?.owner?.fullName || ''} 
+                      size='xl' />
+                    <h2 className={styles.fullName}>{product?.owner.fullName}</h2>
+                    <p className={styles.location}>{product?.owner.location}</p>
+                  </div>
+                </NavLink>
+                
                 <Button className={styles.chatButton}>
                   Chat with seller
                 </Button>

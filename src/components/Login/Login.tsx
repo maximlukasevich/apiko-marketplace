@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/user/actions';
+import { login } from '../../store/current-user/actions';
 import { LoginComponent } from './LoginComponent';
 import { FormikValues, FormikErrors, FormikProps, useFormik } from 'formik';
 import { IFormikValues } from './types';
