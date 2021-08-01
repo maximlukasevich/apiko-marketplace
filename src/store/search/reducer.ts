@@ -1,4 +1,4 @@
-import { IInitialState, TAction, SearchActionTypes } from '../../types/search';
+import { SearchActionTypes, TAction, IInitialState } from '../../types/search';
 
 const initialState: IInitialState = {
   searchParams: {
@@ -7,60 +7,60 @@ const initialState: IInitialState = {
     priceFrom: null,
     priceTo: null,
   },
+  searchResults: [],
+  showResults: false,
   isLoading: false,
   fetchAll: false,
-  searchResult: [],
-  search: false,
 }
 
 export const searchReducer = (state = initialState, action: TAction): IInitialState => {
   switch (action.type) {
-    case SearchActionTypes.SET_SEARCH_PARAMS: 
+    case SearchActionTypes.SET_SEARCH_PARAMS:
       return {
         ...state,
         searchParams: action.payload,
-        search: true,
       }
-    case SearchActionTypes.DELETE_SEARCH_PARAMS: 
+    case SearchActionTypes.DELETE_SEARCH_PARAMS:
       return {
         ...state,
-        searchParams: {
-          keywords: null,
-          location: null,
-          priceFrom: null,
-          priceTo: null,
-        },
-        search: false,
+        searchParams: initialState.searchParams,
+        searchResults: [],
+        showResults: false
       }
-    case SearchActionTypes.FETCH_RESULTS:
+    case SearchActionTypes.SET_SHOW_RESULTS: 
+      return {
+        ...state,
+        showResults: action.payload,
+      }
+    case SearchActionTypes.FETCH_SEARCH_RESULTS:
       return {
         ...state,
         isLoading: true,
+      }
+    case SearchActionTypes.FETCH_SEARCH_RESULTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        searchResults: [...state.searchResults, ...action.payload],
+      }
+    case SearchActionTypes.FETCH_SEARCH_RESULTS_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+      }
+    case SearchActionTypes.CLEAR_SEARCH_RESULTS: 
+      return {
+        ...state,
+        isLoading: false,
         fetchAll: false,
+        searchResults: [],
       }
-    case SearchActionTypes.FETCH_RESULTS_SUCCESS:
+    case SearchActionTypes.SET_FETCH_ALL:
       return {
         ...state,
-        isLoading: false,
-        searchResult: state.searchResult.concat(action.payload),
+        fetchAll: action.payload,
       }
-    case SearchActionTypes.FETCH_RESULTS_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        searchResult: [],
-      }
-    case SearchActionTypes.CLEAR_RESULTS:
-      return {
-        ...state,
-        searchResult: [],
-      }
-    case SearchActionTypes.FETCH_ALL_RESULTS_TRUE: 
-      return {
-        ...state,
-        fetchAll: true,
-      }
-    default: 
+    default:
       return state;
   }
 }

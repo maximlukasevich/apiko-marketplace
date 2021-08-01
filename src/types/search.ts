@@ -1,27 +1,29 @@
 export enum SearchActionTypes {
   SET_SEARCH_PARAMS = 'SET_SEARCH_PARAMS',
   DELETE_SEARCH_PARAMS = 'DELETE_SEARCH_PARAMS',
-  FETCH_RESULTS = 'FETCH_RESULTS',
-  FETCH_RESULTS_SUCCESS = 'FETCH_RESULTS_SUCCESS',
-  FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR',
-  CLEAR_RESULTS = 'CLEAR_RESULTS',
-  FETCH_ALL_RESULTS_TRUE = 'FETCH_ALL_RESULTS_TRUE',
+  SET_SHOW_RESULTS = 'SET_SHOW_RESULTS',
+  FETCH_SEARCH_RESULTS = 'FETCH_SEARCH_RESULTS',
+  FETCH_SEARCH_RESULTS_SUCCESS = 'FETCH_SEARCH_RESULTS_SUCCESS',
+  FETCH_SEARCH_RESULTS_ERROR = 'FETCH_SEARCH_RESULTS_ERROR',
+  CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS',
+  SET_FETCH_ALL = 'SET_FETCH_ALL',
 }
 
 export type TAction = ISetSearchParamsAction |
-                      IDeleteParamsAction |
-                      IFearchResultsAction | 
-                      IFeatchResultsSuccessAction |
-                      IFeatchResultsErrorAction |
-                      IClearResults | 
-                      IFetchAllResultsTrueAction;
+                      IDeleteSearchParamsAction |
+                      ISetShowResultsAction |
+                      IFetchSearchResultsAction |
+                      IFetchSearchResultsSuccessAction |
+                      IFetchSearchResultsErrorAction |
+                      IClearSearchResultsAction |
+                      ISetFetchAllAction;
 
 export interface IInitialState {
   searchParams: ISearchParams;
+  searchResults: Array<IResultProduct>;
+  showResults: boolean;
   isLoading: boolean;
   fetchAll: boolean;
-  searchResult: Array<IResultProduct>;
-  search: boolean;
 }
 
 export interface ISearchParams {
@@ -49,27 +51,33 @@ interface ISetSearchParamsAction {
   payload: ISearchParams;
 }
 
-interface IDeleteParamsAction {
+interface IDeleteSearchParamsAction {
   type: SearchActionTypes.DELETE_SEARCH_PARAMS;
 }
 
-interface IFearchResultsAction { 
-  type: SearchActionTypes.FETCH_RESULTS;
+interface ISetShowResultsAction {
+  type: SearchActionTypes.SET_SHOW_RESULTS;
+  payload: boolean;
 }
 
-interface IFeatchResultsSuccessAction {
-  type: SearchActionTypes.FETCH_RESULTS_SUCCESS;
+interface IFetchSearchResultsAction {
+  type: SearchActionTypes.FETCH_SEARCH_RESULTS;
+}
+
+interface IFetchSearchResultsSuccessAction {
+  type: SearchActionTypes.FETCH_SEARCH_RESULTS_SUCCESS;
   payload: Array<IResultProduct>;
 }
 
-interface IFeatchResultsErrorAction {
-  type: SearchActionTypes.FETCH_RESULTS_ERROR;
+interface IFetchSearchResultsErrorAction {
+  type: SearchActionTypes.FETCH_SEARCH_RESULTS_ERROR;
 }
 
-interface IClearResults {
-  type: SearchActionTypes.CLEAR_RESULTS;
+interface IClearSearchResultsAction {
+  type: SearchActionTypes.CLEAR_SEARCH_RESULTS;
 }
 
-interface IFetchAllResultsTrueAction {
-  type: SearchActionTypes.FETCH_ALL_RESULTS_TRUE;
+interface ISetFetchAllAction {
+  type: SearchActionTypes.SET_FETCH_ALL;
+  payload: boolean;
 }

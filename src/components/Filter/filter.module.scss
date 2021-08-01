@@ -1,0 +1,95 @@
+.container {
+  background-color: #F9FAFB;
+  margin: 0 auto 20px auto;
+  padding-top: 20px;
+  .wrapper {
+    padding: 10px 12px !important;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px #00000037;
+    border-radius: 4px;
+  
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+  
+      .selectContainer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 25px;
+        max-width: 285px;
+        width: 100%;
+  
+        .select {
+          padding-left: 40px;
+          background: #F9FAFB;
+          border: 1px solid #DEDEE0;
+          box-sizing: border-box;
+          border-radius: 5px;
+          height: 35px;
+    
+          font-family: Helvetica, sans-serif;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 16px;
+          letter-spacing: 0.35px;
+        }
+        .selectIcon {
+          position: absolute;
+          margin-left: 10px;
+        }
+      }
+  
+      .line {
+        margin: auto 7px;
+        width: 12px;
+        height: 1px;
+        background-color: #DEDEE0;
+      }
+    
+      .inputs {
+        display: flex;
+        .input {
+          padding: 10px !important;
+          height: 35px !important;
+          border: 1px solid #DEDEE0 !important;
+          box-sizing: border-box !important;
+          border-radius: 5px !important;
+          font-family: Helvetica, sans-serif !important;
+          font-style: normal !important;
+          font-weight: 300 !important;
+          font-size: 14px !important;
+          line-height: 16px !important;
+          letter-spacing: 0.35px !important;
+        }
+        .input::placeholder {
+          color: #505050 !important;
+        }
+        .inputWrapper {
+          border: none;
+          max-width: 145px !important;
+        }
+      }
+    }
+  } 
+}
+
+
+
+@media screen and (max-width: 870px) {
+  .container {
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF00;
+    .filters {
+      .selectContainer {
+        max-width: none !important;
+        margin-right: 0 !important;
+      }
+      .inputs {
+        margin-top: 10px;
+      }
+    }
+  }
+}

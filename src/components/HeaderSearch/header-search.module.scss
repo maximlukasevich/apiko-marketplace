@@ -62,7 +62,9 @@
 @media screen and (max-width: 870px) { 
   .wrapper {
     padding: 0 !important;
+    margin: 0 !important;
     .search {
+      padding: 5px 0;
       flex-direction: column;
       align-items: inherit;
 

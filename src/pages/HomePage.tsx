@@ -5,15 +5,17 @@ import { Header } from '../components/Header/Header';
 import { Wrapper } from '../components/commons/Wrapper/Wrapper';
 import HeaderSearch from '../components/HeaderSearch/HeaderSearch';
 import SearchResults from '../components/SearchResults/SearchResults';
+import { Filter } from '../components/Filter/Filter';
 
 export const HomePage: React.FC = () => {
-  const { search } = useTypedSelector(state => state.search);
+  const { showResults } = useTypedSelector(state => state.search);
   return ( <>
     <Header>
       <HeaderSearch />
+      <Filter />
     </Header>
     <Wrapper>
-      {search ? <SearchResults /> : <Products />}
+      {showResults ? <SearchResults /> : <Products /> }
     </Wrapper>     
   </> );
 }

@@ -10,10 +10,10 @@ import HeaderSearchRecents from '../HeaderSearchRecents/HeaderSearchRecents';
 import { HeaderSearchSuggestions } from '../HeaderSearchSuggestions/HeaderSearchSuggestions';
 import { IHeaderSearchComponentProps } from './types';
 import { Spinner } from '@chakra-ui/spinner';
+import { routes } from '../../utils/routes';
 
 export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({ 
   formik, isLoading, suggestions }) => {
-    
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef(null);
   useOutsideClick({
@@ -31,10 +31,12 @@ export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({
       } else {
         collapseContent = suggestions.map((item, key) => 
         <HeaderSearchSuggestions
+          id={item.id}
           title={item.title}
           price={item.price} 
           photos={item.photos}
-        key={key} /> );
+          key={key} /> 
+        );
       }
     }
   } else {
@@ -67,7 +69,7 @@ export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({
           name='location'
           wrapperClassName={styles.locationInput}
           className={styles.input}
-          placeholder='Location'/> 
+          placeholder='Location'/>
         <Button type='submit' className={styles.button}>Search</Button>     
       </form>
     </Wrapper>

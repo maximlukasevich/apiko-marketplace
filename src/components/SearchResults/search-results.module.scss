@@ -7,17 +7,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  font-family: Rubik, sans-serif;
+  padding: 18px 0 15px 0;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: normal;
   
   .searchTitle {
-  font-size: 26px;
-  color: #000000;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+
+    span {
+      color: #a1a1a1;
+    }
   }
   .searchAction {
-    font-size: 18px;
+    font-size: 14px;
     color: #349A89;
     transition: 0.3s;
   }

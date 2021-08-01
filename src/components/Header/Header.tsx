@@ -131,7 +131,9 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
                     avatar={currentUser.avatar || undefined} />
                 </div> } 
               </div>
-              {children}
+              <div className={styles.mobileChildren}>
+                {children}
+              </div>
             </div>
           </DrawerBody>
         </DrawerContent>

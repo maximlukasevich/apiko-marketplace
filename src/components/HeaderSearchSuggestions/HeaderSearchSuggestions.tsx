@@ -4,7 +4,10 @@ import { HeaderSearchSuggestionsComponent } from "./HeaderSearchSuggestionsCompo
 import { IHeaderSearchSuggestionsProps } from './types';
 
 export const HeaderSearchSuggestions: React.FC<IHeaderSearchSuggestionsProps> = ({ 
-  photos, title, price
+  id, 
+  photos, 
+  title, 
+  price
 }) => {
   let image = defaultImage;
   if (photos?.length > 0) {
@@ -17,6 +20,7 @@ export const HeaderSearchSuggestions: React.FC<IHeaderSearchSuggestionsProps> = 
   }
 
   return <HeaderSearchSuggestionsComponent 
+    id={id}
     image={image}
     title={title} 
     price={price}

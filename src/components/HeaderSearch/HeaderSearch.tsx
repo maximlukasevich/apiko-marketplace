@@ -7,7 +7,8 @@ import { HeaderSearchComponent } from "./HeaderSearchComponent";
 import { fetchSuggest } from '../../store/search-suggestions/actions';
 import { RootState } from '../../store/indexReducer';
 import { IHeaderSearchProps } from './types';
-import { setSearchParams } from '../../store/search/actions';
+import { setSearchParams, setShowResults } from '../../store/search/actions';
+import { addRecent } from '../../store/search-recents/actions';
 
 const HeaderSearch: React.FC<IHeaderSearchProps> = ({ 
   isLoading, 
@@ -19,18 +20,22 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
     dispatch(setSearchParams(
       formik.values.name, formik.values.location, searchParams.priceFrom, searchParams.priceTo 
     ));
+    if (formik.values.name || formik.values.location) {
+      dispatch(setShowResults(true));
+      if (formik.values.name) {
+        dispatch(addRecent(formik.values.name));
+      }
+    } else {
+      dispatch(setShowResults(false));
+    }
   }
   const validate = (values: IFormikValues) => {
     const errors: FormikErrors<IFormikValues> = {};
-    if (!values.name && !values.location) {
-      if (!values.name) {
-        values.name = null;
-        errors.name = 'Empty';
-      }
-      if (!values.location) {
-        values.location = null;
-        errors.location = 'Empty';
-      }
+    if (values.name === '') {
+      values.name = null;
+    }
+    if (values.location === '') {
+      values.location = null;
     }
     return errors;
   }
@@ -44,7 +49,7 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
   });
 
   useEffect(() => {
-    if (formik?.values?.name) {
+    if (formik.values.name) {
       dispatch(fetchSuggest(formik.values.name));
     }
   }, [formik.values.name, dispatch]);

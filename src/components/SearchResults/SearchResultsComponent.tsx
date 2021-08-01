@@ -13,7 +13,9 @@ export const ProductsComponent: React.FC<ISearchResultsComponentProps> = ({
 }) => {
   return ( <>
   <div className={styles.searchHeader}>
-    <h2 className={styles.searchTitle}>Search results: </h2>
+    <h2 className={styles.searchTitle}>
+      Search results: <span>({fetchAll ? searchResults.length : `${searchResults.length}+`})</span>
+    </h2>
     <p onClick={onClearSearchOptionClick} className={styles.searchAction}>
       Clear search options
     </p>
@@ -34,7 +36,7 @@ export const ProductsComponent: React.FC<ISearchResultsComponentProps> = ({
     </ProductsWrapper >   
     <div className={styles.spinner}>
         {isLoading ? <Spinner size='md' color='#349a89' /> : '' }
-        {fetchAll ? 'That`s all' : ''}
+        {/* {fetchAll ? 'That`s all' : ''} */}
     </div>
   </> );
 }

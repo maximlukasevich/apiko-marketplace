@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { clearSearchParams, search } from '../../store/search/actions';
+import { deleteSearchParams } from '../../store/search/actions';
 import { connect, useDispatch } from 'react-redux';
 import { ProductsComponent } from './SearchResultsComponent';
 import { usePageBottom } from '../../hooks/usePageBottom';
 import { RootState } from '../../store/indexReducer';
 import { ISearchResultsProps } from './types';
+import { search } from '../../store/search/actions';
 
 const Products: React.FC<ISearchResultsProps> = ({ 
   isLoading, 
@@ -18,7 +19,7 @@ const Products: React.FC<ISearchResultsProps> = ({
   const dispatch = useDispatch();
 
   const onClearSearchOptionClick = () => {
-    dispatch(clearSearchParams());
+    dispatch(deleteSearchParams());
   }
 
   useEffect(() => {
@@ -28,26 +29,18 @@ const Products: React.FC<ISearchResultsProps> = ({
   }, [isBottom, fetchAll]);
 
   useEffect(() => {
-    if (
-      searchParams.keywords || 
-      searchParams.location || 
-      searchParams.priceFrom || 
-      searchParams.priceTo
-    ) {
-      dispatch(search(
-        searchParams.keywords,
-        searchParams.location,
-        searchParams.priceFrom,
-        searchParams.priceTo,
-        screen
-      ));
-    }
-    
-  }, [dispatch, screen, searchParams, isAuth]);
+    dispatch(search(
+      searchParams.keywords, 
+      searchParams.location, 
+      searchParams.priceFrom, 
+      searchParams.priceTo, 
+      screen,
+    ));
+  }, [dispatch, screen, searchParams]);
 
   useEffect(() => {
     setScreen(0);
-  }, [isAuth]);
+  }, [isAuth, searchParams]);
 
   return <ProductsComponent 
     isLoading={isLoading} 
@@ -59,7 +52,7 @@ const Products: React.FC<ISearchResultsProps> = ({
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.search.isLoading,
   fetchAll: state.search.fetchAll,
-  searchResults: state.search.searchResult,
+  searchResults: state.search.searchResults,
   searchParams: state.search.searchParams,
   isAuth: state.currentUser.isAuth,
 });
