@@ -5,6 +5,7 @@ import UserComponent from './UserComponent';
 import { fetchUser, fetchUserProducts } from '../../store/user/actions';
 import { RootState } from '../../store/indexReducer';
 import { IUserProps } from './types';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const User: React.FC<IUserProps> = ({
   user,
@@ -12,12 +13,13 @@ const User: React.FC<IUserProps> = ({
   isLoading,
   sales
 }) => {
+  const { isAuth } = useTypedSelector(state => state.currentUser);
   const { id } = useParams<{id: string}>();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser(id));
     dispatch(fetchUserProducts(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, isAuth]);
   return <UserComponent 
     user={user}
     userProducts={userProducts}

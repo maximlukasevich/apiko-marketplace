@@ -78,7 +78,7 @@ export const search = (
           });
         }
       } else {
-        // dispatch(sendNotificationError('You must enter name or a location'));
+        dispatch(sendNotificationError('You must enter name or a location'));
       }
     } catch (error) {
       console.log(error);

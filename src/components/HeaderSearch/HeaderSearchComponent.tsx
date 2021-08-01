@@ -10,7 +10,6 @@ import HeaderSearchRecents from '../HeaderSearchRecents/HeaderSearchRecents';
 import { HeaderSearchSuggestions } from '../HeaderSearchSuggestions/HeaderSearchSuggestions';
 import { IHeaderSearchComponentProps } from './types';
 import { Spinner } from '@chakra-ui/spinner';
-import { routes } from '../../utils/routes';
 
 export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({ 
   formik, isLoading, suggestions }) => {

@@ -10,6 +10,7 @@ import { Spinner } from '@chakra-ui/spinner';
 import ImageViewer from 'react-simple-image-viewer';
 import { routes } from '../../utils/routes';
 import { NavLink } from 'react-router-dom';
+import { MessageModal } from '../MessageModal/MessageModal';
 
 export const ProductDetailComponent: React.FC<IProductComponentProps> = ({ 
   isLoading,
@@ -75,10 +76,16 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
                     <p className={styles.location}>{product?.owner.location}</p>
                   </div>
                 </NavLink>
-                
-                <Button className={styles.chatButton}>
-                  Chat with seller
-                </Button>
+                <MessageModal 
+                  id={product.owner.id}
+                  subject={product.title}
+                  avatar={product.owner.avatar}
+                  fullName={product.owner.fullName}
+                  location={product.owner.location} >
+                  <Button className={styles.chatButton} >
+                    Chat with seller
+                  </Button>
+                </MessageModal>
                 <Button className={styles.favoriteButton}>
                   <div className={styles.favoriteButtonContent} onClick={onSaveButtonClick}>
                     <img 
