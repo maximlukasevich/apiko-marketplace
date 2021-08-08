@@ -8,30 +8,30 @@ export enum SavedActionTypes {
   PRODUCT_UNSAVE = 'PRODUCT_UNSAVE',
 }
 
-export type SavedActionCreatorsTypes = IFetchProductsAction | 
-                                       IFetchProductsSuccessAction |
-                                       IFetchProductsErrorAction |
-                                       IProductUnsaveAction;
+export type SavedActionCreatorsTypes = IFetchProducts | 
+                                       IFetchProductsSuccess |
+                                       IFetchProductsError |
+                                       IProductUnsave;
 
 export interface SavedInitialState {
   isLoading: boolean;
   saved: Array<IProduct>;
 }
 
-interface IFetchProductsAction {
+interface IFetchProducts {
   type: SavedActionTypes.FETCH_SAVED;
 }
 
-interface IFetchProductsSuccessAction {
+interface IFetchProductsSuccess {
   type: SavedActionTypes.FETCH_SAVED_SUCCESS;
   payload: Array<IProduct>;
 }
 
-interface IFetchProductsErrorAction {
+interface IFetchProductsError {
   type: SavedActionTypes.FETCH_SAVED_ERROR;
 }
 
-interface IProductUnsaveAction {
+interface IProductUnsave {
   type: SavedActionTypes.PRODUCT_UNSAVE;
   payload: string;
 }

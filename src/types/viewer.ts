@@ -5,10 +5,10 @@ export enum ViewerActionTypes {
   LOGOUT = 'LOGOUT',
 }
 
-export type ViewerActionCreatorsTypes = IFetchCurrentUserAction | 
-                                        IFetchCurrentUserSuccessAction | 
-                                        IFetchCurrentUserErrorAction | 
-                                        ICurrentUserLogoutAction;
+export type ViewerActionCreatorsTypes = IFetchCurrentUser | 
+                                        IFetchCurrentUserSuccess | 
+                                        IFetchCurrentUserError | 
+                                        ICurrentUserLogout;
 
 export interface ViewerInitialState {
   isAuth: boolean;
@@ -27,19 +27,19 @@ export interface IViewer {
   email: string;
 }
 
-interface ICurrentUserLogoutAction {
+interface ICurrentUserLogout {
   type: ViewerActionTypes.LOGOUT;
 }
 
-interface IFetchCurrentUserAction {
+interface IFetchCurrentUser {
   type: ViewerActionTypes.FETCH_CURRENT_USER;
 }
 
-interface IFetchCurrentUserSuccessAction {
+interface IFetchCurrentUserSuccess {
   type: ViewerActionTypes.FETCH_CURRENT_USER_SUCCESS;
   payload: IViewer;
 }
 
-interface IFetchCurrentUserErrorAction {
+interface IFetchCurrentUserError {
   type: ViewerActionTypes.FETCH_CURRENT_USER_ERROR;
 }

@@ -4,25 +4,25 @@ export enum NotificationsActionTypes {
   DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
 }
 
-export type NotificationsActionCreatorsTypes = setNotificationSuccess | 
-                                               setNotificationError | 
-                                               deleteNotification;
+export type NotificationsActionCreatorsTypes = ISetNotificationSuccess | 
+                                               ISetNotificationError | 
+                                               IDeleteNotification;
 
 export interface NotificationInitialState {
   notification: string | null;
   type?: 'info' | 'warning' | 'success' | 'error';
 }
 
-interface setNotificationSuccess {
+interface ISetNotificationSuccess {
   type: NotificationsActionTypes.SET_NORIFICATION_SUCCESS,
   payload: string,
 }
 
-interface setNotificationError {
+interface ISetNotificationError {
   type: NotificationsActionTypes.SET_NORIFICATION_ERROR,
   payload: string
 }
 
-interface deleteNotification {
+interface IDeleteNotification {
   type: NotificationsActionTypes.DELETE_NOTIFICATION,
 }

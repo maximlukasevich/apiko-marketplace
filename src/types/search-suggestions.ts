@@ -4,9 +4,9 @@ export enum SearchSuggestionsActionTypes {
   FETCH_SUGGESTIONS_ERROR = 'FETCH_SUGGESTIONS_ERROR',
 }
 
-export type SearchSuggestionsActionCreatorsTypes = IFeatchSuggestionsAction | 
-                                                   IFeatchSuggestionsSuccessAction | 
-                                                   IFeatchSuggestionsErrorAction;
+export type SearchSuggestionsActionCreatorsTypes = IFeatchSuggestions | 
+                                                   IFeatchSuggestionsSuccess | 
+                                                   IFeatchSuggestionsError;
 
 export interface SearchSuggestionsInitialState {
   isLoading: boolean;
@@ -20,16 +20,16 @@ export interface ISuggestion {
   price: number;
 }
 
-interface IFeatchSuggestionsAction {
+interface IFeatchSuggestions {
   type: SearchSuggestionsActionTypes.FETCH_SUGGESTIONS;
 }
 
-interface IFeatchSuggestionsSuccessAction {
+interface IFeatchSuggestionsSuccess {
   type: SearchSuggestionsActionTypes.FETCH_SUGGESTIONS_SUCCESS;
   payload: Array<ISuggestion>;
 }
 
-interface IFeatchSuggestionsErrorAction {
+interface IFeatchSuggestionsError {
   type: SearchSuggestionsActionTypes.FETCH_SUGGESTIONS_ERROR;
 }
 
