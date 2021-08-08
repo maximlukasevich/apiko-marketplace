@@ -9,7 +9,7 @@ export const login = (email: string, password: string) => {
       dispatch({
         type: CurrentUserActionTypes.FETCH_CURRENT_USER
       });
-      const res = await axios.post('/auth/login', {
+      const res = await axios.post('/api/auth/login', {
         email,
         password
       }, {
@@ -41,7 +41,7 @@ export const register = (fullName: string, email: string, password: string) => {
       dispatch({
         type: CurrentUserActionTypes.FETCH_CURRENT_USER
       });
-      const res = await axios.post('/auth/register', {
+      const res = await axios.post('/api/auth/register', {
         fullName,
         email,
         password
@@ -74,7 +74,7 @@ export const auth = () => {
       dispatch({
         type: CurrentUserActionTypes.FETCH_CURRENT_USER
       });
-      const res = await axios.get('/account/user', {
+      const res = await axios.get('/api/account/user', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ export const userUpdate = (
   )=> {
   return async (dispatch: Dispatch<TAction & any>) => {
     try {
-      const res = await axios.put('/account/user', {
+      const res = await axios.put('/api/account/user', {
         fullName,
         avatar,
         phone,

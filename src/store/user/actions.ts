@@ -6,7 +6,7 @@ export const fetchUser = (id: string) => {
   return async (dispatch: Dispatch<TAction>) => {
     try {
       dispatch({ type: UserActionTypes.FETCH_USER });
-      const res = await axios.get(`/users/${id}`);
+      const res = await axios.get(`/api/users/${id}`);
       dispatch({ 
         type: UserActionTypes.FETCH_USER_SUCCESS,
         payload: res.data,
@@ -22,7 +22,7 @@ export const fetchUserProducts = (id: string) => {
   return async (dispatch: Dispatch<TAction>) => {
     try {
       dispatch({ type: UserActionTypes.FETCH_USER_PRODUCTS });
-      const res = await axios.get(`/users/${id}/products`, {
+      const res = await axios.get(`/api/users/${id}/products`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

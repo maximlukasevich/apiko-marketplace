@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './product-detail.module.css';
 import locationIcon from '../../assets/icons/location_filled.svg';
 import savedIcon from '../../assets/icons/product-saved.svg';
@@ -23,7 +24,7 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
   closeImageViewer,
   currentImage,
   onError,
-  onSaveButtonClick
+  onSaveButtonClick,
 }) => {
   return (
     <Wrapper>
@@ -76,8 +77,9 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
                     <p className={styles.location}>{product?.owner.location}</p>
                   </div>
                 </NavLink>
+                
                 <MessageModal 
-                  id={product.owner.id}
+                  id={product.id}
                   subject={product.title}
                   avatar={product.owner.avatar}
                   fullName={product.owner.fullName}

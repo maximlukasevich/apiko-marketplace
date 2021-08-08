@@ -16,7 +16,7 @@ export const fetchProducts = (screen: number) => {
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS
       });
-      const res = await axios.get('/products/latest', {
+      const res = await axios.get('/api/products/latest', {
         params: {
           offset: offset,
           limit: limit,
@@ -44,7 +44,7 @@ export const fetchOneProduct = (id: string) => {
   return async (dispatch: Dispatch<TAction>) => {
     try {
       dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT });
-      const res = await axios.get(`/products/${id}`, {
+      const res = await axios.get(`/api/products/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -68,7 +68,7 @@ export const uploadProduct = (
 ) => {
   return async (dispatch: Dispatch<TAction & any>) => {
     try {
-      const res = await axios.post('/products', {
+      const res = await axios.post('/api/products', {
         title,
         description,
         photos,

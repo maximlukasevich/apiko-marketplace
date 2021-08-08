@@ -12,13 +12,17 @@ import defaultImage from '../../assets/defaultImage.png';
 import moment from 'moment';
 
 
-const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
+const ProductDetail: React.FC<IProductProps> = ({ 
+  product, 
+  isLoading,
+}) => {
   const { isAuth } = useTypedSelector(state => state.currentUser);
   const [productSaved, setProductSaved] = useState(product.saved);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const { id } = useParams<IParamTypes>();
   const dispatch = useDispatch();
+
   let images: Array<string> = [];
   if (product.photos) {
     if (typeof product?.photos === 'object') {
@@ -33,7 +37,6 @@ const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
   } else {
     images.push(defaultImage);
   }
-  
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -73,7 +76,7 @@ const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
     dispatch(fetchOneProduct(id));
   }, [isAuth, dispatch, id]);
 
-  return <ProductDetailComponent 
+  return <ProductDetailComponent
     product={product}
     isLoading={isLoading}
     saved={productSaved}

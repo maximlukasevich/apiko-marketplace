@@ -57,10 +57,12 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
         <div className={styles.navLinks}>
           {/* {location.pathname === routes.PRODUCT_UPLOAD ? ' '} */}
           {isAuth && location.pathname !== routes.PRODUCT_UPLOAD ?
-          <div className={styles.inbox}>
-            <div className={styles.inboxCircle}> </div>
-            <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
-          </div>
+          <NavLink to={routes.INBOX}>
+            <div className={styles.inbox}>
+              <div className={styles.inboxCircle}> </div>
+              <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
+            </div>
+          </NavLink>
           : ''}
           {location.pathname !== routes.PRODUCT_UPLOAD ? 
           <NavLink to={routes.PRODUCT_UPLOAD}>
@@ -98,10 +100,12 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
             <div className={styles.mobileHeader}>
               <div className={styles.mobileIcons}>
                 {isAuth ? <> 
-                <div className={styles.inbox}>
-                  <div className={styles.inboxCircle}> </div>
-                  <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
-                </div>
+                <NavLink to={routes.INBOX}>
+                  <div className={styles.inbox}>
+                    <div className={styles.inboxCircle}> </div>
+                    <img className={styles.inboxIcon} src={inbox} alt="Inbox" /> 
+                  </div>
+                </NavLink>
                 </> : '' }
                 <NavLink to={routes.SAVED} className={styles.mobileSavedLink}>
                   <img className={styles.heart} src={heartMobile} alt='Heart' /> 

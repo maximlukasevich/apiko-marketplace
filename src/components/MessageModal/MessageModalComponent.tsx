@@ -6,18 +6,19 @@ import {
   ModalContent,
   useDisclosure,
 } from '@chakra-ui/react';
-import { IMessageModalProps } from './types';
+import { IMessageModalComponentProps } from './types';
 import closeIcon from '../../assets/icons/close_icon.svg';
 import { Avatar } from '../commons/Avatar/Avatar';
 import { TextArea } from '../commons/TextArea/TextArea';
 import { Button } from '../commons/Button/Button';
 
-export const MessageModalComponent: React.FC<IMessageModalProps> = ({ 
+export const MessageModalComponent: React.FC<IMessageModalComponentProps> = ({ 
   id,
   subject,
   avatar, 
   fullName,
   location,
+  formik,
   children,
 }) => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
@@ -44,8 +45,11 @@ export const MessageModalComponent: React.FC<IMessageModalProps> = ({
               </div>
             </div>
 
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
               <TextArea 
+                name='text'
+                value={formik.values.text}
+                onChange={formik.handleChange}
                 label='message' 
                 required />
               

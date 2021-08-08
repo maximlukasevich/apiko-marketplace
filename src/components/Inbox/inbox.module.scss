@@ -1,0 +1,197 @@
+.inbox {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 88px);
+  width: 100%;
+  
+  .aside {
+    overflow-y: scroll;
+    height: inherit;
+    background-color: #FFFFFF;
+    min-width: 565px;
+    max-width: 565px;
+    width: 100%;
+    padding: 20px 10px 20px 15px;
+
+    .chatLink {
+      transition: 0.2s;
+      margin-bottom: 10px;
+      width: inherit;
+      height: 105px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 7px #0000001f;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+
+      .chatInfo {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 200px;
+        width: 100%;
+        border-right: 1px solid #E7E9ED;
+
+        .fullName {
+          font-family: Roboto, sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 22px;
+          color: #000000;
+        }
+
+        .lastMessage {
+          display: flex;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: Roboto, sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 15px;
+          color: #2b2b2b80;
+          
+          img {
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .productInfo {
+        max-width: 230px;
+        width: 100%;
+        margin-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        border-right: 1px solid #E7E9ED;
+
+        .image {
+          object-fit: fill;
+          max-height: 47px;
+          max-width: 47px;
+          min-height: 47px;
+          min-width: 47px;
+        }
+
+        .text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-left: 8px;
+          font-family: Roboto, sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 15px;
+          color: #000000;
+          width: inherit;
+          overflow: hidden;
+
+          .title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .price {
+            font-weight: bold;
+            color: #000000;
+          }
+        }
+      }
+
+      .lastMessageTime {
+        margin-left: 10px;
+        font-family: Roboto, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        color: rgba(43, 43, 43, 0.499918);
+      }
+    }
+  }
+
+  .chat {
+    transition: 0.3s;
+    width: 100%;
+    background: #F8F8F8;
+    border-left: 1px solid #E7E9ED;;
+  }
+}
+
+.active > div {
+  border-left: 4px solid #349A89;
+}
+
+@media screen and (max-width: 1160px) {
+  .inbox {
+
+    .aside {
+      min-width: 200px;
+      max-width: 350px;
+
+      .chatLink {
+        position: relative;
+        padding: 15px 17px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 150px;
+
+        .chatInfo {
+          border-right: none;
+          margin: 0;
+        }
+
+        .chatInfo::after {
+          content: ' ';
+          margin: 10px 0;
+          background-color: #E7E9ED;
+          height: 1px;
+          width: 36px;
+        }
+
+        .productInfo {
+          margin: 0;
+          border-right: none;
+        }
+
+        .lastMessageTime {
+          position: absolute;
+          margin: 0;
+          right: 17px;
+          top: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .inbox {
+    .aside {
+      max-width: none !important;
+      min-width: none !important;
+      width: 100%;
+      margin-right: 0;
+      background-color: #F8F8F8;
+
+      .chatLink {
+        max-width: none;
+      }
+    }
+
+    .chat {
+      transition: all 0.3s;
+      position: absolute;
+      visibility: hidden;
+      right: -1000px;
+    }
+    .showChat {
+      visibility: visible;
+      transition: all 0.3s;
+      right: 0;
+      // height: 100%;
+    }
+  }
+}

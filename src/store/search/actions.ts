@@ -51,7 +51,7 @@ export const search = (
     try { 
       if (keywords || location) { 
         dispatch({ type: SearchActionTypes.FETCH_SEARCH_RESULTS });
-        const res = await axios.get('/products/search', { 
+        const res = await axios.get('/api/products/search', { 
           params: {
             keywords,
             location,

@@ -16,6 +16,7 @@ import { auth } from './store/current-user/actions';
 import { ProductPage } from './pages/ProductPage';
 import { ProductUploadPage } from './pages/ProductUploadPage';
 import { UserPage } from './pages/UserPage';
+import { InboxPage } from './pages/InboxPage';
 
 const App: React.FC = () => {
   const { isAuth } = useTypedSelector(state => state.currentUser);
@@ -39,8 +40,7 @@ const App: React.FC = () => {
     }
   }, [notification, toast]);
 
-  return (
-    <>
+  return ( <>
     <Switch>
 
       <Route exact path={routes.HOME} component={HomePage} />
@@ -52,6 +52,7 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path={routes.PRODUCT_UPLOAD} component={ProductUploadPage} />
           <Route path={routes.PROFILE_EDIT} component={EditPropfilePage} />
+          <Route path={routes.INBOX} component={InboxPage} />
 
           <Redirect from={routes.LOGIN} to={routes.HOME} />
           <Redirect from={routes.REGISTER} to={routes.HOME} />
@@ -65,9 +66,9 @@ const App: React.FC = () => {
           <Redirect from={routes.PROFILE_EDIT} to={routes.REGISTER} />
         </Switch>
       </> }
-    </Switch>  
-    </>
-  );
+    </Switch> 
+  </> );
 } 
 
 export default App;
+

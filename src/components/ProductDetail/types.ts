@@ -9,9 +9,7 @@ export interface IProductProps {
   isLoading: boolean;
 }
 
-export interface IProductComponentProps {
-  product: IOneProduct;
-  isLoading: boolean;
+export interface IProductComponentProps extends IProductProps {
   saved: boolean;
   images: Array<string>;
   createdAt: string;

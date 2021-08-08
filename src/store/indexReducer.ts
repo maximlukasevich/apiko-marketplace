@@ -10,6 +10,8 @@ import { searchReducer } from './search/reducer';
 import { searchSuggestionsReducer } from './search-suggestions/reducer';
 import { searchRecentsReducer } from './search-recents/reducer';
 import { userReducer } from './user/reducer';
+import { chatsReducer } from './chats/reducer';
+import { messagesReducer } from './messages/reducer';
 
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
@@ -20,6 +22,8 @@ const rootReducer = combineReducers({
   searchSuggestions: searchSuggestionsReducer,
   searchRecents: searchRecentsReducer,
   user: userReducer,
+  chats: chatsReducer,
+  messages: messagesReducer,
 });
 
 const persistConfig = {

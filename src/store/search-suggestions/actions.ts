@@ -6,7 +6,7 @@ export const fetchSuggest = (keywords: string) => {
   return async (dispatch: Dispatch<TAction>) => {
     try {
       dispatch({ type: SearchSuggestionsActionTypes.FETCH_SUGGESTIONS });
-      const res = await axios.get('/products/search', {
+      const res = await axios.get('/api/products/search', {
         params: {
           keywords,
           limit: 5,

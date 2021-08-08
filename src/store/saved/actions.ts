@@ -9,7 +9,7 @@ export const fetchSaved = () => {
       dispatch({ 
         type: SavedActionTypes.FETCH_SAVED
       });
-      const res = await axios.get('/products/saved', {
+      const res = await axios.get('/api/products/saved', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -29,7 +29,7 @@ export const fetchSaved = () => {
 export const saveProduct = (id: string) => {
   return async (dispatch: Dispatch<TAction & any>) => {
     try { 
-      await axios.post(`/products/${id}/save`, {}, {
+      await axios.post(`/api/products/${id}/save`, {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -51,7 +51,7 @@ export const saveProduct = (id: string) => {
 export const unsaveProduct = (id: string) => {
   return async (dispatch: Dispatch<TAction & any>) => {
     try {
-      await axios.post(`/products/${id}/unsave`, {}, {
+      await axios.post(`/api/products/${id}/unsave`, {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

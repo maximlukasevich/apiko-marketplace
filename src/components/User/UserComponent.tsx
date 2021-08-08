@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './user.module.css';
 import { Wrapper } from '../commons/Wrapper/Wrapper';
 import { Avatar } from '../commons/Avatar/Avatar';

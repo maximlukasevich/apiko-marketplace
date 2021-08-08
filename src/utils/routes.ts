@@ -8,4 +8,6 @@ export const routes = {
   PRODUCT: '/products/:id',
   PRODUCT_UPLOAD: '/upload',
   USER_PAGE: '/users/:id',
+  INBOX: '/inbox',
+  CHAT: '/inbox/:id',
 }
