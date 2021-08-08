@@ -11,7 +11,7 @@ import sendFileIcon from '../../assets/icons/send-file-icon.svg';
 import { routes } from '../../utils/routes';
 import { ChatMessage } from '../ChatMessage/ChatMessage';
 import { IChatComponentProps } from './types';
-import { Spinner } from '@chakra-ui/spinner';
+import { Spinner } from '../commons/Spinner/Spinner';
 import InfiniteScroller from 'react-infinite-scroll-component';
 import { Button } from '../commons/Button/Button';
 
@@ -75,7 +75,7 @@ export const ChatComponent: React.FC<IChatComponentProps> = ({
           style={{ display: 'flex', flexDirection: 'column-reverse' }}
           inverse={true}
           hasMore={!isFetchedAll}
-          loader={<Spinner size='md' color='#349a89' />}
+          loader={<Spinner />}
           scrollableTarget='scrollableDiv'
         >
           <div ref={chatBottomRef}></div>

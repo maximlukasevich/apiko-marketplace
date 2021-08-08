@@ -3,7 +3,7 @@ import styles from './products.module.css';
 import { ProductsWrapper } from '../commons/ProductsWrapper/ProductsWrapper';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { IProductsProps } from './types';
-import { Spinner } from '@chakra-ui/react';
+import { Spinner } from '../commons/Spinner/Spinner';
 
 export const ProductsComponent: React.FC<IProductsProps> = ({
   isLoading,
@@ -27,7 +27,7 @@ export const ProductsComponent: React.FC<IProductsProps> = ({
         ))}
       </ProductsWrapper>
       <div className={styles.spinner}>
-        {isLoading ? <Spinner size='md' color='#349a89' /> : ''}
+        {isLoading ? <Spinner /> : ''}
         {isFetchedAll ? 'That`s all' : ''}
       </div>
     </>

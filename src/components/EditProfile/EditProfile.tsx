@@ -31,7 +31,7 @@ export const EditProfile: React.FC = () => {
         const formData = new FormData();
         formData.append('image', event.currentTarget.files[0]);
         axios
-          .post('/upload/images', formData, {
+          .post('/api/upload/images', formData, {
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${localStorage.getItem('token')}`,

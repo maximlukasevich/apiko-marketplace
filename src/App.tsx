@@ -74,6 +74,7 @@ const App: React.FC = () => {
             </Switch>
           </>
         )}
+        <Redirect to={routes.HOME} />
       </Switch>
     </>
   );

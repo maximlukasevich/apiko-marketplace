@@ -229,14 +229,14 @@
 
 @media screen and (max-width: 600px) {
   .chatWrapper {
-    /* Firefox */
-    height: -moz-calc(100vh - 88px);
-    /* WebKit */
-    height: -webkit-calc(100vh - 88px);
-    /* Opera */
-    height: -o-calc(100vh - 88px);
-    /* Standard */
-    height: calc(100vh - 88px);
+    // /* Firefox */
+    // height: -moz-calc(100% - 88px);
+    // /* WebKit */
+    // height: -webkit-calc(100% - 88px);
+    // /* Opera */
+    // height: -o-calc(100% - 88px);
+    // /* Standard */
+    // height: calc(100% - 88px);
 
     .chatHeader {
       align-items: flex-start;

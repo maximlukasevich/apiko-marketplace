@@ -4,7 +4,7 @@ import { Wrapper } from '../commons/Wrapper/Wrapper';
 import { ProductsWrapper } from '../commons/ProductsWrapper/ProductsWrapper';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ISavedProductsProps } from './types';
-import { Spinner } from '@chakra-ui/spinner';
+import { Spinner } from '../commons/Spinner/Spinner';
 
 export const SavedProductsComponent: React.FC<ISavedProductsProps> = ({
   isAuth,
@@ -34,7 +34,7 @@ export const SavedProductsComponent: React.FC<ISavedProductsProps> = ({
               ))}
             </ProductsWrapper>
             <div className={styles.spinner}>
-              {isLoading ? <Spinner size='md' color='#349a89' /> : ''}
+              {isLoading ? <Spinner /> : ''}
             </div>
           </>
         ) : (

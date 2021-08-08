@@ -4,7 +4,7 @@ import { IProductsCardComponentProps } from './types';
 import unsavedIcon from '../../assets/icons/product-unsaved.svg';
 import savedIcon from '../../assets/icons/product-saved.svg';
 import { routes } from '../../utils/routes';
-import { NavLink } from 'react-router-dom';
+import { generatePath, NavLink } from 'react-router-dom';
 
 export const ProductCardComponent: React.FC<IProductsCardComponentProps> = ({
   id,
@@ -21,7 +21,7 @@ export const ProductCardComponent: React.FC<IProductsCardComponentProps> = ({
     <>
       <div className={styles.productCart}>
         <div className={styles.imageBlock}>
-          <NavLink to={routes.PRODUCT.replace(':id', id)}>
+          <NavLink to={generatePath(routes.PRODUCT, { id: id })}>
             <img
               className={styles.productImage}
               src={images}
@@ -38,7 +38,7 @@ export const ProductCardComponent: React.FC<IProductsCardComponentProps> = ({
           </div>
         </div>
         <div className={styles.infoBlock}>
-          <NavLink to={routes.PRODUCT.replace(':id', id)}>
+          <NavLink to={generatePath(routes.PRODUCT, { id: id })}>
             <h2 className={styles.title}>{title}</h2>
           </NavLink>
           <div className={styles.bottomInfo}>

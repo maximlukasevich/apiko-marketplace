@@ -185,6 +185,7 @@
       position: absolute;
       visibility: hidden;
       right: -1000px;
+      height: calc(100% - 88px);
     }
     .showChat {
       visibility: visible;

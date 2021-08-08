@@ -9,7 +9,7 @@ import { Collapse, useDisclosure, useOutsideClick } from '@chakra-ui/react';
 import HeaderSearchRecents from '../HeaderSearchRecents/HeaderSearchRecents';
 import { HeaderSearchSuggestions } from '../HeaderSearchSuggestions/HeaderSearchSuggestions';
 import { IHeaderSearchComponentProps } from './types';
-import { Spinner } from '@chakra-ui/spinner';
+import { Spinner } from '../commons/Spinner/Spinner';
 
 export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({
   formik,
@@ -27,7 +27,7 @@ export const HeaderSearchComponent: React.FC<IHeaderSearchComponentProps> = ({
   if (formik.values.name) {
     if (isLoading) {
       collapseContent = (
-        <Spinner size='md' color='#349a89' className={styles.spinner} />
+        <Spinner />
       );
     } else {
       if (!suggestions.length) {

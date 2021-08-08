@@ -51,7 +51,7 @@ export const ProductUpload = () => {
           const formData = new FormData();
           formData.append(`image`, photo);
           axios
-            .post('/upload/images', formData, {
+            .post('/api/upload/images', formData, {
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
