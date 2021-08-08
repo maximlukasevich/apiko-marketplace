@@ -1,8 +1,12 @@
-import { IInitialState, TAction, ProductsActionTypes } from '../../types/products';
+import { 
+  ProductsInitialState, 
+  ProductsActionCreatorsTypes, 
+  ProductsActionTypes 
+} from '../../types/products';
 
-const initialState: IInitialState = {
+const initialState: ProductsInitialState = {
   isLoading: false,
-  fetchAll: false,
+  isFetchedAll: false,
   products: [],
   oneProduct: {
     id: '',
@@ -19,6 +23,7 @@ const initialState: IInitialState = {
     owner: {
       id: '',
       fullName: '',
+      email: '',
       location: null,
       avatar: null,
       phone: null,
@@ -28,13 +33,16 @@ const initialState: IInitialState = {
   },
 }
 
-export const productsReducer = (state = initialState, action: TAction): IInitialState => {
+export const productsReducer = (
+  state = initialState, 
+  action: ProductsActionCreatorsTypes
+): ProductsInitialState => {
   switch (action.type) {
     case ProductsActionTypes.FETCH_PRODUCTS:
       return {
         ...state,
         isLoading: true,
-        fetchAll: false,
+        isFetchedAll: false,
         products: state.products,
       }
     case ProductsActionTypes.FETCH_PRODUCTS_SUCCESS:
@@ -43,11 +51,11 @@ export const productsReducer = (state = initialState, action: TAction): IInitial
         isLoading: false,
         products: state.products.concat(action.payload),
       }
-    case ProductsActionTypes.FETCH_ALL_TRUE:
+    case ProductsActionTypes.FETCHED_ALL:
       return {
         ...state,
         isLoading: false,
-        fetchAll: true,
+        isFetchedAll: true,
       }
     case ProductsActionTypes.FETCH_ONE_PRODUCT: 
       return {
@@ -67,7 +75,7 @@ export const productsReducer = (state = initialState, action: TAction): IInitial
         isLoading: false,
         oneProduct: initialState.oneProduct,
       }
-    case ProductsActionTypes.CLEAN_PRODUCTS:
+    case ProductsActionTypes.CLEAR_PRODUCTS:
       return {
         ...state,
         isLoading: false,

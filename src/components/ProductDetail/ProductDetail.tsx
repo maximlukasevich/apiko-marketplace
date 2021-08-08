@@ -16,7 +16,7 @@ const ProductDetail: React.FC<IProductProps> = ({
   product, 
   isLoading,
 }) => {
-  const { isAuth } = useTypedSelector(state => state.currentUser);
+  const isAuth = useTypedSelector(state => state.viewer.isAuth);
   const [productSaved, setProductSaved] = useState(product.saved);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);

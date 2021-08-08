@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { UserActionTypes, TAction } from '../../types/user';
+import { 
+  UserActionTypes, 
+  UserActionCreatorsTypes 
+} from '../../types/user';
 
 export const fetchUser = (id: string) => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<UserActionCreatorsTypes>
+  ) => {
     try {
       dispatch({ type: UserActionTypes.FETCH_USER });
       const res = await axios.get(`/api/users/${id}`);
@@ -19,7 +24,9 @@ export const fetchUser = (id: string) => {
 }
 
 export const fetchUserProducts = (id: string) => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<UserActionCreatorsTypes>
+  ) => {
     try {
       dispatch({ type: UserActionTypes.FETCH_USER_PRODUCTS });
       const res = await axios.get(`/api/users/${id}/products`, {

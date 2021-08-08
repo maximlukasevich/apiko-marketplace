@@ -1,3 +1,5 @@
+import { IProduct } from './products';
+
 export enum SavedActionTypes {
   FETCH_SAVED = 'FETCH_SAVED',
   FETCH_SAVED_SUCCESS = 'FETCH_SAVED_SUCCESS',
@@ -6,27 +8,14 @@ export enum SavedActionTypes {
   PRODUCT_UNSAVE = 'PRODUCT_UNSAVE',
 }
 
-export type TAction = IFetchProductsAction | 
-                      IFetchProductsSuccessAction |
-                      IFetchProductsErrorAction |
-                      IProductUnsaveAction;
+export type SavedActionCreatorsTypes = IFetchProductsAction | 
+                                       IFetchProductsSuccessAction |
+                                       IFetchProductsErrorAction |
+                                       IProductUnsaveAction;
 
-export interface IInitialState {
+export interface SavedInitialState {
   isLoading: boolean;
-  saved: Array<ISaved>;
-}
-
-export interface ISaved {
-  id: string;
-  photos: Array<string>;
-  ownerId: string;
-  title: string;
-  description: string | null;
-  location: string;
-  price: 0;
-  createdAt: 0;
-  updatedAt: number | null;
-  saved: boolean;
+  saved: Array<IProduct>;
 }
 
 interface IFetchProductsAction {
@@ -35,7 +24,7 @@ interface IFetchProductsAction {
 
 interface IFetchProductsSuccessAction {
   type: SavedActionTypes.FETCH_SAVED_SUCCESS;
-  payload: Array<ISaved>;
+  payload: Array<IProduct>;
 }
 
 interface IFetchProductsErrorAction {

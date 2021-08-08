@@ -1,3 +1,6 @@
+import { IProduct } from "./products";
+import { IViewer } from "./viewer";
+
 export enum UserActionTypes {
   FETCH_USER = 'FETCH_USER',
   FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
@@ -7,69 +10,46 @@ export enum UserActionTypes {
   FETCH_USER_PRODUCTS_ERROR = 'FETCH_USER_PRODUCTS_ERROR',
 }
 
-export type TAction = IFetchUserAction |
-                       IFetchUserSuccessAction |
-                       IFetchUserErrorAction |
-                       IFetchUserProductsAction |
-                       IFetchUserProductsSuccessAction |
-                       IFetchUserProductsErrorAction;
+export type UserActionCreatorsTypes = IFetchUser |
+                                      IFetchUserSuccess |
+                                      IFetchUserError |
+                                      IFetchUserProducts |
+                                      IFetchUserProductsSuccess |
+                                      IFetchUserProductsError;
 
-export interface IInitialState {
+export interface UserInitialState {
   isLoading: boolean;
   sales: number;
-  user: IUser;
-  userProducts: Array<IUserProducts>;
+  user: IViewer;
+  userProducts: Array<IProduct>;
 }
 
-export interface IUser {
-  id: string;
-  fullName: string;
-  location: string | null;
-  avatar: string | null;
-  phone: string | null;
-  createdAt: number;
-  updatedAt: number | null;
-}
-
-export interface IUserProducts {
-  id: string;
-  ownerId: string;
-  title: string;
-  photos: Array<string>;
-  description: string | null;
-  location: string;
-  price: number;
-  createdAt: number;
-  updatedAt: number | null;
-  saved: boolean;
-}
-
-interface IFetchUserAction {
+interface IFetchUser {
   type: UserActionTypes.FETCH_USER;
 }
 
-interface IFetchUserSuccessAction {
+interface IFetchUserSuccess {
   type: UserActionTypes.FETCH_USER_SUCCESS;
-  payload: IUser;
+  payload: IViewer;
 }
 
-interface IFetchUserErrorAction {
+interface IFetchUserError {
   type: UserActionTypes.FETCH_USER_ERROR;
 }
 
-interface IFetchUserProductsAction {
+interface IFetchUserProducts {
   type: UserActionTypes.FETCH_USER_PRODUCTS;
 }
 
-interface IFetchUserProductsSuccessAction {
+interface IFetchUserProductsSuccess {
   type: UserActionTypes.FETCH_USER_PRODUCTS_SUCCESS;
   payload: {
-    list: Array<IUserProducts>,
+    list: Array<IProduct>,
     count: number;
   }
 }
 
-interface IFetchUserProductsErrorAction {
+interface IFetchUserProductsError {
   type: UserActionTypes.FETCH_USER_PRODUCTS_ERROR;
 }
 

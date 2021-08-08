@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { SearchActionTypes, TAction } from '../../types/search';
 import { sendNotificationError } from '../notifications/actions';
+import { 
+  SearchActionTypes, 
+  SearchActionCreatorsTypes, 
+} from '../../types/search';
 
 
 export const setSearchParams = (
@@ -10,7 +13,9 @@ export const setSearchParams = (
   priceFrom: number | null,
   priceTo: number | null,
 ) => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<SearchActionCreatorsTypes>
+  ) => {
     dispatch({ 
       type: SearchActionTypes.SET_SEARCH_PARAMS,
       payload: {
@@ -24,13 +29,17 @@ export const setSearchParams = (
 }
 
 export const deleteSearchParams = () => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<SearchActionCreatorsTypes>
+  ) => {
     dispatch({ type: SearchActionTypes.DELETE_SEARCH_PARAMS });
   }
 }
 
 export const setShowResults = (show: boolean) => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<SearchActionCreatorsTypes>
+  ) => {
     dispatch({ 
       type: SearchActionTypes.SET_SHOW_RESULTS,
       payload: show,
@@ -45,7 +54,9 @@ export const search = (
   priceTo: number | null,
   screen: number 
 ) => {
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<SearchActionCreatorsTypes & any>
+  ) => {
     const limit = 20; 
     const offset = screen * limit;
     try { 
@@ -73,7 +84,7 @@ export const search = (
         });
         if (res.data.length < limit) {
           dispatch({ 
-            type: SearchActionTypes.SET_FETCH_ALL, 
+            type: SearchActionTypes.SET_FETCHED_ALL, 
             payload: true,
           });
         }

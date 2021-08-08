@@ -7,14 +7,14 @@ import { Spinner } from '@chakra-ui/react';
 
 export const ProductsComponent: React.FC<ISearchResultsComponentProps> = ({ 
   isLoading, 
-  fetchAll, 
+  isFetchedAll, 
   searchResults, 
   onClearSearchOptionClick,
 }) => {
   return ( <>
   <div className={styles.searchHeader}>
     <h2 className={styles.searchTitle}>
-      Search results: <span>({fetchAll ? searchResults.length : `${searchResults.length}+`})</span>
+      Search results: <span>({isFetchedAll ? searchResults.length : `${searchResults.length}+`})</span>
     </h2>
     <p onClick={onClearSearchOptionClick} className={styles.searchAction}>
       Clear search options

@@ -1,5 +1,5 @@
 import { 
-  MessagesCreatorTypes, 
+  MessagesActionCreatorsTypes, 
   MessagesInitialState, 
   MessagesActionTypes, 
 } from '../../types/messages';
@@ -13,7 +13,7 @@ const initialState: MessagesInitialState = {
 
 export const messagesReducer = (
   state = initialState, 
-  action: MessagesCreatorTypes
+  action: MessagesActionCreatorsTypes
 ): MessagesInitialState => {
 
   switch (action.type) {
@@ -21,6 +21,7 @@ export const messagesReducer = (
       return {
         ...state,
         isLoading: true,
+        isFetchedAll: false,
       }
     case MessagesActionTypes.FETCH_MESSAGES_SUCCESS:
       return {

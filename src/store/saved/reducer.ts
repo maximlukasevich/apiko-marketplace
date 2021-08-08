@@ -1,11 +1,18 @@
-import { IInitialState, TAction, SavedActionTypes } from '../../types/saved';
+import { 
+  SavedInitialState, 
+  SavedActionCreatorsTypes, 
+  SavedActionTypes 
+} from '../../types/saved';
 
-const initialState: IInitialState = {
+const initialState: SavedInitialState = {
   isLoading: false,
   saved: [],
 }
 
-export const savedReducer = (state = initialState, action: TAction): IInitialState => {
+export const savedReducer = (
+  state = initialState, 
+  action: SavedActionCreatorsTypes
+): SavedInitialState => {
   switch (action.type) {
     case SavedActionTypes.FETCH_SAVED: 
       return {

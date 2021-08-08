@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { userUpdate } from '../../store/current-user/actions';
+import { userUpdate } from '../../store/viewer/actions';
 import { useDispatch } from 'react-redux';
 import { FormikValues, FormikErrors, FormikProps, useFormik } from 'formik';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -9,9 +9,9 @@ import { sendNotificationError, sendNotificationSuccess } from '../../store/noti
 import { IFormikValues } from './types';
 
 export const EditProfile: React.FC = () => {
-  const { currentUser } = useTypedSelector(state => state.currentUser); 
+  const viewer = useTypedSelector(state => state.viewer.viewer); 
   const [avatarLoading, setAvatarLoading] = useState(false);
-  const [avatar, setAvatar] = useState<string | null>(currentUser.avatar);
+  const [avatar, setAvatar] = useState<string | null>(viewer.avatar);
   const dispatch = useDispatch();
   const onChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
     if (event.currentTarget?.files &&
@@ -68,9 +68,9 @@ export const EditProfile: React.FC = () => {
 
   const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
     initialValues: {
-      fullName: currentUser.fullName,
-      phone: currentUser.phone,
-      location: currentUser.location,
+      fullName: viewer.fullName,
+      phone: viewer.phone,
+      location: viewer.location,
     },
     validate: validate,
     onSubmit: onSubmit

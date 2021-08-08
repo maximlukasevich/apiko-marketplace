@@ -12,14 +12,14 @@ import { SavedProductsPage } from './pages/SavedProductsPage'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { routes } from './utils/routes';
-import { auth } from './store/current-user/actions';
+import { auth } from './store/viewer/actions';
 import { ProductPage } from './pages/ProductPage';
 import { ProductUploadPage } from './pages/ProductUploadPage';
 import { UserPage } from './pages/UserPage';
 import { InboxPage } from './pages/InboxPage';
 
 const App: React.FC = () => {
-  const { isAuth } = useTypedSelector(state => state.currentUser);
+  const isAuth = useTypedSelector(state => state.viewer.isAuth);
   const notification = useTypedSelector(state => state.notifications);
   const toast = useToast();
   const dispatch = useDispatch();

@@ -1,17 +1,23 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ProductsActionTypes, TAction } from '../../types/products';
-import { sendNotificationError, sendNotificationSuccess } from '../notifications/actions';
+import {  
+  ProductsActionCreatorsTypes, 
+  ProductsActionTypes 
+} from '../../types/products';
+import { 
+  sendNotificationError, 
+  sendNotificationSuccess 
+} from '../notifications/actions';
 
 export const fetchProducts = (screen: number) => {
   const limit = 20; 
   const offset = screen * limit;
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<ProductsActionCreatorsTypes & any>
+  ) => {
     try {
       if (screen === 0) {
-        dispatch({
-          type: ProductsActionTypes.CLEAN_PRODUCTS
-        });
+        dispatch({ type: ProductsActionTypes.CLEAR_PRODUCTS });
       }
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS
@@ -26,9 +32,7 @@ export const fetchProducts = (screen: number) => {
         }
       });
       if (res.data.length < limit) {
-        dispatch({
-          type: ProductsActionTypes.FETCH_ALL_TRUE
-        });
+        dispatch({ type: ProductsActionTypes.FETCHED_ALL });
       }
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS_SUCCESS,
@@ -41,7 +45,9 @@ export const fetchProducts = (screen: number) => {
 }
 
 export const fetchOneProduct = (id: string) => {
-  return async (dispatch: Dispatch<TAction>) => {
+  return async (
+    dispatch: Dispatch<ProductsActionCreatorsTypes>
+  ) => {
     try {
       dispatch({ type: ProductsActionTypes.FETCH_ONE_PRODUCT });
       const res = await axios.get(`/api/products/${id}`, {
@@ -66,9 +72,11 @@ export const uploadProduct = (
   location: string,
   price: number,
 ) => {
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<ProductsActionCreatorsTypes & any>
+  ) => {
     try {
-      const res = await axios.post('/api/products', {
+      await axios.post('/api/products', {
         title,
         description,
         photos,
@@ -80,7 +88,6 @@ export const uploadProduct = (
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      console.log(res);
       dispatch(sendNotificationSuccess('Product loaded'));
     } catch (error) {
       dispatch(sendNotificationError('Failed to load product'));

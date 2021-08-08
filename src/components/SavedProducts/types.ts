@@ -1,6 +1,6 @@
-import { ISaved } from '../../types/saved';
+import { IProduct } from '../../types/products';
 export interface ISavedProductsProps {
   isAuth: boolean;
   isLoading: boolean;
-  saved: Array<ISaved>;
+  saved: Array<IProduct>;
 }

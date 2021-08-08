@@ -4,9 +4,11 @@ export enum NotificationsActionTypes {
   DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
 }
 
-export type TAction = setNotificationSuccess | setNotificationError | deleteNotification;
+export type NotificationsActionCreatorsTypes = setNotificationSuccess | 
+                                               setNotificationError | 
+                                               deleteNotification;
 
-export interface IInitialState {
+export interface NotificationInitialState {
   notification: string | null;
   type?: 'info' | 'warning' | 'success' | 'error';
 }

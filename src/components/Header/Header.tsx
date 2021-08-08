@@ -29,7 +29,7 @@ interface IHeader {
 
 export const Header: React.FC<IHeader> = ({ light, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { currentUser, isAuth } = useTypedSelector(state => state.currentUser);
+  const { viewer, isAuth } = useTypedSelector(state => state.viewer);
   const location = useLocation();
   let heartIcon = heartOutlineWhite;
   let heartMobile = heartOutlineWhite;
@@ -74,9 +74,9 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
           {isAuth ?
           <div className={styles.headerMenu}> 
             <HeaderProfile 
-              fullName={currentUser.fullName} 
-              email={currentUser.email} 
-              avatar={currentUser.avatar || undefined} />
+              fullName={viewer.fullName} 
+              email={viewer.email} 
+              avatar={viewer.avatar || undefined} />
           </div> :
           <NavLink 
             to={routes.LOGIN} 
@@ -130,9 +130,9 @@ export const Header: React.FC<IHeader> = ({ light, children }) => {
                 {isAuth && 
                 <div className={styles.headerMenu}> 
                   <HeaderProfile 
-                    fullName={currentUser.fullName} 
-                    email={currentUser.email} 
-                    avatar={currentUser.avatar || undefined} />
+                    fullName={viewer.fullName} 
+                    email={viewer.email} 
+                    avatar={viewer.avatar || undefined} />
                 </div> } 
               </div>
               <div className={styles.mobileChildren}>

@@ -5,7 +5,11 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { IProductsProps } from './types';
 import { Spinner } from '@chakra-ui/react';
 
-export const ProductsComponent: React.FC<IProductsProps> = ({ isLoading, fetchAll, products }) => {
+export const ProductsComponent: React.FC<IProductsProps> = ({ 
+  isLoading, 
+  isFetchedAll, 
+  products 
+}) => {
   return ( <>
     <ProductsWrapper>
       {products.map((item, key) => 
@@ -23,7 +27,7 @@ export const ProductsComponent: React.FC<IProductsProps> = ({ isLoading, fetchAl
     </ProductsWrapper >   
     <div className={styles.spinner}>
         {isLoading ? <Spinner size='md' color='#349a89' /> : '' }   
-        {fetchAll ? 'That`s all' : ''}
+        {isFetchedAll ? 'That`s all' : ''}
     </div>
 
   </> );

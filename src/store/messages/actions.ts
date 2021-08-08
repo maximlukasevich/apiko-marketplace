@@ -1,11 +1,17 @@
 import axios from 'axios';
-import { MessagesActionTypes, MessagesCreatorTypes } from '../../types/messages';
 import { Dispatch } from 'redux';
-import { TAction as ChatTAction, ChatActionTypes } from '../../types/chats';
+import { 
+  MessagesActionTypes, 
+  MessagesActionCreatorsTypes 
+} from '../../types/messages';
+import { 
+  ChatsActionCreatorsTypes, 
+  ChatsActionTypes 
+} from '../../types/chats';
 
 export const fetchMessages = (chatId: string, fromId: number | null) => {
   const limit = 20; 
-  return async (dispatch: Dispatch<MessagesCreatorTypes>) => {
+  return async (dispatch: Dispatch<MessagesActionCreatorsTypes>) => {
     try {
       if (fromId === null) {
         dispatch({ type: MessagesActionTypes.CLEAR_MESSAGES });
@@ -35,7 +41,9 @@ export const fetchMessages = (chatId: string, fromId: number | null) => {
 }
 
 export const sendMessage = (chatId: string, text: string, userId: string) => {
-  return async (dispatch: Dispatch<MessagesCreatorTypes | ChatTAction>) => {
+  return async (
+    dispatch: Dispatch<MessagesActionCreatorsTypes | ChatsActionCreatorsTypes>
+  ) => {
     try {
       const message = {
         id: Math.random(),
@@ -65,7 +73,7 @@ export const sendMessage = (chatId: string, text: string, userId: string) => {
         }
       });
       dispatch({ 
-        type: ChatActionTypes.ADD_LAST_MESSAGE,
+        type: ChatsActionTypes.ADD_LAST_MESSAGE,
         payload: {
           lastMessage: res.data,
           chatId: res.data.chatId,
@@ -79,7 +87,9 @@ export const sendMessage = (chatId: string, text: string, userId: string) => {
 }
 
 export const fetchMessagesRealtime = (message: any) => {
-  return async (dispatch: Dispatch<MessagesCreatorTypes | ChatTAction>) => {
+  return async (
+    dispatch: Dispatch<MessagesActionCreatorsTypes | ChatsActionCreatorsTypes>
+  ) => {
     try {
       if (message.type === 'ADD') {
         dispatch({ 
@@ -87,7 +97,7 @@ export const fetchMessagesRealtime = (message: any) => {
           payload: message.message,
         });
         dispatch({
-          type: ChatActionTypes.ADD_LAST_MESSAGE,
+          type: ChatsActionTypes.ADD_LAST_MESSAGE,
           payload: {
             lastMessage: message.message,
             chatId: message.message.chatId,
@@ -101,7 +111,9 @@ export const fetchMessagesRealtime = (message: any) => {
 }
 
 export const clearMessages = () => {
-  return async (dispatch: Dispatch<MessagesCreatorTypes>) => {
+  return async (
+    dispatch: Dispatch<MessagesActionCreatorsTypes>
+  ) => {
     dispatch({ type: MessagesActionTypes.CLEAR_MESSAGES });
   }
 }

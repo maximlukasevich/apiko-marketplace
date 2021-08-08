@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store/current-user/actions';
+import { logout } from '../../store/viewer/actions';
 import styles from './header-profile.module.css';
 import { Avatar } from '../commons/Avatar/Avatar';
 import { NavLink } from 'react-router-dom';
@@ -20,7 +20,7 @@ interface IHeaderProfile {
 
 export const HeaderProfile: React.FC<IHeaderProfile> = ({ fullName, email, avatar }) => {
   
-  const user = useTypedSelector(state => state.currentUser.currentUser);
+  const viewer = useTypedSelector(state => state.viewer.viewer);
   const dispatch = useDispatch();
   const onClick = (): void => {
     dispatch(logout());
@@ -39,7 +39,7 @@ export const HeaderProfile: React.FC<IHeaderProfile> = ({ fullName, email, avata
               <h2 className={styles.menuFullName}>{fullName}</h2>
               <p className={styles.menuEmail}>{email}</p>
             </div>
-            <NavLink to={routes.USER_PAGE.replace(':id', user ? user.id : '')}>
+            <NavLink to={routes.USER_PAGE.replace(':id', viewer ? viewer.id : '')}>
               <span className={styles.profile}>Profile</span>
             </NavLink>
           </div>

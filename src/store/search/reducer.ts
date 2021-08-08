@@ -1,6 +1,10 @@
-import { SearchActionTypes, TAction, IInitialState } from '../../types/search';
+import { 
+  SearchActionTypes, 
+  SearchActionCreatorsTypes, 
+  SearchInitialState 
+} from '../../types/search';
 
-const initialState: IInitialState = {
+const initialState: SearchInitialState = {
   searchParams: {
     keywords: null,
     location: null,
@@ -10,10 +14,13 @@ const initialState: IInitialState = {
   searchResults: [],
   showResults: false,
   isLoading: false,
-  fetchAll: false,
+  isFetchedAll: false,
 }
 
-export const searchReducer = (state = initialState, action: TAction): IInitialState => {
+export const searchReducer = (
+  state = initialState, 
+  action: SearchActionCreatorsTypes
+): SearchInitialState => {
   switch (action.type) {
     case SearchActionTypes.SET_SEARCH_PARAMS:
       return {
@@ -52,13 +59,13 @@ export const searchReducer = (state = initialState, action: TAction): IInitialSt
       return {
         ...state,
         isLoading: false,
-        fetchAll: false,
+        isFetchedAll: false,
         searchResults: [],
       }
-    case SearchActionTypes.SET_FETCH_ALL:
+    case SearchActionTypes.SET_FETCHED_ALL:
       return {
         ...state,
-        fetchAll: action.payload,
+        isFetchedAll: action.payload,
       }
     default:
       return state;

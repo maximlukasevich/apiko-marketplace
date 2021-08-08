@@ -1,3 +1,5 @@
+import { IProduct } from './products';
+
 export enum SearchActionTypes {
   SET_SEARCH_PARAMS = 'SET_SEARCH_PARAMS',
   DELETE_SEARCH_PARAMS = 'DELETE_SEARCH_PARAMS',
@@ -6,24 +8,24 @@ export enum SearchActionTypes {
   FETCH_SEARCH_RESULTS_SUCCESS = 'FETCH_SEARCH_RESULTS_SUCCESS',
   FETCH_SEARCH_RESULTS_ERROR = 'FETCH_SEARCH_RESULTS_ERROR',
   CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS',
-  SET_FETCH_ALL = 'SET_FETCH_ALL',
+  SET_FETCHED_ALL = 'SET_FETCHED_ALL',
 }
 
-export type TAction = ISetSearchParamsAction |
-                      IDeleteSearchParamsAction |
-                      ISetShowResultsAction |
-                      IFetchSearchResultsAction |
-                      IFetchSearchResultsSuccessAction |
-                      IFetchSearchResultsErrorAction |
-                      IClearSearchResultsAction |
-                      ISetFetchAllAction;
+export type SearchActionCreatorsTypes = ISetSearchParams |
+                                        IDeleteSearchParams |
+                                        ISetShowResults |
+                                        IFetchSearchResults |
+                                        IFetchSearchResultsSuccess |
+                                        IFetchSearchResultsError |
+                                        IClearSearchResults |
+                                        ISetFetchedAll;
 
-export interface IInitialState {
+export interface SearchInitialState {
   searchParams: ISearchParams;
-  searchResults: Array<IResultProduct>;
+  searchResults: Array<IProduct>;
   showResults: boolean;
   isLoading: boolean;
-  fetchAll: boolean;
+  isFetchedAll: boolean;
 }
 
 export interface ISearchParams {
@@ -33,51 +35,38 @@ export interface ISearchParams {
   priceTo: number | null;
 }
 
-export interface IResultProduct {
-  id: string;
-  photos: Array<string>;
-  ownerId: string;
-  title: string;
-  description: string | null;
-  location: string;
-  price: number;
-  createdAt: number;
-  updatedAt: number | null;
-  saved: boolean;
-}
-
-interface ISetSearchParamsAction {
+interface ISetSearchParams {
   type: SearchActionTypes.SET_SEARCH_PARAMS;
   payload: ISearchParams;
 }
 
-interface IDeleteSearchParamsAction {
+interface IDeleteSearchParams {
   type: SearchActionTypes.DELETE_SEARCH_PARAMS;
 }
 
-interface ISetShowResultsAction {
+interface ISetShowResults {
   type: SearchActionTypes.SET_SHOW_RESULTS;
   payload: boolean;
 }
 
-interface IFetchSearchResultsAction {
+interface IFetchSearchResults {
   type: SearchActionTypes.FETCH_SEARCH_RESULTS;
 }
 
-interface IFetchSearchResultsSuccessAction {
+interface IFetchSearchResultsSuccess {
   type: SearchActionTypes.FETCH_SEARCH_RESULTS_SUCCESS;
-  payload: Array<IResultProduct>;
+  payload: Array<IProduct>;
 }
 
-interface IFetchSearchResultsErrorAction {
+interface IFetchSearchResultsError {
   type: SearchActionTypes.FETCH_SEARCH_RESULTS_ERROR;
 }
 
-interface IClearSearchResultsAction {
+interface IClearSearchResults {
   type: SearchActionTypes.CLEAR_SEARCH_RESULTS;
 }
 
-interface ISetFetchAllAction {
-  type: SearchActionTypes.SET_FETCH_ALL;
+interface ISetFetchedAll {
+  type: SearchActionTypes.SET_FETCHED_ALL;
   payload: boolean;
 }

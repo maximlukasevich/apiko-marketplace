@@ -17,7 +17,7 @@ const Chat: React.FC<IChatProps> = ({
   isLoading,
 }) => {
   const { id }: { id: string } = useParams();
-  const userId = useTypedSelector(state => state.currentUser.currentUser.id);
+  const userId = useTypedSelector(state => state.viewer.viewer.id);
   const chatBottomRef: any = useRef({});
   const dispatch = useDispatch();
   const chatId = chats.findIndex(chat => chat.id === id);

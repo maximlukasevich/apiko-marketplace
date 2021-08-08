@@ -9,7 +9,7 @@ import { search } from '../../store/search/actions';
 
 const Products: React.FC<ISearchResultsProps> = ({ 
   isLoading, 
-  fetchAll, 
+  isFetchedAll, 
   searchParams,
   searchResults, 
   isAuth,
@@ -23,10 +23,10 @@ const Products: React.FC<ISearchResultsProps> = ({
   }
 
   useEffect(() => {
-    if (isBottom && !fetchAll) {
+    if (isBottom && !isFetchedAll) {
       setScreen(prevState => prevState + 1);
     }
-  }, [isBottom, fetchAll]);
+  }, [isBottom, isFetchedAll]);
 
   useEffect(() => {
     dispatch(search(
@@ -44,17 +44,17 @@ const Products: React.FC<ISearchResultsProps> = ({
 
   return <ProductsComponent 
     isLoading={isLoading} 
-    fetchAll={fetchAll} 
+    isFetchedAll={isFetchedAll} 
     searchResults={searchResults}
     onClearSearchOptionClick={onClearSearchOptionClick} />;
 }
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.search.isLoading,
-  fetchAll: state.search.fetchAll,
+  isFetchedAll: state.search.isFetchedAll,
   searchResults: state.search.searchResults,
   searchParams: state.search.searchParams,
-  isAuth: state.currentUser.isAuth,
+  isAuth: state.viewer.isAuth,
 });
 
 export default connect(mapStateToProps)(Products);

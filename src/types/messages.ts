@@ -10,15 +10,15 @@ export enum MessagesActionTypes {
   CLEAR_MESSAGES = 'CLEAR_MESSAGES',
 }
 
-export type MessagesCreatorTypes = IFetchMessages |
-                                   IFetchMessagesSuccess |
-                                   IFetchMessagesError |
-                                   ISendMessage |
-                                   ISendMessageSuccess |
-                                   ISendMessageError |
-                                   IAddMessage |
-                                   IFetchAll |
-                                   IClearMessages;
+export type MessagesActionCreatorsTypes = IFetchMessages |
+                                          IFetchMessagesSuccess |
+                                          IFetchMessagesError |
+                                          ISendMessage |
+                                          ISendMessageSuccess |
+                                          ISendMessageError |
+                                          IAddMessage |
+                                          IFetchAll |
+                                          IClearMessages;
 
 export interface MessagesInitialState {
   messages: Array<IMessage>;

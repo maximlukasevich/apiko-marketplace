@@ -1,24 +1,26 @@
+import { IViewer } from './viewer';
+
 export enum ProductsActionTypes {
   FETCH_PRODUCTS = 'FETCH_PRODUCTS',
   FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS',
-  CLEAN_PRODUCTS = 'CLEAN_PRODUCTS',
+  CLEAR_PRODUCTS = 'CLEAR_PRODUCTS',
   FETCH_ONE_PRODUCT = 'FETCH_ONE_PRODUCT',
   FETCH_ONE_PRODUCT_SUCCESS = 'FETCH_ONE_PRODUCT_SUCCESS',
   FETCH_ONE_PRODUCT_ERROR = 'FETCH_ONE_PRODUCT_ERROR',
-  FETCH_ALL_TRUE = 'FETCH_ALL_TRUE',
+  FETCHED_ALL = 'FETCHED_ALL',
 }
 
-export type TAction = IFetchProductsAction | 
-                      IFetchProductsSuccessAction |
-                      IFetchAllTrueAction |
-                      IFeatchProductAction |
-                      IFeatchProductSuccessAction |
-                      IFeatchProductErrorAction |
-                      ICleanProductsAction;
+export type ProductsActionCreatorsTypes = IFetchProducts | 
+                                          IFetchProductsSuccess |
+                                          IFetchedAll |
+                                          IFeatchProduct |
+                                          IFeatchProductSuccess |
+                                          IFeatchProductError |
+                                          IClearProducts;
 
-export interface IInitialState {
+export interface ProductsInitialState {
   isLoading: boolean;
-  fetchAll: boolean;
+  isFetchedAll: boolean;
   products: Array<IProduct>;
   oneProduct: IOneProduct;
 }
@@ -48,44 +50,36 @@ export interface IOneProduct {
   updatedAt: number | null;
   saved: boolean;
   chatId: string | null;
-  owner: {
-    id: string;
-    fullName: string;
-    location: string | null;
-    avatar: string | null;
-    phone: string | null;
-    createdAt: number;
-    updatedAt: number | null;
-  }
+  owner: IViewer;
 }
 
 
-interface IFetchProductsAction {
+interface IFetchProducts {
   type: ProductsActionTypes.FETCH_PRODUCTS;
 }
 
-interface IFetchProductsSuccessAction {
+interface IFetchProductsSuccess {
   type: ProductsActionTypes.FETCH_PRODUCTS_SUCCESS;
   payload: IProduct;
 }
 
-interface IFetchAllTrueAction {
-  type: ProductsActionTypes.FETCH_ALL_TRUE
+interface IFetchedAll {
+  type: ProductsActionTypes.FETCHED_ALL;
 }
 
-interface IFeatchProductAction {
+interface IFeatchProduct {
   type: ProductsActionTypes.FETCH_ONE_PRODUCT;
 }
 
-interface IFeatchProductSuccessAction {
+interface IFeatchProductSuccess {
   type: ProductsActionTypes.FETCH_ONE_PRODUCT_SUCCESS;
   payload: IOneProduct;
 }
 
-interface IFeatchProductErrorAction {
+interface IFeatchProductError {
   type: ProductsActionTypes.FETCH_ONE_PRODUCT_ERROR;
 }
 
-interface ICleanProductsAction {
-  type: ProductsActionTypes.CLEAN_PRODUCTS;
+interface IClearProducts {
+  type: ProductsActionTypes.CLEAR_PRODUCTS;
 }

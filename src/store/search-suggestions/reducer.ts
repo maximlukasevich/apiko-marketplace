@@ -1,15 +1,18 @@
 import { 
-  IInitialState, 
-  TAction, 
+  SearchSuggestionsInitialState, 
+  SearchSuggestionsActionCreatorsTypes, 
   SearchSuggestionsActionTypes
-} from '../../types/searchSuggestions';
+} from '../../types/search-suggestions';
 
-const initialState: IInitialState = {
+const initialState: SearchSuggestionsInitialState = {
   isLoading: false,
   suggestions: [],
 }
 
-export const searchSuggestionsReducer = (state = initialState, action: TAction): IInitialState => {
+export const searchSuggestionsReducer = (
+  state = initialState, 
+  action: SearchSuggestionsActionCreatorsTypes
+): SearchSuggestionsInitialState => {
   switch (action.type) {
     case SearchSuggestionsActionTypes.FETCH_SUGGESTIONS: 
       return {

@@ -3,9 +3,10 @@ export enum SearchRecentsActionTypes {
   CLEAR_RECENTS = 'CLEAR_RECENTS',
 }
 
-export type TAction = IAddRecentAction | IClearRecentAction;
+export type SearchRecentsActionCreatorsTypes = IAddRecentAction | 
+                                               IClearRecentAction;
 
-export interface IInitialState {
+export interface SearchRecentsInitialState {
   recents: Array<string>;
 }
 

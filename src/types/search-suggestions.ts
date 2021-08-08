@@ -4,11 +4,11 @@ export enum SearchSuggestionsActionTypes {
   FETCH_SUGGESTIONS_ERROR = 'FETCH_SUGGESTIONS_ERROR',
 }
 
-export type TAction = IFeatchSuggestionsAction | 
-                      IFeatchSuggestionsSuccessAction | 
-                      IFeatchSuggestionsErrorAction;
+export type SearchSuggestionsActionCreatorsTypes = IFeatchSuggestionsAction | 
+                                                   IFeatchSuggestionsSuccessAction | 
+                                                   IFeatchSuggestionsErrorAction;
 
-export interface IInitialState {
+export interface SearchSuggestionsInitialState {
   isLoading: boolean;
   suggestions: Array<ISuggestion>;
 }

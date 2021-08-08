@@ -1,10 +1,17 @@
-import { SearchRecentsActionTypes, TAction, IInitialState } from '../../types/searchRecents';
+import { 
+  SearchRecentsActionTypes, 
+  SearchRecentsActionCreatorsTypes, 
+  SearchRecentsInitialState 
+} from '../../types/search-recents';
 
-const initialState: IInitialState = {
+const initialState: SearchRecentsInitialState = {
   recents: [],
 }
 
-export const searchRecentsReducer = (state = initialState, action: TAction): IInitialState => {
+export const searchRecentsReducer = (
+  state = initialState, 
+  action: SearchRecentsActionCreatorsTypes
+  ): SearchRecentsInitialState => {
   switch(action.type) {
     case SearchRecentsActionTypes.ADD_RECENT:
       return {

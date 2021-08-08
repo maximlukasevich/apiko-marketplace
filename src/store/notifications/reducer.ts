@@ -1,11 +1,18 @@
-import { IInitialState, TAction, NotificationsActionTypes } from '../../types/notifications';
+import { 
+  NotificationInitialState, 
+  NotificationsActionCreatorsTypes, 
+  NotificationsActionTypes 
+} from '../../types/notifications';
 
-const initialState: IInitialState = {
+const initialState: NotificationInitialState = {
   notification: null,
   type: undefined,
 }
 
-export const notificationsReducer = (state = initialState, action: TAction): IInitialState => {
+export const notificationsReducer = (
+  state = initialState, 
+  action: NotificationsActionCreatorsTypes,
+): NotificationInitialState => {
   switch (action.type) {
     case NotificationsActionTypes.SET_NORIFICATION_SUCCESS:
       return {

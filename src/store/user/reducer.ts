@@ -1,11 +1,16 @@
-import { UserActionTypes, IInitialState, TAction } from '../../types/user';
+import { 
+  UserActionTypes, 
+  UserInitialState, 
+  UserActionCreatorsTypes 
+} from '../../types/user';
 
-const initialState: IInitialState = {
+const initialState: UserInitialState = {
   isLoading: false,
   sales: 0,
   user: {
     id: '',
     fullName: '',
+    email: '',
     location: null,
     avatar: null,
     phone: null,
@@ -15,21 +20,16 @@ const initialState: IInitialState = {
   userProducts: [],
 }
 
-export const userReducer = (state = initialState, action: TAction): IInitialState => {
+export const userReducer = (
+  state = initialState, 
+  action: UserActionCreatorsTypes
+  ): UserInitialState => {
   switch (action.type) {
     case UserActionTypes.FETCH_USER: 
       return {
         ...state,
         isLoading: true,
-        user: {
-          id: '',
-          fullName: '',
-          location: null,
-          avatar: null,
-          phone: null,
-          createdAt: 0,
-          updatedAt: null,
-        },
+        user: initialState.user
       }
     case UserActionTypes.FETCH_USER_SUCCESS: 
       return {
@@ -41,15 +41,7 @@ export const userReducer = (state = initialState, action: TAction): IInitialStat
       return {
         ...state,
         isLoading: false,
-        user: {
-          id: '',
-          fullName: '',
-          location: null,
-          avatar: null,
-          phone: null,
-          createdAt: 0,
-          updatedAt: null,
-        },
+        user: initialState.user,
       }
     case UserActionTypes.FETCH_USER_PRODUCTS:
       return {

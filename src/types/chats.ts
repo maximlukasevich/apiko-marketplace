@@ -1,4 +1,4 @@
-export enum ChatActionTypes {
+export enum ChatsActionTypes {
   FETCH_CHATS = 'FETCH_CHATS',
   FETCH_CHATS_SUCCESS = 'FETCH_CHATS_SUCCESS',
   FETCH_CHATS_ERROR = 'FETCH_CHATS_ERROR',
@@ -7,14 +7,14 @@ export enum ChatActionTypes {
   ADD_LAST_MESSAGE = 'ADD_LAST_MESSAGE',
 }
 
-export type TAction = IFetchChats |
-                      IFetchChatsSuccess |
-                      IFetchChatsError |
-                      ICreateChatSuccess |
-                      ICreateChatError |
-                      IAddLastMessage;
+export type ChatsActionCreatorsTypes = IFetchChats |
+                                      IFetchChatsSuccess |
+                                      IFetchChatsError |
+                                      ICreateChatSuccess |
+                                      ICreateChatError |
+                                      IAddLastMessage;
 
-export interface IInitialState {
+export interface ChatsInitialState {
   chats: Array<IChat>;
   isChatsLoading: boolean;
 }
@@ -62,28 +62,28 @@ interface ILastMessage {
 }
 
 interface IFetchChats { 
-  type: ChatActionTypes.FETCH_CHATS;
+  type: ChatsActionTypes.FETCH_CHATS;
 }
 
 interface IFetchChatsSuccess { 
-  type: ChatActionTypes.FETCH_CHATS_SUCCESS;
+  type: ChatsActionTypes.FETCH_CHATS_SUCCESS;
   payload: Array<IChat>;
 }
 
 interface IFetchChatsError {
-  type: ChatActionTypes.FETCH_CHATS_ERROR;
+  type: ChatsActionTypes.FETCH_CHATS_ERROR;
 }
 
 interface ICreateChatSuccess {
-  type: ChatActionTypes.CREATE_CHAT_SUCCESS;
+  type: ChatsActionTypes.CREATE_CHAT_SUCCESS;
 }
 
 interface ICreateChatError {
-  type: ChatActionTypes.CREATE_CHAT_ERROR;
+  type: ChatsActionTypes.CREATE_CHAT_ERROR;
 }
 
 interface IAddLastMessage {
-  type: ChatActionTypes.ADD_LAST_MESSAGE;
+  type: ChatsActionTypes.ADD_LAST_MESSAGE;
   payload: {
     lastMessage: ILastMessage,
     chatId: string,

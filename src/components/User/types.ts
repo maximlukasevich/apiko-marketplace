@@ -1,8 +1,9 @@
-import { IUser, IUserProducts } from '../../types/user';
-
+import { IProduct } from '../../types/products';
+import { IViewer } from '../../types/viewer';
 export interface IUserProps {
-  user: IUser;
-  userProducts: Array<IUserProducts>;
+  user: IViewer;
+  userProducts: Array<IProduct>;
   isLoading: boolean;
   sales: number;
+  isAuth?: boolean;
 }

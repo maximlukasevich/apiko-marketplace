@@ -1,9 +1,13 @@
-import { IInitialState, TAction, CurrentUserActionTypes } from '../../types/currentUser';
+import { 
+  ViewerInitialState, 
+  ViewerActionCreatorsTypes, 
+  ViewerActionTypes 
+} from '../../types/viewer';
 
-const initialState: IInitialState = {
+const initialState: ViewerInitialState = {
   isAuth: false,
   isLoading: false,
-  currentUser: {
+  viewer: {
     id: '',
     fullName: '',
     location: null,
@@ -15,36 +19,39 @@ const initialState: IInitialState = {
   }
 }
 
-export const currentUserReducer = (state = initialState, action: TAction): IInitialState => {
+export const viewerReducer = (
+  state = initialState, 
+  action: ViewerActionCreatorsTypes
+): ViewerInitialState => {
   switch (action.type) {
-    case CurrentUserActionTypes.FETCH_CURRENT_USER:
+    case ViewerActionTypes.FETCH_CURRENT_USER:
       return { 
         ...state,
         isAuth: false,
         isLoading: true,
-        currentUser: initialState.currentUser
+        viewer: initialState.viewer
       }
-    case CurrentUserActionTypes.FETCH_CURRENT_USER_SUCCESS:
+    case ViewerActionTypes.FETCH_CURRENT_USER_SUCCESS:
       return {
         ...state,
         isAuth: true,
         isLoading: false,
-        currentUser: action.payload,
+        viewer: action.payload,
       }
-    case CurrentUserActionTypes.FETCH_CURRENT_USER_ERROR: 
+    case ViewerActionTypes.FETCH_CURRENT_USER_ERROR: 
       return {
         ...state,
         isAuth: false,
         isLoading: false,
-        currentUser: initialState.currentUser
+        viewer: initialState.viewer
       }
-    case CurrentUserActionTypes.LOGOUT:
+    case ViewerActionTypes.LOGOUT:
       localStorage.removeItem('token');
       return {
         ...state,
         isAuth: false,
         isLoading: false,
-        currentUser: initialState.currentUser
+        viewer: initialState.viewer,
       }
 
     default: 

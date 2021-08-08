@@ -8,7 +8,7 @@ import { IProductsProps } from './types';
 
 const Products: React.FC<IProductsProps> = ({ 
   isLoading, 
-  fetchAll, 
+  isFetchedAll, 
   products, 
   isAuth,
 }) => {
@@ -16,10 +16,10 @@ const Products: React.FC<IProductsProps> = ({
   const isBottom = usePageBottom();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isBottom && !fetchAll) {
+    if (isBottom && !isFetchedAll) {
       setScreen(prevState => prevState + 1);
     }
-  }, [isBottom, fetchAll]);
+  }, [isBottom, isFetchedAll]);
   useEffect(() => {
     dispatch(fetchProducts(screen));
   }, [dispatch, screen]);
@@ -27,14 +27,17 @@ const Products: React.FC<IProductsProps> = ({
     setScreen(0);
   }, [isAuth]);
 
-  return <ProductsComponent isLoading={isLoading} fetchAll={fetchAll} products={products} />;
+  return <ProductsComponent 
+    isLoading={isLoading} 
+    isFetchedAll={isFetchedAll} 
+    products={products} />;
 }
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.products.isLoading,
-  fetchAll: state.products.fetchAll,
+  isFetchedAll: state.products.isFetchedAll,
   products: state.products.products,
-  isAuth: state.currentUser.isAuth,
+  isAuth: state.viewer.isAuth,
 });
 
 export default connect(mapStateToProps)(Products);

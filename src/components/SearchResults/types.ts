@@ -1,15 +1,16 @@
-import { IResultProduct, ISearchParams } from '../../types/search';
+import { ISearchParams } from '../../types/search';
+import { IProduct } from '../../types/products';
 export interface ISearchResultsProps {
   isAuth: boolean;
   isLoading: boolean;
-  fetchAll: boolean;
+  isFetchedAll: boolean;
   searchParams: ISearchParams;
-  searchResults: Array<IResultProduct>;
+  searchResults: Array<IProduct>;
 } 
 
 export interface ISearchResultsComponentProps {
   isLoading: boolean;
-  fetchAll: boolean;
-  searchResults: Array<IResultProduct>;
+  isFetchedAll: boolean;
+  searchResults: Array<IProduct>;
   onClearSearchOptionClick: () => void;
 } 

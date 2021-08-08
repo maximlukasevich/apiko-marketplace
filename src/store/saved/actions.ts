@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { SavedActionTypes, TAction } from '../../types/saved';
-import { sendNotificationSuccess, sendNotificationError } from '../notifications/actions';
+import { 
+  SavedActionCreatorsTypes, 
+  SavedActionTypes 
+} from '../../types/saved';
+import { 
+  sendNotificationSuccess, 
+  sendNotificationError
+} from '../notifications/actions';
 
 export const fetchSaved = () => {
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<SavedActionCreatorsTypes & any>
+  ) => {
     try {
-      dispatch({ 
-        type: SavedActionTypes.FETCH_SAVED
-      });
+      dispatch({ type: SavedActionTypes.FETCH_SAVED });
       const res = await axios.get('/api/products/saved', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -19,15 +25,15 @@ export const fetchSaved = () => {
         payload: res.data
       });
     } catch (error) {
-      dispatch({
-        type: SavedActionTypes.FETCH_SAVED_ERROR
-      });
+      dispatch({ type: SavedActionTypes.FETCH_SAVED_ERROR });
     }
   }
 }
 
 export const saveProduct = (id: string) => {
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<SavedActionCreatorsTypes & any>
+  ) => {
     try { 
       await axios.post(`/api/products/${id}/save`, {}, {
         headers: {
@@ -35,21 +41,19 @@ export const saveProduct = (id: string) => {
         }
       });
       dispatch(sendNotificationSuccess('Product saved'));
-      dispatch({
-        type: SavedActionTypes.PRODUCT_SAVE, 
-      });
+      dispatch({ type: SavedActionTypes.PRODUCT_SAVE });
     } catch (error) {
       console.log(error);
       dispatch(sendNotificationError(error.response.data.error));
-      dispatch({
-        type: SavedActionTypes.FETCH_SAVED_ERROR
-      });
+      dispatch({ type: SavedActionTypes.FETCH_SAVED_ERROR });
     }
   }
 }
 
 export const unsaveProduct = (id: string) => {
-  return async (dispatch: Dispatch<TAction & any>) => {
+  return async (
+    dispatch: Dispatch<SavedActionCreatorsTypes & any>
+  ) => {
     try {
       await axios.post(`/api/products/${id}/unsave`, {}, {
         headers: {

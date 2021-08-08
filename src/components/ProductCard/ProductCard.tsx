@@ -15,7 +15,7 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   location, createdDate, price, 
   saved
 }) => {
-  const { isAuth } = useTypedSelector(state => state.currentUser);
+  const isAuth = useTypedSelector(state => state.viewer.isAuth);
   const [productSaved, setProductSaved] = useState(saved);
   const webLocation = useLocation();
   const dispatch = useDispatch();

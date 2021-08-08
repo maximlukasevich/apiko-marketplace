@@ -5,15 +5,14 @@ import UserComponent from './UserComponent';
 import { fetchUser, fetchUserProducts } from '../../store/user/actions';
 import { RootState } from '../../store/indexReducer';
 import { IUserProps } from './types';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const User: React.FC<IUserProps> = ({
   user,
   userProducts,
   isLoading,
-  sales
+  sales,
+  isAuth,
 }) => {
-  const { isAuth } = useTypedSelector(state => state.currentUser);
   const { id } = useParams<{id: string}>();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +31,7 @@ const mapStateToProps = (state: RootState) => ({
   userProducts: state.user.userProducts,
   isLoading: state.user.isLoading,
   sales: state.user.sales,
+  isAuth: state.viewer.isAuth,
 });
 
 export default connect(mapStateToProps)(User);
