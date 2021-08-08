@@ -7,11 +7,11 @@ import { RootState } from '../../store/indexReducer';
 import { ISearchResultsProps } from './types';
 import { search } from '../../store/search/actions';
 
-const Products: React.FC<ISearchResultsProps> = ({ 
-  isLoading, 
-  isFetchedAll, 
+const Products: React.FC<ISearchResultsProps> = ({
+  isLoading,
+  isFetchedAll,
   searchParams,
-  searchResults, 
+  searchResults,
   isAuth,
 }) => {
   const [screen, setScreen] = useState<number>(0);
@@ -20,34 +20,39 @@ const Products: React.FC<ISearchResultsProps> = ({
 
   const onClearSearchOptionClick = () => {
     dispatch(deleteSearchParams());
-  }
+  };
 
   useEffect(() => {
     if (isBottom && !isFetchedAll) {
-      setScreen(prevState => prevState + 1);
+      setScreen((prevState) => prevState + 1);
     }
   }, [isBottom, isFetchedAll]);
 
   useEffect(() => {
-    dispatch(search(
-      searchParams.keywords, 
-      searchParams.location, 
-      searchParams.priceFrom, 
-      searchParams.priceTo, 
-      screen,
-    ));
+    dispatch(
+      search(
+        searchParams.keywords,
+        searchParams.location,
+        searchParams.priceFrom,
+        searchParams.priceTo,
+        screen
+      )
+    );
   }, [dispatch, screen, searchParams]);
 
   useEffect(() => {
     setScreen(0);
   }, [isAuth, searchParams]);
 
-  return <ProductsComponent 
-    isLoading={isLoading} 
-    isFetchedAll={isFetchedAll} 
-    searchResults={searchResults}
-    onClearSearchOptionClick={onClearSearchOptionClick} />;
-}
+  return (
+    <ProductsComponent
+      isLoading={isLoading}
+      isFetchedAll={isFetchedAll}
+      searchResults={searchResults}
+      onClearSearchOptionClick={onClearSearchOptionClick}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.search.isLoading,

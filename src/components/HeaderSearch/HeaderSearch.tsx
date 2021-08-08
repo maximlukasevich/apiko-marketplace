@@ -1,25 +1,30 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useFormik, FormikValues, FormikErrors, FormikProps } from 'formik';
-import { } from '@chakra-ui/react';
+import {} from '@chakra-ui/react';
 import { IFormikValues } from './types';
-import { HeaderSearchComponent } from "./HeaderSearchComponent";
+import { HeaderSearchComponent } from './HeaderSearchComponent';
 import { fetchSuggest } from '../../store/search-suggestions/actions';
 import { RootState } from '../../store/indexReducer';
 import { IHeaderSearchProps } from './types';
 import { setSearchParams, setShowResults } from '../../store/search/actions';
 import { addRecent } from '../../store/search-recents/actions';
 
-const HeaderSearch: React.FC<IHeaderSearchProps> = ({ 
-  isLoading, 
+const HeaderSearch: React.FC<IHeaderSearchProps> = ({
+  isLoading,
   suggestions,
-  searchParams
+  searchParams,
 }) => {
   const dispatch = useDispatch();
   const onSubmit = (values: FormikValues) => {
-    dispatch(setSearchParams(
-      formik.values.name, formik.values.location, searchParams.priceFrom, searchParams.priceTo 
-    ));
+    dispatch(
+      setSearchParams(
+        formik.values.name,
+        formik.values.location,
+        searchParams.priceFrom,
+        searchParams.priceTo
+      )
+    );
     if (formik.values.name || formik.values.location) {
       dispatch(setShowResults(true));
       if (formik.values.name) {
@@ -28,7 +33,7 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
     } else {
       dispatch(setShowResults(false));
     }
-  }
+  };
   const validate = (values: IFormikValues) => {
     const errors: FormikErrors<IFormikValues> = {};
     if (values.name === '') {
@@ -38,14 +43,14 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
       values.location = null;
     }
     return errors;
-  }
+  };
   const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
     initialValues: {
       name: searchParams.keywords,
       location: searchParams.location,
     },
     validate: validate,
-    onSubmit: onSubmit
+    onSubmit: onSubmit,
   });
 
   useEffect(() => {
@@ -54,17 +59,19 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
     }
   }, [formik.values.name, dispatch]);
 
-  return <HeaderSearchComponent 
-    formik={formik} 
-    isLoading={isLoading} 
-    suggestions={suggestions} />;
-}
+  return (
+    <HeaderSearchComponent
+      formik={formik}
+      isLoading={isLoading}
+      suggestions={suggestions}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.searchSuggestions.isLoading,
   suggestions: state.searchSuggestions.suggestions,
   searchParams: state.search.searchParams,
-})
+});
 
 export default connect(mapStateToProps)(HeaderSearch);
-

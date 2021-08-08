@@ -10,15 +10,16 @@ export enum MessagesActionTypes {
   CLEAR_MESSAGES = 'CLEAR_MESSAGES',
 }
 
-export type MessagesActionCreatorsTypes = IFetchMessages |
-                                          IFetchMessagesSuccess |
-                                          IFetchMessagesError |
-                                          ISendMessage |
-                                          ISendMessageSuccess |
-                                          ISendMessageError |
-                                          IAddMessage |
-                                          IFetchAll |
-                                          IClearMessages;
+export type MessagesActionCreatorsTypes =
+  | IFetchMessages
+  | IFetchMessagesSuccess
+  | IFetchMessagesError
+  | ISendMessage
+  | ISendMessageSuccess
+  | ISendMessageError
+  | IAddMessage
+  | IFetchAll
+  | IClearMessages;
 
 export interface MessagesInitialState {
   messages: Array<IMessage>;
@@ -37,12 +38,12 @@ export interface IMessage {
   updatedAt: number | null;
 }
 
-interface IFetchMessages { 
-  type: MessagesActionTypes.FETCH_MESSAGES; 
+interface IFetchMessages {
+  type: MessagesActionTypes.FETCH_MESSAGES;
 }
 
-interface IFetchMessagesSuccess { 
-  type: MessagesActionTypes.FETCH_MESSAGES_SUCCESS; 
+interface IFetchMessagesSuccess {
+  type: MessagesActionTypes.FETCH_MESSAGES_SUCCESS;
   payload: Array<IMessage>;
 }
 
@@ -59,7 +60,7 @@ interface ISendMessageSuccess {
   payload: {
     message: IMessage;
     oldMessageId: number;
-  }
+  };
 }
 
 interface ISendMessageError {

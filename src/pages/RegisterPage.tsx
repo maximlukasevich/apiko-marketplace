@@ -9,4 +9,4 @@ export const RegisterPage: React.FC = () => {
       <Register />
     </>
   );
-}
+};

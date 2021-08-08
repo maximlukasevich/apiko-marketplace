@@ -1,7 +1,7 @@
-import { 
-  ProductsInitialState, 
-  ProductsActionCreatorsTypes, 
-  ProductsActionTypes 
+import {
+  ProductsInitialState,
+  ProductsActionCreatorsTypes,
+  ProductsActionTypes,
 } from '../../types/products';
 
 const initialState: ProductsInitialState = {
@@ -29,12 +29,12 @@ const initialState: ProductsInitialState = {
       phone: null,
       createdAt: 0,
       updatedAt: null,
-    }
+    },
   },
-}
+};
 
 export const productsReducer = (
-  state = initialState, 
+  state = initialState,
   action: ProductsActionCreatorsTypes
 ): ProductsInitialState => {
   switch (action.type) {
@@ -44,44 +44,44 @@ export const productsReducer = (
         isLoading: true,
         isFetchedAll: false,
         products: state.products,
-      }
+      };
     case ProductsActionTypes.FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         products: state.products.concat(action.payload),
-      }
+      };
     case ProductsActionTypes.FETCHED_ALL:
       return {
         ...state,
         isLoading: false,
         isFetchedAll: true,
-      }
-    case ProductsActionTypes.FETCH_ONE_PRODUCT: 
+      };
+    case ProductsActionTypes.FETCH_ONE_PRODUCT:
       return {
         ...state,
         isLoading: true,
         oneProduct: initialState.oneProduct,
-      }
+      };
     case ProductsActionTypes.FETCH_ONE_PRODUCT_SUCCESS:
       return {
         ...state,
         isLoading: false,
         oneProduct: action.payload,
-      }
+      };
     case ProductsActionTypes.FETCH_ONE_PRODUCT_ERROR:
       return {
         ...state,
         isLoading: false,
         oneProduct: initialState.oneProduct,
-      }
+      };
     case ProductsActionTypes.CLEAR_PRODUCTS:
       return {
         ...state,
         isLoading: false,
         products: [],
-      }
+      };
     default:
       return state;
   }
-}
+};

@@ -7,6 +7,6 @@ interface IWrapper {
 
 export const Wrapper: React.FC<IWrapper> = ({ className, children }) => {
   return (
-  <div className={[styles.wrapper, className].join(' ')}>{children}</div>  
+    <div className={[styles.wrapper, className].join(' ')}>{children}</div>
   );
-}
+};

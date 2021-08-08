@@ -1,11 +1,11 @@
-export interface IHeaderSearchSuggestionsProps {
+export interface ISuggestionsProps {
   id: string;
   photos: Array<string> | string;
   title: string;
   price: number;
 }
 
-export interface IHeaderSearchSuggestionsComponentProps {
+export interface ISuggestionsComponent {
   id: string;
   title: string;
   price: number;

@@ -1,17 +1,17 @@
 .container {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
   margin: 0 auto 20px auto;
   padding-top: 20px;
   .wrapper {
     padding: 10px 12px !important;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     box-shadow: 0 1px 4px #00000037;
     border-radius: 4px;
-  
+
     .filters {
       display: flex;
       flex-wrap: wrap;
-  
+
       .selectContainer {
         position: relative;
         display: flex;
@@ -19,15 +19,15 @@
         margin-right: 25px;
         max-width: 285px;
         width: 100%;
-  
+
         .select {
           padding-left: 40px;
-          background: #F9FAFB;
-          border: 1px solid #DEDEE0;
+          background: #f9fafb;
+          border: 1px solid #dedee0;
           box-sizing: border-box;
           border-radius: 5px;
           height: 35px;
-    
+
           font-family: Helvetica, sans-serif;
           font-style: normal;
           font-weight: 300;
@@ -40,20 +40,20 @@
           margin-left: 10px;
         }
       }
-  
+
       .line {
         margin: auto 7px;
         width: 12px;
         height: 1px;
-        background-color: #DEDEE0;
+        background-color: #dedee0;
       }
-    
+
       .inputs {
         display: flex;
         .input {
           padding: 10px !important;
           height: 35px !important;
-          border: 1px solid #DEDEE0 !important;
+          border: 1px solid #dedee0 !important;
           box-sizing: border-box !important;
           border-radius: 5px !important;
           font-family: Helvetica, sans-serif !important;
@@ -72,16 +72,14 @@
         }
       }
     }
-  } 
+  }
 }
-
-
 
 @media screen and (max-width: 870px) {
   .container {
     margin: 0;
     padding: 0;
-    background: #FFFFFF00;
+    background: #ffffff00;
     .filters {
       .selectContainer {
         max-width: none !important;

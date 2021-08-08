@@ -4,10 +4,12 @@ import HeaderSearch from '../components/HeaderSearch/HeaderSearch';
 import User from '../components/User/User';
 
 export const UserPage = () => {
-  return ( <>
-    <Header>
-      <HeaderSearch />
-    </Header>
-    <User />
-  </> );
-}
+  return (
+    <>
+      <Header>
+        <HeaderSearch />
+      </Header>
+      <User />
+    </>
+  );
+};

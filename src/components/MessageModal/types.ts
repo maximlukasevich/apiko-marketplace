@@ -9,10 +9,10 @@ export interface IMessageModalProps {
 }
 
 export interface IMessageModalComponentProps extends IMessageModalProps {
-  formik: FormikProps<IFormikInitialValues>;
+  formik: FormikProps<IFormikValues>;
 }
 
-export interface IFormikInitialValues {
+export interface IFormikValues {
   text: string;
   productId: string;
 }

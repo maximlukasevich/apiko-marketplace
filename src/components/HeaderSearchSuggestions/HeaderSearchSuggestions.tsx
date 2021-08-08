@@ -1,13 +1,13 @@
 import React from 'react';
 import defaultImage from '../../assets/defaultImage.png';
-import { HeaderSearchSuggestionsComponent } from "./HeaderSearchSuggestionsComponent";
-import { IHeaderSearchSuggestionsProps } from './types';
+import { HeaderSearchSuggestionsComponent } from './HeaderSearchSuggestionsComponent';
+import { ISuggestionsProps } from './types';
 
-export const HeaderSearchSuggestions: React.FC<IHeaderSearchSuggestionsProps> = ({ 
-  id, 
-  photos, 
-  title, 
-  price
+export const HeaderSearchSuggestions: React.FC<ISuggestionsProps> = ({
+  id,
+  photos,
+  title,
+  price,
 }) => {
   let image = defaultImage;
   if (photos?.length > 0) {
@@ -17,16 +17,15 @@ export const HeaderSearchSuggestions: React.FC<IHeaderSearchSuggestionsProps> = 
   }
   const onError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = defaultImage;
-  }
+  };
 
-  return <HeaderSearchSuggestionsComponent 
-    id={id}
-    image={image}
-    title={title} 
-    price={price}
-    onError={onError} />;
-}
-
-
-
-
+  return (
+    <HeaderSearchSuggestionsComponent
+      id={id}
+      image={image}
+      title={title}
+      price={price}
+      onError={onError}
+    />
+  );
+};

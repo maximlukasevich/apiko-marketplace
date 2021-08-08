@@ -10,4 +10,4 @@ export const routes = {
   USER_PAGE: '/users/:id',
   INBOX: '/inbox',
   CHAT: '/inbox/:id',
-}
+};

@@ -9,7 +9,6 @@
 }
 
 .rememberPasswordDiv {
-
   text-align: right;
   margin-bottom: 15px;
 
@@ -19,10 +18,9 @@
     font-weight: normal;
     font-size: 14px;
     letter-spacing: 0.4px;
-    color: #8C8C8C;
+    color: #8c8c8c;
     text-align: right;
   }
-
 }
 
 .registerDiv {
@@ -37,12 +35,15 @@
     font-size: 14px;
     text-align: center;
     letter-spacing: 0.4px;
-    color: #2A2A2A;
+    color: #2a2a2a;
 
     span {
       text-transform: uppercase;
-      color: #349A89;
+      color: #349a89;
     }
-
   }
+}
+
+.input {
+  margin-bottom: 5px;
 }

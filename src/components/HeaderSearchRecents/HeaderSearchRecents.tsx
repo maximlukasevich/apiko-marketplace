@@ -9,11 +9,14 @@ const HeaderSearchRecents: React.FC<IRecentsProps> = ({ recents }) => {
   const dispatch = useDispatch();
   const onClearAllClick = () => {
     dispatch(clearRecents());
-  }
-  return <HeaderSearchRecentsComponent 
-    recents={recents} 
-    onClearAllClick={onClearAllClick} />;
-}
+  };
+  return (
+    <HeaderSearchRecentsComponent
+      recents={recents}
+      onClearAllClick={onClearAllClick}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   recents: state.searchRecents.recents,

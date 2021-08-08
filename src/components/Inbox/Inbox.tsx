@@ -7,13 +7,10 @@ import { fetchChats } from '../../store/chats/actions';
 import { IInboxProps } from './types';
 import { RootState } from '../../store/indexReducer';
 
-export const Inbox: React.FC<IInboxProps> = ({
-  chats,
-  isChatsLoading,
-}) => {
+export const Inbox: React.FC<IInboxProps> = ({ chats, isChatsLoading }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  
+
   const [showChats, setShowChats] = useState(false);
 
   useEffect(() => {
@@ -28,11 +25,14 @@ export const Inbox: React.FC<IInboxProps> = ({
     dispatch(fetchChats());
   }, [dispatch]);
 
-  return <InboxComponent 
-    showChats={showChats}
-    isChatsLoading={isChatsLoading}
-    chats={chats} />;
-}
+  return (
+    <InboxComponent
+      showChats={showChats}
+      isChatsLoading={isChatsLoading}
+      chats={chats}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   isChatsLoading: state.chats.isChatsLoading,

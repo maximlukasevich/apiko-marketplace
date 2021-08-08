@@ -3,7 +3,7 @@ import { IMessage } from '../../types/messages';
 import { IChat, IParticipant } from '../../types/chats';
 import { IProduct } from '../../types/products';
 
-export interface IFormikInitialValues {
+export interface IFormikValues {
   text: string;
 }
 
@@ -17,7 +17,7 @@ export interface IChatProps {
 export interface IChatComponentProps extends IChatProps {
   saller: IParticipant;
   product: IProduct;
-  formik: FormikProps<IFormikInitialValues>;
+  formik: FormikProps<IFormikValues>;
   fetchMore: () => void;
   chatBottomRef: any;
 }

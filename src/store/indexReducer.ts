@@ -29,14 +29,14 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['currentUser', 'searchRecents']
-}
+  whitelist: ['currentUser', 'searchRecents'],
+};
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, compose(applyMiddleware(thunk)))
+const store = createStore(persistedReducer, compose(applyMiddleware(thunk)));
 const persistor = persistStore(store);
 
-export { store, persistor }
+export { store, persistor };

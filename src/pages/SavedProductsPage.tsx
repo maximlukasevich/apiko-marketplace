@@ -4,11 +4,12 @@ import SavedProducts from '../components/SavedProducts/SavedProducts';
 import HeaderSearch from '../components/HeaderSearch/HeaderSearch';
 
 export const SavedProductsPage = () => {
-  return ( <>
-    <Header>
-      <HeaderSearch />
-    </Header> 
-    <SavedProducts />
-  </> );
-}
-
+  return (
+    <>
+      <Header>
+        <HeaderSearch />
+      </Header>
+      <SavedProducts />
+    </>
+  );
+};

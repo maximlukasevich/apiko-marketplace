@@ -1,68 +1,3 @@
-// .message {
-//   font-family: Roboto, sans-serif;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 16px;
-//   line-height: 26px;
-
-//   .messageContainer {
-//     max-width: 265px;
-//     width: fit-content;
-//     border-radius: 4px;
-
-
-//     .text {
-//       position: relative;
-//       border-radius: 4px;
-//       background: #349A89;
-//       padding: 5px 10px;
-//       color: #FFFFFF;
-//     }
-
-//     .text::before {
-//       content: ' ';	
-//       position: absolute;
-//       left: -10px;
-//       top: 6px;
-//       width: 0;
-//       height: 0;
-//       border-top: 11px solid #349A89; 
-//       border-left: 11px solid transparent;
-//     }
-
-//     .outgoingMessage {
-//       justify-content: flex-end;
-//       position: relative;
-//       border-radius: 4px;
-//       background: #FFFFFF;
-
-//       .text {
-//         text-align: left;
-//         padding: 5px 10px;
-//         color: #131314;
-//       }
-//     }
-
-//     .outgoingMessage::after {
-//       content: ' ';	
-//       position: absolute;
-//       right: -10px;
-//       top: 6px;
-//       width: 0;
-//       height: 0;
-//       border-top: 11px solid #FFFFFF; 
-//       border-right: 11px solid transparent;
-//     }
-
-//     .time {
-//       text-align: right;
-//       font-weight: 300;
-//       font-size: 12px;
-//       color: #97A3B4;
-//     }
-//   }
-// }
-
 .incomingMessage {
   width: 100%;
   display: flex;
@@ -71,25 +6,25 @@
 
   .messageContainer {
     position: relative;
-    
+
     .message {
       max-width: 265px;
       width: fit-content;
       border-radius: 4px;
-      background-color: #349A89;
+      background-color: #349a89;
 
       .text {
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
     .message::before {
-      content: ' ';	
+      content: ' ';
       position: absolute;
       left: -10px;
       top: 6px;
       width: 0;
       height: 0;
-      border-top: 11px solid #349A89; 
+      border-top: 11px solid #349a89;
       border-left: 11px solid transparent;
     }
 
@@ -110,25 +45,25 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    
+
     .message {
       max-width: 265px;
       width: fit-content;
       border-radius: 4px;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
 
       .text {
         color: #131314;
       }
     }
     .message::before {
-      content: ' ';	
+      content: ' ';
       position: absolute;
       right: -10px;
       top: 6px;
       width: 0;
       height: 0;
-      border-top: 11px solid #FFFFFF; 
+      border-top: 11px solid #ffffff;
       border-right: 11px solid transparent;
     }
   }
@@ -150,5 +85,5 @@
   font-size: 13px;
   line-height: 26px;
   text-align: right;
-  color: #97A3B4;
+  color: #97a3b4;
 }

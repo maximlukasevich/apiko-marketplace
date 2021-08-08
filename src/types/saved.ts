@@ -8,10 +8,11 @@ export enum SavedActionTypes {
   PRODUCT_UNSAVE = 'PRODUCT_UNSAVE',
 }
 
-export type SavedActionCreatorsTypes = IFetchProducts | 
-                                       IFetchProductsSuccess |
-                                       IFetchProductsError |
-                                       IProductUnsave;
+export type SavedActionCreatorsTypes =
+  | IFetchProducts
+  | IFetchProductsSuccess
+  | IFetchProductsError
+  | IProductUnsave;
 
 export interface SavedInitialState {
   isLoading: boolean;

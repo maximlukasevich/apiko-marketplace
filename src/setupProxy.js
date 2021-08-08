@@ -2,15 +2,15 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = (app) => {
   app.use(
-    '/api', 
+    '/api',
     createProxyMiddleware({
       target: 'https://apiko-marketplace-api-2019.herokuapp.com',
       pathRewrite: {
-        '^/api': ''
+        '^/api': '',
       },
       changeOrigin: true,
-    }
-  ));
+    })
+  );
   app.use(
     '/sockjs-node',
     createProxyMiddleware({
@@ -20,10 +20,10 @@ module.exports = (app) => {
   );
 
   app.use(
-    '/socket.io', 
+    '/socket.io',
     createProxyMiddleware({
       target: 'https://apiko-marketplace-api-2019.herokuapp.com',
       ws: true,
-    }
-  ));
-}
+    })
+  );
+};

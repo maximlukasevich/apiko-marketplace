@@ -10,12 +10,16 @@ import { unsaveProduct, saveProduct } from '../../store/saved/actions';
 import { sendNotificationError } from '../../store/notifications/actions';
 import moment from 'moment';
 
-export const ProductCard: React.FC<IProductsCardProps> = ({ 
-  id, images, title, 
-  location, createdDate, price, 
-  saved
+export const ProductCard: React.FC<IProductsCardProps> = ({
+  id,
+  images,
+  title,
+  location,
+  createdDate,
+  price,
+  saved,
 }) => {
-  const isAuth = useTypedSelector(state => state.viewer.isAuth);
+  const isAuth = useTypedSelector((state) => state.viewer.isAuth);
   const [productSaved, setProductSaved] = useState(saved);
   const webLocation = useLocation();
   const dispatch = useDispatch();
@@ -23,7 +27,7 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   const createdAt = moment(createdDate).fromNow();
 
   const onSavedIconClick = () => {
-    console.log('click')
+    console.log('click');
     if (isAuth) {
       if (webLocation?.pathname === routes.SAVED) {
         if (saved) {
@@ -38,9 +42,13 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
         }
       }
     } else {
-      dispatch(sendNotificationError('To save the product you need to log in or register'));
+      dispatch(
+        sendNotificationError(
+          'To save the product you need to log in or register'
+        )
+      );
     }
-  }
+  };
 
   let image = defaultImage;
   if (images?.length > 0) {
@@ -48,20 +56,22 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
   } else if (typeof images === 'string') {
     image = images;
   }
-  
+
   const onError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = defaultImage;
-  }
-  
-  return <ProductCardComponent 
-    id={id}
-    image={image}
-    title={title} 
-    location={location} 
-    price={price} 
-    saved={productSaved} 
-    onSavedIconClick={onSavedIconClick}
-    createdDate={createdAt}
-    onError={onError} />
-}
+  };
 
+  return (
+    <ProductCardComponent
+      id={id}
+      images={image}
+      title={title}
+      location={location}
+      price={price}
+      saved={productSaved}
+      onSavedIconClick={onSavedIconClick}
+      createdDate={createdAt}
+      onError={onError}
+    />
+  );
+};

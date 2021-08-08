@@ -2,16 +2,16 @@ import React from 'react';
 import { MessageModalComponent } from './MessageModalComponent';
 import { IMessageModalProps } from './types';
 import { useFormik, FormikValues, FormikProps } from 'formik';
-import { IFormikInitialValues } from './types';
+import { IFormikValues } from './types';
 import { useDispatch } from 'react-redux';
 import { createChat } from '../../store/chats/actions';
 import { useHistory } from 'react-router-dom';
 import { routes } from '../../utils/routes';
 
-export const MessageModal: React.FC<IMessageModalProps> = ({ 
+export const MessageModal: React.FC<IMessageModalProps> = ({
   id,
   subject,
-  avatar, 
+  avatar,
   fullName,
   location,
   children,
@@ -22,23 +22,25 @@ export const MessageModal: React.FC<IMessageModalProps> = ({
   const onSubmit = (values: FormikValues) => {
     dispatch(createChat(values.text, values.productId));
     history.push(routes.INBOX);
-  }
+  };
 
-  const formik: FormikProps<IFormikInitialValues> = useFormik<IFormikInitialValues>({
+  const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
     initialValues: {
       text: '',
       productId: id,
     },
-    onSubmit: onSubmit
+    onSubmit: onSubmit,
   });
 
-
-  return <MessageModalComponent 
-    id={id}
-    subject={subject}
-    avatar={avatar}
-    fullName={fullName}
-    location={location}
-    formik={formik}
-    children={children} />;
-}
+  return (
+    <MessageModalComponent
+      id={id}
+      subject={subject}
+      avatar={avatar}
+      fullName={fullName}
+      location={location}
+      formik={formik}
+      children={children}
+    />
+  );
+};

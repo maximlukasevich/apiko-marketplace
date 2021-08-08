@@ -1,5 +1,5 @@
-import { IProduct } from "./products";
-import { IViewer } from "./viewer";
+import { IProduct } from './products';
+import { IViewer } from './viewer';
 
 export enum UserActionTypes {
   FETCH_USER = 'FETCH_USER',
@@ -10,12 +10,13 @@ export enum UserActionTypes {
   FETCH_USER_PRODUCTS_ERROR = 'FETCH_USER_PRODUCTS_ERROR',
 }
 
-export type UserActionCreatorsTypes = IFetchUser |
-                                      IFetchUserSuccess |
-                                      IFetchUserError |
-                                      IFetchUserProducts |
-                                      IFetchUserProductsSuccess |
-                                      IFetchUserProductsError;
+export type UserActionCreatorsTypes =
+  | IFetchUser
+  | IFetchUserSuccess
+  | IFetchUserError
+  | IFetchUserProducts
+  | IFetchUserProductsSuccess
+  | IFetchUserProductsError;
 
 export interface UserInitialState {
   isLoading: boolean;
@@ -44,12 +45,11 @@ interface IFetchUserProducts {
 interface IFetchUserProductsSuccess {
   type: UserActionTypes.FETCH_USER_PRODUCTS_SUCCESS;
   payload: {
-    list: Array<IProduct>,
+    list: Array<IProduct>;
     count: number;
-  }
+  };
 }
 
 interface IFetchUserProductsError {
   type: UserActionTypes.FETCH_USER_PRODUCTS_ERROR;
 }
-

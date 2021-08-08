@@ -9,18 +9,22 @@ export const Register = () => {
   const dispatch = useDispatch();
   const onSubmit = (values: FormikValues) => {
     dispatch(register(values.fullName, values.email, values.password));
-  }
+  };
 
   const validate = (values: IFormikValues) => {
     const errors: FormikErrors<IFormikValues> = {};
     if (!values.email) {
       errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
       errors.email = 'Invalid email address';
     }
     if (!values.fullName) {
       errors.fullName = 'Required';
-    } else if (!/^[А-ЯA-Z][а-яa-z]+\s[А-ЯA-Z][а-яa-z]+$/i.test(values.fullName)) {
+    } else if (
+      !/^[А-ЯA-Z][а-яa-z]+\s[А-ЯA-Z][а-яa-z]+$/i.test(values.fullName)
+    ) {
       errors.fullName = 'First and last name entered incorrectly';
     }
     if (!values.password) {
@@ -34,18 +38,18 @@ export const Register = () => {
       errors.passwordAgain = 'Passwords do not match';
     }
     return errors;
-  }
+  };
 
   const formik: FormikProps<IFormikValues> = useFormik<IFormikValues>({
     initialValues: {
       email: '',
       fullName: '',
       password: '',
-      passwordAgain: ''
+      passwordAgain: '',
     },
     validate: validate,
-    onSubmit: onSubmit
+    onSubmit: onSubmit,
   });
 
-  return <RegisterComponent formik={formik} />
-}
+  return <RegisterComponent formik={formik} />;
+};

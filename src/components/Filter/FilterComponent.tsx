@@ -7,43 +7,48 @@ import selectGrid from '../../assets/icons/selectGrid.svg';
 import { InputField } from '../commons/Input/Input';
 import { IFilterComponentProps } from './types';
 
-export const FilterComponent: React.FC<IFilterComponentProps> = ({ formik }) => {
+export const FilterComponent: React.FC<IFilterComponentProps> = ({
+  formik,
+}) => {
   return (
     <div className={styles.container}>
       <Wrapper className={styles.wrapper}>
         <div className={styles.filters}>
           <div className={styles.selectContainer}>
-            <Select 
+            <Select
               className={styles.select}
               focusBorderColor='none'
-              icon={<img src={selectArrow} alt='arrow'/>} 
-              placeholder='Choose Category' />
+              icon={<img src={selectArrow} alt='arrow' />}
+              placeholder='Choose Category'
+            />
             <img className={styles.selectIcon} src={selectGrid} alt='grid' />
           </div>
 
           <form onSubmit={formik.handleSubmit} className={styles.inputs}>
-            <InputField 
+            <InputField
               type='number'
               name='priceFrom'
               value={formik.values.priceFrom || ''}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              wrapperClassName={styles.inputWrapper} 
+              wrapperClassName={styles.inputWrapper}
               className={styles.input}
-              placeholder='Price from (USD)' />
+              placeholder='Price from (USD)'
+            />
             <span className={styles.line}></span>
-            <InputField 
+            <InputField
               type='number'
               name='priceTo'
               value={formik.values.priceTo || ''}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              wrapperClassName={styles.inputWrapper} 
+              wrapperClassName={styles.inputWrapper}
               className={styles.input}
-              placeholder='Price to (USD)' />     
+              placeholder='Price to (USD)'
+            />
           </form>
         </div>
       </Wrapper>
     </div>
   );
-}
+};

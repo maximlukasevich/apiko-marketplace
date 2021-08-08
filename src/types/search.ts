@@ -11,14 +11,15 @@ export enum SearchActionTypes {
   SET_FETCHED_ALL = 'SET_FETCHED_ALL',
 }
 
-export type SearchActionCreatorsTypes = ISetSearchParams |
-                                        IDeleteSearchParams |
-                                        ISetShowResults |
-                                        IFetchSearchResults |
-                                        IFetchSearchResultsSuccess |
-                                        IFetchSearchResultsError |
-                                        IClearSearchResults |
-                                        ISetFetchedAll;
+export type SearchActionCreatorsTypes =
+  | ISetSearchParams
+  | IDeleteSearchParams
+  | ISetShowResults
+  | IFetchSearchResults
+  | IFetchSearchResultsSuccess
+  | IFetchSearchResultsError
+  | IClearSearchResults
+  | ISetFetchedAll;
 
 export interface SearchInitialState {
   searchParams: ISearchParams;

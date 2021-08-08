@@ -10,13 +10,14 @@ export enum ProductsActionTypes {
   FETCHED_ALL = 'FETCHED_ALL',
 }
 
-export type ProductsActionCreatorsTypes = IFetchProducts | 
-                                          IFetchProductsSuccess |
-                                          IFetchedAll |
-                                          IFeatchProduct |
-                                          IFeatchProductSuccess |
-                                          IFeatchProductError |
-                                          IClearProducts;
+export type ProductsActionCreatorsTypes =
+  | IFetchProducts
+  | IFetchProductsSuccess
+  | IFetchedAll
+  | IFeatchProduct
+  | IFeatchProductSuccess
+  | IFeatchProductError
+  | IClearProducts;
 
 export interface ProductsInitialState {
   isLoading: boolean;
@@ -52,7 +53,6 @@ export interface IOneProduct {
   chatId: string | null;
   owner: IViewer;
 }
-
 
 interface IFetchProducts {
   type: ProductsActionTypes.FETCH_PRODUCTS;

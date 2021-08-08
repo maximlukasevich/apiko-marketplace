@@ -4,4 +4,4 @@ export interface IProductsProps {
   isLoading: boolean;
   isFetchedAll: boolean;
   products: Array<IProduct>;
-} 
+}

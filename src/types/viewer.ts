@@ -5,10 +5,11 @@ export enum ViewerActionTypes {
   LOGOUT = 'LOGOUT',
 }
 
-export type ViewerActionCreatorsTypes = IFetchCurrentUser | 
-                                        IFetchCurrentUserSuccess | 
-                                        IFetchCurrentUserError | 
-                                        ICurrentUserLogout;
+export type ViewerActionCreatorsTypes =
+  | IFetchCurrentUser
+  | IFetchCurrentUserSuccess
+  | IFetchCurrentUserError
+  | ICurrentUserLogout;
 
 export interface ViewerInitialState {
   isAuth: boolean;

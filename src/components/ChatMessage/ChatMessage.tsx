@@ -13,8 +13,8 @@ export const ChatMessage: React.FC<IChatMessageProps> = ({
   message,
   createdAt,
 }) => {
-  return ( <>
-
+  return (
+    <>
       {type === 'incoming' && (
         <div className={styles.incomingMessage}>
           <div className={styles.messageContainer}>
@@ -36,6 +36,6 @@ export const ChatMessage: React.FC<IChatMessageProps> = ({
           </div>
         </div>
       )}
-
-  </> );
-}
+    </>
+  );
+};

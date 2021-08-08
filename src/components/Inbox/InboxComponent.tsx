@@ -9,31 +9,36 @@ import Chat from '../Chat/Chat';
 import { IInboxComponentProps } from './types';
 import moment from 'moment';
 
-export const InboxComponent: React.FC<IInboxComponentProps> = ({ 
+export const InboxComponent: React.FC<IInboxComponentProps> = ({
   showChats,
   isChatsLoading,
   chats,
 }) => {
   return (
     <div className={styles.inbox}>
-      <aside className={styles.aside}>        
-        {chats.map((chat, key) => 
-          <NavLink 
-            to={generatePath(routes.CHAT, {id: chat.id})}
+      <aside className={styles.aside}>
+        {chats.map((chat, key) => (
+          <NavLink
+            to={generatePath(routes.CHAT, { id: chat.id })}
             activeClassName={styles.active}
-            key={key} >
+            key={key}
+          >
             <div className={styles.chatLink}>
               <div className={styles.chatInfo}>
-                <h2 className={styles.fullName}>{chat.participants[0].fullName}</h2>
+                <h2 className={styles.fullName}>
+                  {chat.participants[0].fullName}
+                </h2>
                 <p className={styles.lastMessage}>
-                  <img src={lastMessageIcon} alt='Message' /> {chat.lastMessage.text}
+                  <img src={lastMessageIcon} alt='Message' />{' '}
+                  {chat.lastMessage.text}
                 </p>
               </div>
               <div className={styles.productInfo}>
-                <img 
-                  className={styles.image} 
-                  src={chat.product.photos[0] || defaultImage} 
-                  alt='Title' /> 
+                <img
+                  className={styles.image}
+                  src={chat.product.photos[0] || defaultImage}
+                  alt='Title'
+                />
                 <div className={styles.text}>
                   <h2 className={styles.title}>{chat.product.title}</h2>
                   <p className={styles.price}>${chat.product.price}</p>
@@ -44,15 +49,17 @@ export const InboxComponent: React.FC<IInboxComponentProps> = ({
               </div>
             </div>
           </NavLink>
-        )}
-      </aside> 
+        ))}
+      </aside>
 
-      <div className={`
+      <div
+        className={`
         ${styles.chat}
         ${showChats ? '' : styles.showChat}
-      `} >
-        <Route path={routes.CHAT} component={Chat} /> 
+      `}
+      >
+        <Route path={routes.CHAT} component={Chat} />
       </div>
     </div>
   );
-}
+};

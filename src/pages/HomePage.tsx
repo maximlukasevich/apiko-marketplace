@@ -8,14 +8,14 @@ import SearchResults from '../components/SearchResults/SearchResults';
 import { Filter } from '../components/Filter/Filter';
 
 export const HomePage: React.FC = () => {
-  const { showResults } = useTypedSelector(state => state.search);
-  return ( <>
-    <Header>
-      <HeaderSearch />
-      <Filter />
-    </Header>
-    <Wrapper>
-      {showResults ? <SearchResults /> : <Products /> }
-    </Wrapper>     
-  </> );
-}
+  const { showResults } = useTypedSelector((state) => state.search);
+  return (
+    <>
+      <Header>
+        <HeaderSearch />
+        <Filter />
+      </Header>
+      <Wrapper>{showResults ? <SearchResults /> : <Products />}</Wrapper>
+    </>
+  );
+};

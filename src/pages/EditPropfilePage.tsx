@@ -3,9 +3,10 @@ import { Header } from '../components/Header/Header';
 import { EditProfile } from '../components/EditProfile/EditProfile';
 
 export const EditPropfilePage: React.FC = () => {
-
-  return ( <>
+  return (
+    <>
       <Header />
       <EditProfile />
-  </> );
-}
+    </>
+  );
+};

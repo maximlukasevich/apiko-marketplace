@@ -2,8 +2,8 @@
   max-width: 905px;
   width: 100%;
   margin: 0 auto;
-  background: #FFFFFF;
-  border: 1 solid #E4E4E4;
+  background: #ffffff;
+  border: 1 solid #e4e4e4;
   box-sizing: border-box;
   box-shadow: 0 5px 15px #7979790e;
   padding: 15px 0 30px 0;
@@ -15,10 +15,10 @@
     margin-bottom: 25px;
 
     .avatar {
-      border: 3px solid #349A89;
+      border: 3px solid #349a89;
     }
 
-    .name { 
+    .name {
       margin-top: 20px;
       font-family: Rubik, sans-serif;
       font-style: normal;
@@ -36,7 +36,7 @@
       font-size: 13px;
       line-height: 15px;
       text-align: center;
-      color: #9099A7;
+      color: #9099a7;
     }
 
     .statsBlock {
@@ -51,7 +51,7 @@
       .stats {
         height: 75px;
         flex-basis: 33%;
-        border: 1px solid #EEEFF1;
+        border: 1px solid #eeeff1;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -64,43 +64,42 @@
           font-weight: 300;
           font-size: 13px;
           line-height: 15px;
-          color: #9099A7;
+          color: #9099a7;
         }
         .feedback {
           font-style: normal;
           font-weight: normal;
           font-size: 22px;
           line-height: 26px;
-          color: #3CB255;
+          color: #3cb255;
         }
         .sales {
           font-style: normal;
           font-weight: normal;
           font-size: 22px;
           line-height: 26px;
-          color: #349A89; 
+          color: #349a89;
         }
-
       }
 
       .active {
-        background: #349A89;
-        border: 1 solid #EEEFF1;
+        background: #349a89;
+        border: 1 solid #eeeff1;
         box-sizing: border-box;
         font-family: Rubik;
-        .activeCount { 
+        .activeCount {
           font-style: normal;
           font-weight: 500;
           font-size: 22px;
           line-height: 26px;
-          color: #FFFFFF;
+          color: #ffffff;
         }
         .activeBottom {
           font-style: normal;
           font-weight: normal;
           font-size: 13px;
           line-height: 15px;
-          color: #FFFFFF;
+          color: #ffffff;
         }
       }
       .active::after {
@@ -108,10 +107,10 @@
         position: absolute;
         height: 11px;
         width: 11px;
-        background: #349A89;
+        background: #349a89;
         bottom: -5px;
-        border-bottom: 1px solid #EEEFF1;
-        border-right: 1px solid #EEEFF1;
+        border-bottom: 1px solid #eeeff1;
+        border-right: 1px solid #eeeff1;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
       }

@@ -3,11 +3,11 @@
   flex-direction: row;
   height: calc(100vh - 88px);
   width: 100%;
-  
+
   .aside {
     overflow-y: scroll;
     height: inherit;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     min-width: 565px;
     max-width: 565px;
     width: 100%;
@@ -18,7 +18,7 @@
       margin-bottom: 10px;
       width: inherit;
       height: 105px;
-      background: #FFFFFF;
+      background: #ffffff;
       box-shadow: 0 2px 7px #0000001f;
       display: flex;
       align-items: center;
@@ -31,7 +31,7 @@
         justify-content: center;
         max-width: 200px;
         width: 100%;
-        border-right: 1px solid #E7E9ED;
+        border-right: 1px solid #e7e9ed;
 
         .fullName {
           font-family: Roboto, sans-serif;
@@ -52,7 +52,7 @@
           font-weight: normal;
           font-size: 15px;
           color: #2b2b2b80;
-          
+
           img {
             margin-right: 4px;
           }
@@ -65,7 +65,7 @@
         margin-left: 20px;
         padding-right: 20px;
         display: flex;
-        border-right: 1px solid #E7E9ED;
+        border-right: 1px solid #e7e9ed;
 
         .image {
           object-fit: fill;
@@ -114,18 +114,17 @@
   .chat {
     transition: 0.3s;
     width: 100%;
-    background: #F8F8F8;
-    border-left: 1px solid #E7E9ED;;
+    background: #f8f8f8;
+    border-left: 1px solid #e7e9ed;
   }
 }
 
 .active > div {
-  border-left: 4px solid #349A89;
+  border-left: 4px solid #349a89;
 }
 
 @media screen and (max-width: 1160px) {
   .inbox {
-
     .aside {
       min-width: 200px;
       max-width: 350px;
@@ -146,7 +145,7 @@
         .chatInfo::after {
           content: ' ';
           margin: 10px 0;
-          background-color: #E7E9ED;
+          background-color: #e7e9ed;
           height: 1px;
           width: 36px;
         }
@@ -174,7 +173,7 @@
       min-width: none !important;
       width: 100%;
       margin-right: 0;
-      background-color: #F8F8F8;
+      background-color: #f8f8f8;
 
       .chatLink {
         max-width: none;

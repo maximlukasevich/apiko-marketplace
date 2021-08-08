@@ -7,12 +7,13 @@ export enum ChatsActionTypes {
   ADD_LAST_MESSAGE = 'ADD_LAST_MESSAGE',
 }
 
-export type ChatsActionCreatorsTypes = IFetchChats |
-                                      IFetchChatsSuccess |
-                                      IFetchChatsError |
-                                      ICreateChatSuccess |
-                                      ICreateChatError |
-                                      IAddLastMessage;
+export type ChatsActionCreatorsTypes =
+  | IFetchChats
+  | IFetchChatsSuccess
+  | IFetchChatsError
+  | ICreateChatSuccess
+  | ICreateChatError
+  | IAddLastMessage;
 
 export interface ChatsInitialState {
   chats: Array<IChat>;
@@ -46,9 +47,9 @@ export interface IParticipant {
   fullName: string;
   location: string | null;
   avatar: string | null;
-  phone:  string | null;
+  phone: string | null;
   createdAt: number;
-  updatedAt:  number | null;
+  updatedAt: number | null;
 }
 
 interface ILastMessage {
@@ -61,11 +62,11 @@ interface ILastMessage {
   updatedAt: number | null;
 }
 
-interface IFetchChats { 
+interface IFetchChats {
   type: ChatsActionTypes.FETCH_CHATS;
 }
 
-interface IFetchChatsSuccess { 
+interface IFetchChatsSuccess {
   type: ChatsActionTypes.FETCH_CHATS_SUCCESS;
   payload: Array<IChat>;
 }
@@ -85,7 +86,7 @@ interface ICreateChatError {
 interface IAddLastMessage {
   type: ChatsActionTypes.ADD_LAST_MESSAGE;
   payload: {
-    lastMessage: ILastMessage,
-    chatId: string,
-  }
+    lastMessage: ILastMessage;
+    chatId: string;
+  };
 }

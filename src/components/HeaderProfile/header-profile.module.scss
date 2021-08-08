@@ -1,12 +1,10 @@
-
 .menu {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 2px 4px #00000026;
   border-radius: 4px;
   border: none;
 
   .menuHeader {
-
     padding: 0 15px;
     display: flex;
     justify-content: flex-start;
@@ -14,7 +12,7 @@
     .menuAvatar {
       div {
         font-size: 18px !important;
-      } 
+      }
     }
 
     .menuHeaderInfo {
@@ -33,7 +31,7 @@
           letter-spacing: 1px;
           color: #000000;
         }
-  
+
         .menuEmail {
           font-size: 12px;
           letter-spacing: 1px;
@@ -45,7 +43,7 @@
         font-weight: bold;
         font-size: 12px;
         letter-spacing: 1px;
-        color: #349A89;
+        color: #349a89;
       }
       .profile:hover {
         cursor: pointer;
@@ -56,7 +54,7 @@
   .hr {
     height: 1px;
     border: none;
-    background-color: #E4E4E4;
+    background-color: #e4e4e4;
   }
 
   .link {
@@ -67,7 +65,7 @@
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #349A89;
+    color: #349a89;
     transition: 0.3s;
   }
 

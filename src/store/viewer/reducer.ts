@@ -1,7 +1,7 @@
-import { 
-  ViewerInitialState, 
-  ViewerActionCreatorsTypes, 
-  ViewerActionTypes 
+import {
+  ViewerInitialState,
+  ViewerActionCreatorsTypes,
+  ViewerActionTypes,
 } from '../../types/viewer';
 
 const initialState: ViewerInitialState = {
@@ -16,35 +16,35 @@ const initialState: ViewerInitialState = {
     createdAt: 0,
     updatedAt: null,
     email: '',
-  }
-}
+  },
+};
 
 export const viewerReducer = (
-  state = initialState, 
+  state = initialState,
   action: ViewerActionCreatorsTypes
 ): ViewerInitialState => {
   switch (action.type) {
     case ViewerActionTypes.FETCH_CURRENT_USER:
-      return { 
+      return {
         ...state,
         isAuth: false,
         isLoading: true,
-        viewer: initialState.viewer
-      }
+        viewer: initialState.viewer,
+      };
     case ViewerActionTypes.FETCH_CURRENT_USER_SUCCESS:
       return {
         ...state,
         isAuth: true,
         isLoading: false,
         viewer: action.payload,
-      }
-    case ViewerActionTypes.FETCH_CURRENT_USER_ERROR: 
+      };
+    case ViewerActionTypes.FETCH_CURRENT_USER_ERROR:
       return {
         ...state,
         isAuth: false,
         isLoading: false,
-        viewer: initialState.viewer
-      }
+        viewer: initialState.viewer,
+      };
     case ViewerActionTypes.LOGOUT:
       localStorage.removeItem('token');
       return {
@@ -52,9 +52,9 @@ export const viewerReducer = (
         isAuth: false,
         isLoading: false,
         viewer: initialState.viewer,
-      }
+      };
 
-    default: 
+    default:
       return state;
   }
-}
+};

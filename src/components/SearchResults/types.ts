@@ -6,11 +6,11 @@ export interface ISearchResultsProps {
   isFetchedAll: boolean;
   searchParams: ISearchParams;
   searchResults: Array<IProduct>;
-} 
+}
 
 export interface ISearchResultsComponentProps {
   isLoading: boolean;
   isFetchedAll: boolean;
   searchResults: Array<IProduct>;
   onClearSearchOptionClick: () => void;
-} 
+}

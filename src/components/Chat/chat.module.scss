@@ -5,7 +5,7 @@
   overflow: hidden;
 
   .chatHeader {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@
         margin-left: 15px;
         display: flex;
         align-items: center;
-    
+
         .fullName {
           margin-left: 15px;
           white-space: nowrap;
@@ -39,18 +39,18 @@
           color: #131314;
         }
       }
-    
+
       .chatHeaderProduct {
         padding: 0 13px;
-        margin-left: 50px;;
+        margin-left: 50px;
         display: flex;
         justify-content: space-between;
         max-height: 62px;
         height: 100%;
-        background: #F8F8F8;
+        background: #f8f8f8;
         border-radius: 5px;
         width: 100%;
-    
+
         .chatHeaderProductContainer {
           display: flex;
           align-items: center;
@@ -63,7 +63,7 @@
             min-height: 41px;
             object-fit: fill;
           }
-      
+
           .productText {
             white-space: nowrap;
             overflow: hidden;
@@ -79,7 +79,7 @@
             color: #000000;
             overflow: hidden;
             max-width: 100px;
-      
+
             .title {
               overflow: hidden;
               text-overflow: ellipsis;
@@ -104,7 +104,7 @@
         }
       }
     }
-    
+
     .chatHeaderRight {
       margin-right: 20px;
     }
@@ -141,7 +141,7 @@
       font-weight: bold;
       font-size: 13px;
       line-height: 22px;
-      color: #97A3B4;
+      color: #97a3b4;
     }
 
     .sendButton {
@@ -179,46 +179,44 @@
       max-height: none;
       max-width: 100%;
       height: auto;
-  
+
       .chatHeaderLeft {
         width: 100%;
         flex-direction: column;
-  
+
         .saler {
           margin-left: 0;
           width: 100%;
-          border-bottom: 1px solid #E7E9ED;
+          border-bottom: 1px solid #e7e9ed;
           padding-bottom: 10px;
         }
-  
+
         .chatHeaderProduct {
           margin-left: 0;
           padding: 0;
           margin-top: 10px;
-          background-color: #FFFFFF;
+          background-color: #ffffff;
           max-width: none;
           display: flex;
           justify-content: space-between;
           box-sizing: border-box;
 
           .chatHeaderProductContainer {
-
             .productText {
               max-width: none;
-              
+
               .title {
                 overflow: hidden;
                 white-space: break-spaces;
                 display: -webkit-box;
                 -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical; 
+                -webkit-box-orient: vertical;
               }
             }
           }
-
         }
       }
-  
+
       .chatHeaderRight {
         margin-right: 0;
         position: absolute;
@@ -247,7 +245,7 @@
         margin-top: 15px;
         display: flex;
       }
-  
+
       .chatHeaderLeft {
         margin-left: 15px;
       }

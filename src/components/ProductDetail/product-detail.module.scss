@@ -7,8 +7,8 @@
     box-sizing: border-box;
     max-width: 583px;
     width: 100%;
-    background: #FFFFFF;
-    border: 1px solid #E4E4E4;
+    background: #ffffff;
+    border: 1px solid #e4e4e4;
     box-sizing: border-box;
     box-shadow: 0 5px 15px #7979790e;
     border-radius: 4px;
@@ -32,7 +32,7 @@
         bottom: 0;
         border-radius: 10px 0 0 0;
         padding: 5px 15px 5px 15px;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         font-family: Helvetica;
         font-style: normal;
         font-weight: bold;
@@ -40,9 +40,7 @@
         line-height: 22px;
         color: #101010;
       }
-
     }
-
 
     .content {
       padding: 10px 20px;
@@ -52,21 +50,21 @@
         align-items: flex-end;
       }
 
-      .row > *:first-child{
+      .row > *:first-child {
         font-family: Helvetica;
         font-size: 18.36px;
         line-height: 21px;
         color: #373738;
       }
 
-      .row > *:last-child{
+      .row > *:last-child {
         margin: 10px 0 0 10px;
         font-family: Helvetica;
         font-style: normal;
         font-weight: normal;
         font-size: 14.04px;
         line-height: 16px;
-        color: #9D9D9D;
+        color: #9d9d9d;
       }
 
       .description {
@@ -75,7 +73,7 @@
         border-top: 1px solid #9797972a;
         font-family: Helvetica;
         font-size: 14px;
-        color: #2B2B2B;
+        color: #2b2b2b;
       }
     }
   }
@@ -97,14 +95,14 @@
       .header {
         position: absolute;
         height: 50px;
-        background-color: #349A89;
+        background-color: #349a89;
         width: 100%;
         border-radius: 4px 4px 0 0;
       }
       .ownerInfo {
         width: 100%;
-        background: #FFFFFF;
-        border: 1px solid #DEDEE0;
+        background: #ffffff;
+        border: 1px solid #dedee0;
         box-sizing: border-box;
         border-radius: 4px;
         display: flex;
@@ -113,10 +111,10 @@
         padding: 15px 0 10px 0;
         font-family: Helvetica, sans-serif;
         font-size: 15px;
-        
+
         .fullName {
           margin-top: 10px;
-          color: #2B2B2B;
+          color: #2b2b2b;
         }
         .location {
           margin-top: 5px;
@@ -138,7 +136,7 @@
       box-sizing: border-box;
       margin-top: 10px;
       background-color: white;
-      border: 1px solid #349A89;
+      border: 1px solid #349a89;
       text-transform: uppercase;
       color: #535353;
 
@@ -160,9 +158,8 @@
 
     .product {
       max-width: none;
-      
+
       .imageBlock {
-        
         .productImage {
           max-height: 350px;
         }
@@ -176,7 +173,7 @@
   }
 }
 
-.center { 
+.center {
   display: flex;
   justify-content: center;
   margin-top: 150px;

@@ -1,5 +1,5 @@
 .container {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 2px 42px #0000001c;
   border-radius: 7px;
   max-width: 1145px;
@@ -34,8 +34,8 @@
         .photosUpload {
           display: flex;
           overflow-x: scroll;
-          background: #F9FAFB;
-          border: 1px solid #DEDEE0;
+          background: #f9fafb;
+          border: 1px solid #dedee0;
           box-sizing: border-box;
           border-radius: 5px;
           height: 125px;
@@ -55,8 +55,8 @@
             }
           }
 
-          .uploadBlock{
-            background: #E4E4E4;
+          .uploadBlock {
+            background: #e4e4e4;
             border-radius: 4px;
             width: 92px;
             height: 92px;
@@ -80,7 +80,7 @@
         }
 
         .photosUpload > *:not(:first-child) {
-          margin: 15px 0 15px 15px ;
+          margin: 15px 0 15px 15px;
         }
       }
 
@@ -91,6 +91,5 @@
         max-width: 377px;
       }
     }
-
   }
 }

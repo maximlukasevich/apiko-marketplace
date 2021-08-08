@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useDispatch, connect} from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ProductDetailComponent } from './ProductDetailComponent';
 import { useParams } from 'react-router';
@@ -11,12 +11,8 @@ import { RootState } from '../../store/indexReducer';
 import defaultImage from '../../assets/defaultImage.png';
 import moment from 'moment';
 
-
-const ProductDetail: React.FC<IProductProps> = ({ 
-  product, 
-  isLoading,
-}) => {
-  const isAuth = useTypedSelector(state => state.viewer.isAuth);
+const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
+  const isAuth = useTypedSelector((state) => state.viewer.isAuth);
   const [productSaved, setProductSaved] = useState(product.saved);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -48,12 +44,14 @@ const ProductDetail: React.FC<IProductProps> = ({
     setIsViewerOpen(false);
   };
 
-  const createdDate = moment(product.createdAt).fromNow()
-  + ' - ' + moment(product.createdAt).format('DD.MM.YYYY, hh:mm')
+  const createdDate =
+    moment(product.createdAt).fromNow() +
+    ' - ' +
+    moment(product.createdAt).format('DD.MM.YYYY, hh:mm');
 
   const onError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = defaultImage;
-  }
+  };
 
   const onSaveButtonClick = () => {
     if (isAuth) {
@@ -64,9 +62,13 @@ const ProductDetail: React.FC<IProductProps> = ({
         dispatch(saveProduct(id));
       }
     } else {
-      dispatch(sendNotificationError('To save the product you need to log in or register'));
+      dispatch(
+        sendNotificationError(
+          'To save the product you need to log in or register'
+        )
+      );
     }
-  }
+  };
 
   useEffect(() => {
     setProductSaved(product.saved);
@@ -76,19 +78,22 @@ const ProductDetail: React.FC<IProductProps> = ({
     dispatch(fetchOneProduct(id));
   }, [isAuth, dispatch, id]);
 
-  return <ProductDetailComponent
-    product={product}
-    isLoading={isLoading}
-    saved={productSaved}
-    createdAt={createdDate}
-    images={images}
-    onError={onError}
-    isViewerOpen={isViewerOpen}
-    currentImage={currentImage}
-    openImageViewer={openImageViewer}
-    closeImageViewer={closeImageViewer}
-    onSaveButtonClick={onSaveButtonClick} />;
-}
+  return (
+    <ProductDetailComponent
+      product={product}
+      isLoading={isLoading}
+      saved={productSaved}
+      createdAt={createdDate}
+      images={images}
+      onError={onError}
+      isViewerOpen={isViewerOpen}
+      currentImage={currentImage}
+      openImageViewer={openImageViewer}
+      closeImageViewer={closeImageViewer}
+      onSaveButtonClick={onSaveButtonClick}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   product: state.products.oneProduct,

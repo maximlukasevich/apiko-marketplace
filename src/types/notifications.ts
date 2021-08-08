@@ -4,9 +4,10 @@ export enum NotificationsActionTypes {
   DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
 }
 
-export type NotificationsActionCreatorsTypes = ISetNotificationSuccess | 
-                                               ISetNotificationError | 
-                                               IDeleteNotification;
+export type NotificationsActionCreatorsTypes =
+  | ISetNotificationSuccess
+  | ISetNotificationError
+  | IDeleteNotification;
 
 export interface NotificationInitialState {
   notification: string | null;
@@ -14,15 +15,15 @@ export interface NotificationInitialState {
 }
 
 interface ISetNotificationSuccess {
-  type: NotificationsActionTypes.SET_NORIFICATION_SUCCESS,
-  payload: string,
+  type: NotificationsActionTypes.SET_NORIFICATION_SUCCESS;
+  payload: string;
 }
 
 interface ISetNotificationError {
-  type: NotificationsActionTypes.SET_NORIFICATION_ERROR,
-  payload: string
+  type: NotificationsActionTypes.SET_NORIFICATION_ERROR;
+  payload: string;
 }
 
 interface IDeleteNotification {
-  type: NotificationsActionTypes.DELETE_NOTIFICATION,
+  type: NotificationsActionTypes.DELETE_NOTIFICATION;
 }

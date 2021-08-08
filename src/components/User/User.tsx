@@ -13,18 +13,21 @@ const User: React.FC<IUserProps> = ({
   sales,
   isAuth,
 }) => {
-  const { id } = useParams<{id: string}>();
+  const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser(id));
     dispatch(fetchUserProducts(id));
   }, [dispatch, id, isAuth]);
-  return <UserComponent 
-    user={user}
-    userProducts={userProducts}
-    isLoading={isLoading}
-    sales={sales} />;
-}
+  return (
+    <UserComponent
+      user={user}
+      userProducts={userProducts}
+      isLoading={isLoading}
+      sales={sales}
+    />
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user.user,
