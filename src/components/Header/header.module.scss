@@ -95,6 +95,10 @@
       }
     }
   }
+
+  .filter {
+    display: none;
+  }
 }
 
 .mobileHeader {
@@ -151,6 +155,7 @@
     margin-top: 15px;
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 }
+

@@ -155,7 +155,7 @@
 
 @media screen and (max-width: 870px) {
   .container {
-    flex-direction: column;
+    // flex-direction: column;
 
     .product {
       max-width: none;
@@ -168,8 +168,28 @@
     }
 
     .other {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    box-sizing: content-box;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: auto;
+    max-height: none;
+    padding-bottom: 200px;
+
+    .other {
       margin-top: 20px;
+      margin-left: 0;
       max-width: none;
+      height: auto;
+
+      .owner {
+      }
     }
   }
 }

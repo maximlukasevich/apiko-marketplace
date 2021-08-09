@@ -10,7 +10,7 @@ import { Button } from '../commons/Button/Button';
 import { Spinner } from '@chakra-ui/spinner';
 import ImageViewer from 'react-simple-image-viewer';
 import { routes } from '../../utils/routes';
-import { NavLink } from 'react-router-dom';
+import { generatePath, NavLink } from 'react-router-dom';
 import { MessageModal } from '../MessageModal/MessageModal';
 
 export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
@@ -66,7 +66,9 @@ export const ProductDetailComponent: React.FC<IProductComponentProps> = ({
             <div className={styles.other}>
               <div className={styles.owner}>
                 <span className={styles.header}> </span>
-                <NavLink to={routes.USER_PAGE.replace(':id', product.owner.id)}>
+                <NavLink
+                  to={generatePath(routes.USER_PAGE, { id: product.owner.id })}
+                >
                   <div className={styles.ownerInfo}>
                     <Avatar
                       className={styles.avatar}

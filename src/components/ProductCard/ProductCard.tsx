@@ -35,7 +35,7 @@ export const ProductCard: React.FC<IProductsCardProps> = ({
         }
       } else {
         setProductSaved(!productSaved);
-        if (saved) {
+        if (productSaved) {
           dispatch(unsaveProduct(id));
         } else {
           dispatch(saveProduct(id));

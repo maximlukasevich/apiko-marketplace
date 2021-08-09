@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useFormik, FormikValues, FormikErrors, FormikProps } from 'formik';
-import {} from '@chakra-ui/react';
 import { IFormikValues } from './types';
 import { HeaderSearchComponent } from './HeaderSearchComponent';
 import { fetchSuggest } from '../../store/search-suggestions/actions';
@@ -9,12 +8,15 @@ import { RootState } from '../../store/indexReducer';
 import { IHeaderSearchProps } from './types';
 import { setSearchParams, setShowResults } from '../../store/search/actions';
 import { addRecent } from '../../store/search-recents/actions';
+import { useHistory } from 'react-router-dom';
+import { routes } from '../../utils/routes';
 
 const HeaderSearch: React.FC<IHeaderSearchProps> = ({
   isLoading,
   suggestions,
   searchParams,
 }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const onSubmit = (values: FormikValues) => {
     dispatch(
@@ -32,6 +34,9 @@ const HeaderSearch: React.FC<IHeaderSearchProps> = ({
       }
     } else {
       dispatch(setShowResults(false));
+    }
+    if (history.location.pathname !== routes.HOME) {
+      history.push(routes.HOME);
     }
   };
   const validate = (values: IFormikValues) => {

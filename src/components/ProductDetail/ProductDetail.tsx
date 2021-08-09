@@ -56,7 +56,7 @@ const ProductDetail: React.FC<IProductProps> = ({ product, isLoading }) => {
   const onSaveButtonClick = () => {
     if (isAuth) {
       setProductSaved(!productSaved);
-      if (product.saved) {
+      if (productSaved) {
         dispatch(unsaveProduct(id));
       } else {
         dispatch(saveProduct(id));
