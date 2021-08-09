@@ -16,5 +16,8 @@ app.use(
     changeOrigin: true,
   })
 );
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
 
 app.listen(port, () => console.log(`App is live on port ${port}!`));
