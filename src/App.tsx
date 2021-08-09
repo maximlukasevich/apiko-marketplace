@@ -71,10 +71,10 @@ const App: React.FC = () => {
 
               <Redirect from={routes.PRODUCT_UPLOAD} to={routes.REGISTER} />
               <Redirect from={routes.PROFILE_EDIT} to={routes.REGISTER} />
+              <Redirect from='*' to={routes.HOME} />
             </Switch>
           </>
         )}
-        <Redirect to={routes.HOME} />
       </Switch>
     </>
   );
